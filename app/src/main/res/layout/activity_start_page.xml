@@ -10,17 +10,43 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.zech.simplerpg.StartPage">
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_alignTop="@+id/new_game_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp"
+        android:id="@+id/load_game_button" />
 
     <Button
-        android:text="Start Game"
+        android:text="New Game"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="173dp"
-        android:id="@+id/button"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/new_game_button"
+        android:layout_marginTop="165dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignLeft="@+id/load_game_button"
+        android:layout_alignStart="@+id/load_game_button"
+        android:layout_alignRight="@+id/load_game_button"
+        android:layout_alignEnd="@+id/load_game_button" />
+
+    <Button
+        android:text="Exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/exit_button"
+        android:layout_below="@+id/load_game_button"
+        android:layout_alignRight="@+id/load_game_button"
+        android:layout_alignEnd="@+id/load_game_button"
+        android:layout_alignLeft="@+id/load_game_button"
+        android:layout_alignStart="@+id/load_game_button" />
+
+    <TextView
+        android:text="Simple RPG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="57dp"
+        android:id="@+id/textView2" />
 </RelativeLayout>
