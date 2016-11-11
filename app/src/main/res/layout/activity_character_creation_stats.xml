@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_character_creation_stats"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.zech.simplerpg.character_creation_stats"
+    android:background="@drawable/background_char_stats">
+
+    <TextView
+        android:text="INT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/intDec"
+        android:layout_alignStart="@+id/StrView"
+        android:layout_marginBottom="11dp"
+        android:id="@+id/intView" />
+
+    <TextView
+        android:text="CON"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/conDec"
+        android:layout_alignStart="@+id/wisView"
+        android:layout_marginTop="12dp"
+        android:id="@+id/conView" />
+
+    <TextView
+        android:text="STR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/StrView"
+        android:layout_alignBaseline="@+id/strDec"
+        android:layout_alignBottom="@+id/strDec"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/charStatsBack"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/dexDec"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:text="Confirm and Enter Game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/charStatConfirm"
+        android:layout_alignBaseline="@+id/charStatsBack"
+        android:layout_alignBottom="@+id/charStatsBack"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/charStatsBack" />
+
+    <TextView
+        android:text="WIS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/wisView"
+        android:layout_alignBaseline="@+id/wisDec"
+        android:layout_alignBottom="@+id/wisDec"
+        android:layout_alignStart="@+id/intView" />
+
+    <Button
+        android:text="Increase\nSTR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="19dp"
+        android:id="@+id/strInc"
+        android:layout_alignBaseline="@+id/StrView"
+        android:layout_alignBottom="@+id/StrView"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="Decrease\nSTR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
+        android:id="@+id/strDec"
+        android:layout_marginStart="26dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Increase\nINT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/intInc"
+        android:layout_alignBaseline="@+id/intDec"
+        android:layout_alignBottom="@+id/intDec"
+        android:layout_alignStart="@+id/strInc" />
+
+    <Button
+        android:text="Increase\nCON"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/conInc"
+        android:layout_alignBaseline="@+id/conDec"
+        android:layout_alignBottom="@+id/conDec"
+        android:layout_alignStart="@+id/wisInc" />
+
+    <Button
+        android:text="Increase\nWIS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/wisInc"
+        android:layout_alignBaseline="@+id/wisView"
+        android:layout_alignBottom="@+id/wisView"
+        android:layout_alignEnd="@+id/intInc" />
+
+    <Button
+        android:text="Increase\nDEX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dexInc"
+        android:layout_alignBaseline="@+id/dexDec"
+        android:layout_alignBottom="@+id/dexDec"
+        android:layout_alignStart="@+id/conInc" />
+
+    <TextView
+        android:text="DEX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/dexView"
+        android:layout_alignBottom="@+id/dexDec"
+        android:layout_alignEnd="@+id/conView" />
+
+    <Button
+        android:text="Decrease\nINT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:id="@+id/intDec"
+        android:layout_below="@+id/strDec"
+        android:layout_alignStart="@+id/strDec" />
+
+    <Button
+        android:text="Decrease\nWIS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:id="@+id/wisDec"
+        android:layout_below="@+id/intDec"
+        android:layout_alignStart="@+id/intDec" />
+
+    <Button
+        android:text="Decrease\nCON"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:id="@+id/conDec"
+        android:layout_below="@+id/wisDec"
+        android:layout_alignStart="@+id/wisDec" />
+
+    <Button
+        android:text="Decrease\nDEX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:id="@+id/dexDec"
+        android:layout_below="@+id/conDec"
+        android:layout_alignStart="@+id/conDec" />
+
+</RelativeLayout>
