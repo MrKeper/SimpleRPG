@@ -12,24 +12,6 @@
     android:background="@drawable/background_char_stats">
 
     <TextView
-        android:text="INT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/intDec"
-        android:layout_alignStart="@+id/StrView"
-        android:layout_marginBottom="11dp"
-        android:id="@+id/intView" />
-
-    <TextView
-        android:text="CON"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/conDec"
-        android:layout_alignStart="@+id/wisView"
-        android:layout_marginTop="12dp"
-        android:id="@+id/conView" />
-
-    <TextView
         android:text="STR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -58,12 +40,12 @@
         android:layout_toEndOf="@+id/charStatsBack" />
 
     <TextView
-        android:text="WIS"
+        android:text="WIL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/wisView"
-        android:layout_alignBaseline="@+id/wisDec"
-        android:layout_alignBottom="@+id/wisDec"
+        android:id="@+id/wilView"
+        android:layout_alignBaseline="@+id/wilDec"
+        android:layout_alignBottom="@+id/wilDec"
         android:layout_alignStart="@+id/intView" />
 
     <Button
@@ -102,15 +84,15 @@
         android:id="@+id/conInc"
         android:layout_alignBaseline="@+id/conDec"
         android:layout_alignBottom="@+id/conDec"
-        android:layout_alignStart="@+id/wisInc" />
+        android:layout_alignStart="@+id/wilInc" />
 
     <Button
-        android:text="Increase\nWIS"
+        android:text="Increase\nWIL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/wisInc"
-        android:layout_alignBaseline="@+id/wisView"
-        android:layout_alignBottom="@+id/wisView"
+        android:id="@+id/wilInc"
+        android:layout_alignBaseline="@+id/wilView"
+        android:layout_alignBottom="@+id/wilView"
         android:layout_alignEnd="@+id/intInc" />
 
     <Button
@@ -141,11 +123,11 @@
         android:layout_alignStart="@+id/strDec" />
 
     <Button
-        android:text="Decrease\nWIS"
+        android:text="Decrease\nWIL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:id="@+id/wisDec"
+        android:id="@+id/wilDec"
         android:layout_below="@+id/intDec"
         android:layout_alignStart="@+id/intDec" />
 
@@ -155,8 +137,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:id="@+id/conDec"
-        android:layout_below="@+id/wisDec"
-        android:layout_alignStart="@+id/wisDec" />
+        android:layout_below="@+id/wilDec"
+        android:layout_alignStart="@+id/wilDec" />
 
     <Button
         android:text="Decrease\nDEX"
@@ -166,5 +148,23 @@
         android:id="@+id/dexDec"
         android:layout_below="@+id/conDec"
         android:layout_alignStart="@+id/conDec" />
+
+    <TextView
+        android:text="CON"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/conView"
+        android:layout_above="@+id/dexDec"
+        android:layout_alignEnd="@+id/wilView"
+        android:layout_marginBottom="15dp" />
+
+    <TextView
+        android:text="INT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/intView"
+        android:layout_alignBaseline="@+id/intDec"
+        android:layout_alignBottom="@+id/intDec"
+        android:layout_alignStart="@+id/StrView" />
 
 </RelativeLayout>

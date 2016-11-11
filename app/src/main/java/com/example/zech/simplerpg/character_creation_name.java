@@ -50,7 +50,9 @@ public class character_creation_name extends AppCompatActivity {
                 {
                     errorName.setVisibility(View.VISIBLE);
                 }
+                User_Character user = new User_Character(player_name);
                 Intent intent = new Intent(v.getContext(), character_creation_sex.class);
+                intent.putExtra("user",user);
                 startActivity(intent);
                 //create actor and add name
                 finish();

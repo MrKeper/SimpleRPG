@@ -13,14 +13,18 @@ public class character_creation_sex extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_creation_sex);
         Intent character_creation_sex = getIntent();
+        final User_Character user = (User_Character) getIntent().getSerializableExtra("user");
         Button male_button = (Button) findViewById(R.id.maleButton);
 
         male_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-                //setActorSex to male
-                
+                user.sex = "male";
+                Intent intent = new Intent(v.getContext(), character_creation_stats.class);
+                intent.putExtra("user",user);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -30,7 +34,11 @@ public class character_creation_sex extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                //setActorSex to female
+                user.sex = "female";
+                Intent intent = new Intent(v.getContext(), character_creation_stats.class);
+                intent.putExtra("user",user);
+                startActivity(intent);
+                finish();
             }
         });
 
