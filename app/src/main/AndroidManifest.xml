@@ -17,7 +17,9 @@
         </activity>
         <activity android:name=".character_creation_name" />
         <activity android:name=".character_creation_sex" />
-        <activity android:name=".character_creation_stats"></activity>
+        <activity android:name=".character_creation_stats" />
+        <activity android:name=".stats_information" />
+        <activity android:name=".prologue_one"></activity>
     </application>
 
 </manifest>
