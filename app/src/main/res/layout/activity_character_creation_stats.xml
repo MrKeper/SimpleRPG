@@ -164,15 +164,6 @@
         android:layout_alignEnd="@+id/conView"
         android:layout_marginBottom="15dp" />
 
-    <Button
-        android:text="Increase\nSTR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/strInc"
-        android:layout_above="@+id/intInc"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="22dp" />
-
     <TextView
         android:text="INT"
         android:layout_width="wrap_content"
@@ -205,5 +196,15 @@
         android:layout_marginStart="13dp"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/remainingPoints" />
+
+     <Button
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/strInc"
+        android:background="@drawable/button_plus"
+        android:layout_marginStart="23dp"
+        android:layout_alignTop="@+id/strDec"
+        android:layout_toEndOf="@+id/StrView" />
 
 </RelativeLayout>
