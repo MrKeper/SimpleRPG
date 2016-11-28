@@ -17,7 +17,7 @@ public class StartPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_page);
         Intent start_page_intent = getIntent();
-        mp = MediaPlayer.create(this, R.raw.backgroundmusic);
+        mp  = MediaPlayer.create(this, R.raw.backgroundmusic);
         mp.start();
         mp.setLooping(true);
         Button new_button = (Button) findViewById(R.id.newGame);

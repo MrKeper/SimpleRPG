@@ -22,6 +22,9 @@ public class prologue_one extends AppCompatActivity {
         proceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), Testing.class);
+                intent.putExtra("user",user);
+                startActivity(intent);
                 finish();
             }
         });
