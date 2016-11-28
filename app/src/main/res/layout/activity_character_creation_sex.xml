@@ -22,40 +22,40 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="15dp" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/female_high_health"
+        android:id="@+id/imageView5"
+        android:layout_marginTop="27dp"
+        android:layout_below="@+id/maleButton"
+        android:layout_alignStart="@+id/imageView4" />
+
     <Button
         android:text="Male"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="183dp"
         android:id="@+id/maleButton"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/male_high_health"
+        android:layout_marginBottom="59dp"
+        android:id="@+id/imageView4"
+        android:layout_alignBottom="@+id/maleButton"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:text="Female"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/femaleButton"
-        android:layout_above="@+id/backButtonSex"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="93dp" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/male_high_health"
-        android:layout_marginBottom="44dp"
-        android:id="@+id/imageView4"
-        android:layout_alignBottom="@+id/maleButton"
-        android:layout_alignStart="@+id/backButtonSex" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/female_high_health"
-        android:layout_alignBottom="@+id/femaleButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="54dp"
-        android:id="@+id/imageView5" />
+        android:layout_marginTop="11dp"
+        android:layout_below="@+id/imageView5"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
