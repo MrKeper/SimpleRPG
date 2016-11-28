@@ -9,21 +9,24 @@ import java.util.ArrayList;
 
 public class User_Character extends Actor implements Serializable
 {
-    //public ArrayList<Item> inventory;
-    //public Item equiped_armor;
-    //public Item equiped_weapon;
+    public ArrayList<Item> inventory;
+    public Item equiped_armor;
+    public Item equiped_weapon;
     public int current_gold;
     public int user_level;
     public int experince_bar;
-    //public ArrayList<Quest> quest_list;
+    public int experince_needed_to_level;
+    public ArrayList<Quest> quest_list;
     public int current_addtional_stat_points;
     public String sex;
+    public ArrayList<Integer> completedDungeons;
 
     public User_Character(String name)
     {
         actor_name = name;
         type = "user";
-        health = 100;
+        current_health = 100;
+        base_health = 100;
         mana = 100;
         strength = 5;
         dexterity = 5;
@@ -34,11 +37,13 @@ public class User_Character extends Actor implements Serializable
         current_gold = 5;
         user_level = 1;
         experince_bar = 0;
+        experince_needed_to_level = 100;
         current_addtional_stat_points = 5;
-        //equiped_armor = null;
-        //equiped_weapon = null;
-        //inventory = new Arraylist<Item>();
-        //quest_list = new Arraylist<Quest>();
+        equiped_armor = null;
+        equiped_weapon = null;
+        inventory = new ArrayList<Item>();
+        quest_list = new ArrayList<Quest>();
+        completedDungeons = new ArrayList<Integer>();
     }
 
     public void equipWeapon()
@@ -81,6 +86,7 @@ public class User_Character extends Actor implements Serializable
     {
         user_level++;
         experince_bar = 0;
+        experince_needed_to_level = (user_level*50)+50;
         current_addtional_stat_points = current_addtional_stat_points + 3;
     }
 }

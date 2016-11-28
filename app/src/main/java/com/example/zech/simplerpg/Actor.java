@@ -13,7 +13,8 @@ public class Actor implements Serializable
 {
     public String actor_name;
     public String type;
-    public int health;
+    public int base_health;
+    public int current_health;
     public int mana;
     public ArrayList<String> moveList;
     public int strength;
@@ -22,11 +23,6 @@ public class Actor implements Serializable
     public int intelligence;
     public int willpower;
     public Image graphic;
-
-    public int getHealth()
-    {
-        return  health;
-    }
 
     public int getMana()
     {

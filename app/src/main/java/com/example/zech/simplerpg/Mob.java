@@ -14,7 +14,8 @@ public class Mob extends Actor
     public Mob(String name,int id,int lvl,int hp, int mp, int str, int dex, int con, int intel,int wil)
     {
         actor_name = name;
-        health = hp;
+        current_health= hp;
+        base_health = hp;
         mana = mp;
         strength = str;
         dexterity = dex;
