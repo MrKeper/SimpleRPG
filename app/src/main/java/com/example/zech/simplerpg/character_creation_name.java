@@ -30,6 +30,7 @@ public class character_creation_name extends AppCompatActivity {
                 finish();
             }
         });
+
         Button confirm_button = (Button) findViewById(R.id.confirmCharName);
         confirm_button.setOnClickListener(new View.OnClickListener() {
             @Override

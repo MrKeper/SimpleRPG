@@ -35,12 +35,12 @@
     <EditText
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Name"
         android:ems="10"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="213dp"
         android:id="@+id/editTextCharName"
+        android:hint="Name"
         android:background="@android:color/white"
         android:layout_width="wrap_content" />
 

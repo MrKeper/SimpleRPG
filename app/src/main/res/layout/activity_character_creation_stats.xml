@@ -60,6 +60,14 @@
         android:layout_alignBottom="@+id/wilDec"
         android:layout_alignStart="@+id/intInc" />
 
+    <Button
+        android:text="Stat Info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/statInfo"
+        android:layout_alignTop="@+id/remainingPoints"
+        android:layout_alignStart="@+id/dexInc" />
+
     <TextView
         android:text="WIL"
         android:layout_width="wrap_content"
@@ -139,7 +147,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/spendPointsMessage"
-        android:textSize="18sp"
+        android:textSize="15sp"
         android:textColor="#ff0000"
         android:layout_above="@+id/charStatConfirm"
         android:layout_alignStart="@+id/charStatsBack" />
@@ -156,15 +164,6 @@
         android:layout_alignEnd="@+id/conView"
         android:layout_marginBottom="15dp" />
 
-    <Button
-        android:text="Increase\nSTR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/strInc"
-        android:layout_above="@+id/intInc"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="22dp" />
-
     <TextView
         android:text="INT"
         android:layout_width="wrap_content"
@@ -177,6 +176,17 @@
         android:layout_above="@+id/wilDec"
         android:layout_alignEnd="@+id/StrView" />
 
+    <TextView
+        android:text="Points remaining: \n5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/remainingPoints"
+        android:textSize="18sp"
+        android:textColor="#ffffff"
+        android:layout_marginBottom="13dp"
+        android:layout_above="@+id/spendPointsMessage"
+        android:layout_toStartOf="@+id/intView" />
+
     <Button
         android:text="Decrease\nSTR"
         android:layout_width="wrap_content"
@@ -187,24 +197,14 @@
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/remainingPoints" />
 
-    <Button
-        android:text="Stat Info"
+     <Button
+        android:text=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/statInfo"
-        android:layout_below="@+id/dexInc"
-        android:layout_alignEnd="@+id/dexInc"
-        android:layout_marginTop="18dp" />
-
-    <TextView
-        android:text="Points remaining: \n5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/remainingPoints"
-        android:textSize="18sp"
-        android:textColor="#ffffff"
-        android:layout_alignBaseline="@+id/statInfo"
-        android:layout_alignBottom="@+id/statInfo"
-        android:layout_toStartOf="@+id/intView" />
+        android:id="@+id/strInc"
+        android:background="@drawable/button_plus"
+        android:layout_marginStart="23dp"
+        android:layout_alignTop="@+id/strDec"
+        android:layout_toEndOf="@+id/StrView" />
 
 </RelativeLayout>
