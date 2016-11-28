@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_character_creation_sex"
     android:layout_width="match_parent"
@@ -11,15 +12,6 @@
     tools:context="com.example.zech.simplerpg.character_creation_sex"
     android:background="@drawable/background_char_sex"
     >
-
-    <Button
-        android:text="Female"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/maleButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="98dp"
-        android:id="@+id/femaleButton" />
 
     <Button
         android:text="Back"
@@ -38,4 +30,32 @@
         android:id="@+id/maleButton"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Female"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/femaleButton"
+        android:layout_above="@+id/backButtonSex"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="93dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/male_high_health"
+        android:layout_marginBottom="44dp"
+        android:id="@+id/imageView4"
+        android:layout_alignBottom="@+id/maleButton"
+        android:layout_alignStart="@+id/backButtonSex" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/female_high_health"
+        android:layout_alignBottom="@+id/femaleButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="54dp"
+        android:id="@+id/imageView5" />
+
 </RelativeLayout>
