@@ -24,5 +24,16 @@ public class Testing extends AppCompatActivity {
                 finish();
             }
         });
+
+        Button inventoryButton = (Button) findViewById(R.id.inventoryButton);
+        inventoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), Inventory.class);
+                intent.putExtra("user",user);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 }
