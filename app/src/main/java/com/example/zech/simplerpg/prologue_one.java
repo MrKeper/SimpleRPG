@@ -16,8 +16,8 @@ public class prologue_one extends AppCompatActivity {
         Intent prologue1 = getIntent();
         final User_Character user = (User_Character) getIntent().getSerializableExtra("user");
         TextView message = (TextView) findViewById(R.id.prologueOneText);
-        message.setText("Greetings "+user.actor_name+",\nAs you may know this is the world of greetings."+
-        " A world where people greet.\nStrength = "+user.strength+"\nSex = "+user.sex);
+        message.setText("Greetings "+user.actor_name+",\nINSERT INTRO HERE."+
+        "\nStrength = "+user.strength+"\nSex = "+user.sex);
         Button proceed = (Button) findViewById(R.id.prologueOneProceed);
         proceed.setOnClickListener(new View.OnClickListener() {
             @Override

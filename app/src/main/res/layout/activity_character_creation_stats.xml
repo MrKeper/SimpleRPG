@@ -93,44 +93,12 @@
         android:layout_marginBottom="11dp" />
 
     <Button
-        android:text="Decrease\nINT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/intDec"
-        android:layout_below="@+id/strDec"
-        android:layout_alignStart="@+id/strDec" />
-
-    <Button
-        android:text="Decrease\nWIL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/wilDec"
-        android:layout_below="@+id/intDec"
-        android:layout_alignStart="@+id/intDec" />
-
-    <Button
-        android:text="Decrease\nCON"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/conDec"
-        android:layout_below="@+id/wilDec"
-        android:layout_alignStart="@+id/wilDec" />
-
-    <Button
         android:text="Increase\nCON"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/conInc"
         android:layout_below="@+id/wilDec"
         android:layout_alignStart="@+id/wilInc" />
-
-    <Button
-        android:text="Decrease\nDEX"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/dexDec"
-        android:layout_below="@+id/conDec"
-        android:layout_alignStart="@+id/conDec" />
 
     <Button
         android:text="Back"
@@ -176,6 +144,15 @@
         android:layout_above="@+id/wilDec"
         android:layout_alignEnd="@+id/StrView" />
 
+    <Button
+        android:text="Increase\nSTR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/strInc"
+        android:layout_marginStart="23dp"
+        android:layout_alignTop="@+id/strDec"
+        android:layout_toEndOf="@+id/StrView" />
+
     <TextView
         android:text="Points remaining: \n5"
         android:layout_width="wrap_content"
@@ -183,9 +160,41 @@
         android:id="@+id/remainingPoints"
         android:textSize="18sp"
         android:textColor="#ffffff"
-        android:layout_marginBottom="13dp"
+        android:layout_marginBottom="9dp"
         android:layout_above="@+id/spendPointsMessage"
-        android:layout_toStartOf="@+id/intView" />
+        android:layout_alignEnd="@+id/wilView" />
+
+    <Button
+        android:text="Decrease\nDEX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dexDec"
+        android:layout_below="@+id/conDec"
+        android:layout_alignStart="@+id/remainingPoints" />
+
+    <Button
+        android:text="Decrease\nCON"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/conDec"
+        android:layout_below="@+id/wilDec"
+        android:layout_alignStart="@+id/dexDec" />
+
+    <Button
+        android:text="Decrease\nWIL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/wilDec"
+        android:layout_below="@+id/intDec"
+        android:layout_alignStart="@+id/conDec" />
+
+    <Button
+        android:text="Decrease\nINT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/intDec"
+        android:layout_below="@+id/strDec"
+        android:layout_alignStart="@+id/wilDec" />
 
     <Button
         android:text="Decrease\nSTR"
@@ -193,18 +202,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="75dp"
         android:id="@+id/strDec"
-        android:layout_marginStart="13dp"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/remainingPoints" />
-
-     <Button
-        android:text=""
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/strInc"
-        android:background="@drawable/button_plus"
-        android:layout_marginStart="23dp"
-        android:layout_alignTop="@+id/strDec"
-        android:layout_toEndOf="@+id/StrView" />
+        android:layout_alignStart="@+id/intDec" />
 
 </RelativeLayout>

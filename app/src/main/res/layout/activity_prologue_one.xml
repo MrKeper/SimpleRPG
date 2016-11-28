@@ -11,24 +11,36 @@
     tools:context="com.example.zech.simplerpg.prologue_one"
     android:background="@drawable/temp_background_prologue_one">
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="30dp"
-        android:id="@+id/prologueOneText"
-        android:textColor="#ffffff"
-        android:textSize="25dp"/>
+        android:layout_above="@+id/prologueOneProceed">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:id="@+id/prologueOneText"
+                android:textColor="#ffffff"
+                android:textSize="25dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+        </LinearLayout>
+    </ScrollView>
 
     <Button
         android:text="Proceed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="7dp"
         android:id="@+id/prologueOneProceed"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
