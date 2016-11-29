@@ -35,5 +35,13 @@ public class Testing extends AppCompatActivity {
                 finish();
             }
         });
+
+        Button exitButton = (Button) findViewById(R.id.testingExit);
+        exitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

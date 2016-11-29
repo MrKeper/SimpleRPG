@@ -36,4 +36,12 @@
         android:layout_below="@+id/battle_button"
         android:layout_alignParentStart="true"
         android:id="@+id/playerInfo" />
+
+    <Button
+        android:text="Exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/playerInfo"
+        android:layout_alignParentStart="true"
+        android:id="@+id/testingExit" />
 </RelativeLayout>
