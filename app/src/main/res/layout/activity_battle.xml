@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_battle"
     android:layout_width="match_parent"
@@ -8,6 +9,70 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.zech.simplerpg.Battle">
+    tools:context="com.example.zech.simplerpg.Battle"
+    android:background="@drawable/battle_background2"
+>
+
+    <ImageView
+        android:layout_width="180dp"
+        android:layout_height="200dp"
+        app:srcCompat="@drawable/monster1"
+        android:id="@+id/monsterView"
+        android:cropToPadding="true"
+        android:layout_above="@+id/userView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="39dp"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        app:srcCompat="@drawable/male_happy"
+        android:layout_marginBottom="160dp"
+        android:id="@+id/userView"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="7dp" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="150dp"
+        android:layout_marginStart="11dp"
+        android:id="@+id/userHealthBar"
+        android:visibility="visible"
+        tools:visibility="visible"
+        android:max="100"
+        android:progress="100"
+        android:background="#002000"
+        android:scrollbarSize="20dp"
+        android:scaleY="3"
+        android:layout_height="8dp"
+        android:layout_alignBottom="@+id/userView"
+        android:layout_toEndOf="@+id/userView" />
+
+    <TextView
+        android:text="HP:  "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:textColor="@android:color/white"
+        android:layout_above="@+id/userHealthBar"
+        android:layout_alignStart="@+id/userHealthBar"
+        android:textSize="15sp"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:text="100 / 100"
+        android:layout_width="wrap_content"
+        android:id="@+id/textView4"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        android:textAlignment="center"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/userHealthBar"
+        android:layout_alignStart="@+id/monsterView"
+        android:translationY="3dp" />
 
 </RelativeLayout>
