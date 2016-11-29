@@ -44,13 +44,13 @@ public class Inventory extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), Testing.class);
+                Intent intent = new Intent(v.getContext(), user_information_page.class);
                 intent.putExtra("user",user);
                 startActivity(intent);
                 finish();
             }
         });
-        final Button consume = (Button) findViewById(R.id.consumeButton);
+        Button consume = (Button) findViewById(R.id.consumeButton);
         consume.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)

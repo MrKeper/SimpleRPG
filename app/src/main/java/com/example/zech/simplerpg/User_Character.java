@@ -85,7 +85,7 @@ public class User_Character extends Actor implements Serializable
     public void levelUp()
     {
         user_level++;
-        experince_bar = 0;
+        experince_bar = Math.abs(experince_needed_to_level-experince_bar);
         experince_needed_to_level = (user_level*50)+50;
         current_addtional_stat_points = current_addtional_stat_points + 3;
     }

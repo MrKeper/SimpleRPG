@@ -27,13 +27,13 @@
         android:id="@+id/battle_button"
         android:layout_below="@+id/textView"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/inventoryButton" />
+        android:layout_alignEnd="@+id/playerInfo" />
 
     <Button
-        android:text="Inventory"
+        android:text="Player Information"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/battle_button"
         android:layout_alignParentStart="true"
-        android:id="@+id/inventoryButton" />
+        android:id="@+id/playerInfo" />
 </RelativeLayout>

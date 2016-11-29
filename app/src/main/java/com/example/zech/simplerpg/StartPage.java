@@ -40,6 +40,8 @@ public class StartPage extends AppCompatActivity {
             {
                 //load save
                 User_Character user = new User_Character("TEST");
+                user.sex = "male";
+                user.experince_bar = 101;
                 Intent intent = new Intent(l.getContext(), Testing.class);
                 intent.putExtra("user",user);
                 startActivity(intent);

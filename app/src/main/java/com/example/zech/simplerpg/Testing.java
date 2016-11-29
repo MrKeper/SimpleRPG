@@ -25,11 +25,11 @@ public class Testing extends AppCompatActivity {
             }
         });
 
-        Button inventoryButton = (Button) findViewById(R.id.inventoryButton);
-        inventoryButton.setOnClickListener(new View.OnClickListener() {
+        Button playerInfoButton = (Button) findViewById(R.id.playerInfo);
+        playerInfoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), Inventory.class);
+                Intent intent = new Intent(v.getContext(), user_information_page.class);
                 intent.putExtra("user",user);
                 startActivity(intent);
                 finish();

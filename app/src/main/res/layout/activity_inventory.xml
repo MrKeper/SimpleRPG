@@ -18,25 +18,7 @@
         android:id="@+id/equipsButton"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/consumeButton" />
-
-    <Button
-        android:text="Consumables"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/consumeButton"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/invBack"
-        android:layout_alignTop="@+id/equipsButton" />
-
-    <Button
-        android:text="Back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/invBack"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/consumeButton" />
+        android:layout_toEndOf="@+id/invBack" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -54,4 +36,22 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:text="Back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/invBack"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/invScroll"
+        android:layout_toEndOf="@+id/consumeButton" />
+
+    <Button
+        android:text="Consumables"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/consumeButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/invScroll" />
 </RelativeLayout>
