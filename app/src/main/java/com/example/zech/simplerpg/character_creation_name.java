@@ -50,6 +50,7 @@ public class character_creation_name extends AppCompatActivity {
                 if(player_name.length() < 2 || player_name.length() > 15 || space_count == player_name.length())
                 {
                     errorName.setVisibility(View.VISIBLE);
+                    return;
                 }
                 User_Character user = new User_Character(player_name);
                 Intent intent = new Intent(v.getContext(), character_creation_sex.class);

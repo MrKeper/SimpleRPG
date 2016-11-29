@@ -152,7 +152,7 @@ public class character_creation_stats extends AppCompatActivity {
                 {
                     user.willpower++;
                     user.current_addtional_stat_points--;
-                    willpower.setText("STR: "+user.willpower);
+                    willpower.setText("WIL: "+user.willpower);
                     pointsRemaining.setText("Points remaining: "+ user.current_addtional_stat_points);
                 }
 

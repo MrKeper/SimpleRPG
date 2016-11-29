@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import static android.graphics.Color.WHITE;
+
 public class Inventory extends AppCompatActivity {
 
     public boolean viewingConsumables = true;
@@ -102,6 +104,8 @@ public class Inventory extends AppCompatActivity {
             {
                 TextView noConsumeables = new TextView(this);
                 noConsumeables.setText("No Consumables");
+                noConsumeables.setTextColor(WHITE);
+                noConsumeables.setTextSize(30);
                 noConsumeables.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
                 layout.addView(noConsumeables);
             }
@@ -137,6 +141,8 @@ public class Inventory extends AppCompatActivity {
             {
                 TextView noEquips = new TextView(this);
                 noEquips.setText("No Weapons or Armor");
+                noEquips.setTextColor(WHITE);
+                noEquips.setTextSize(30);
                 noEquips.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
                 layout.addView(noEquips);
             }
