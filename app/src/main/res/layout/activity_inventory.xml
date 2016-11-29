@@ -11,22 +11,6 @@
     android:background="@drawable/plain_brown"
     tools:context="com.example.zech.simplerpg.Inventory">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/invBack"
-        android:layout_alignParentStart="true"
-        android:id="@+id/invScroll">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/invLayout">
-
-        </LinearLayout>
-    </ScrollView>
-
     <Button
         android:text="Weapons and Armors"
         android:layout_width="wrap_content"
@@ -53,4 +37,21 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_alignTop="@+id/consumeButton" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/invScroll"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/equipsButton">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/invLayout">
+
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>
