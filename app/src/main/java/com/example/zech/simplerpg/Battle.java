@@ -14,6 +14,7 @@ public class Battle extends AppCompatActivity {
         final User_Character user = (User_Character) getIntent().getSerializableExtra("user");
 
         MediaPlayer mp  = MediaPlayer.create(this, R.raw.battle_music1);
+        MediaPlayer attackSound = MediaPlayer.create(this, R.raw.sword_attack);
         mp.start();
         mp.setLooping(true);
 
