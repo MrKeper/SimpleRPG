@@ -27,60 +27,136 @@ public class user_information_page extends AppCompatActivity {
         final User_Character user = (User_Character) getIntent().getSerializableExtra("user");
         layout = (ViewGroup) findViewById(R.id.userInfoLayout);
 
+        // possible change picture based on current health.
         ImageView userImage = new ImageView(this);
-        if(user.sex.equals("male")) {   userImage.setImageResource(R.drawable.male_high_health); }
-        else {  userImage.setImageResource(R.drawable.female_high_health); }
+        if(user.sex.equals("male"))
+        {
+            if(user.current_health > user.base_health*.6)
+            {
+                userImage.setImageResource(R.drawable.male_high_health);
+            }
+            else if(user.current_health <= user.base_health*.6 && user.current_health >= user.base_health*.4)
+            {
+                userImage.setImageResource(R.drawable.male_mid_health);
+            }
+            else
+            {
+                userImage.setImageResource(R.drawable.male_low_health);
+            }
+        }
+        else
+        {
+            if(user.current_health > user.base_health*.6)
+            {
+                userImage.setImageResource(R.drawable.female_high_health);
+            }
+            else if(user.current_health <= user.base_health*.6 && user.current_health >= user.base_health*.4)
+            {
+                userImage.setImageResource(R.drawable.female_mid_health);
+            }
+            else
+            {
+                userImage.setImageResource(R.drawable.female_low_health);
+            }
+        }
         userImage.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
         layout.addView(userImage);
 
         TextView userName = new TextView(this);
         userName.setText("Name: "+user.actor_name);
         userName.setTextColor(WHITE);
-        userName.setTextSize(15);
+        userName.setTextSize(23);
         userName.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
         layout.addView(userName);
 
         TextView userLevel = new TextView(this);
         userLevel.setText("Level: "+user.user_level);
         userLevel.setTextColor(WHITE);
-        userLevel.setTextSize(15);
+        userLevel.setTextSize(23);
         userLevel.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
         layout.addView(userLevel);
 
         TextView userEXP = new TextView(this);
         userEXP.setText("("+user.experince_bar+"/"+user.experince_needed_to_level+")");
         userEXP.setTextColor(WHITE);
-        userEXP.setTextSize(15);
+        userEXP.setTextSize(23);
         userEXP.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
         layout.addView(userEXP);
 
         TextView userHealth = new TextView(this);
         userHealth.setText("Health: "+user.current_health);
         userHealth.setTextColor(WHITE);
-        userHealth.setTextSize(15);
+        userHealth.setTextSize(23);
         userHealth.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
         layout.addView(userHealth);
 
         TextView userSTR = new TextView(this);
         userSTR.setText("Strength: "+user.strength);
         userSTR.setTextColor(WHITE);
-        userSTR.setTextSize(15);
+        userSTR.setTextSize(23);
         userSTR.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
         layout.addView(userSTR);
 
         TextView userINT = new TextView(this);
         userINT.setText("Intelligence: "+user.intelligence);
         userINT.setTextColor(WHITE);
-        userINT.setTextSize(15);
+        userINT.setTextSize(23);
         userINT.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
         layout.addView(userINT);
 
         TextView userCON = new TextView(this);
         userCON.setText("Constitution: "+user.constitution);
         userCON.setTextColor(WHITE);
-        userCON.setTextSize(15);
+        userCON.setTextSize(23);
         userCON.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
         layout.addView(userCON);
+
+        TextView userDEX = new TextView(this);
+        userDEX.setText("Dexterity: "+user.dexterity);
+        userDEX.setTextColor(WHITE);
+        userDEX.setTextSize(23);
+        userDEX.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+        layout.addView(userDEX);
+
+        TextView userWIL = new TextView(this);
+        userWIL.setText("Willpower: "+user.willpower);
+        userWIL.setTextColor(WHITE);
+        userWIL.setTextSize(23);
+        userWIL.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+        layout.addView(userWIL);
+
+        TextView userGold = new TextView(this);
+        userGold.setText("Gold: "+user.current_gold+"g");
+        userGold.setTextColor(WHITE);
+        userGold.setTextSize(23);
+        userGold.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+        layout.addView(userGold);
+
+        TextView userWeapon = new TextView(this);
+        if(user.equiped_weapon != null) { userWeapon.setText("Equipped Weapon: "+user.equiped_weapon); }
+        else { userWeapon.setText("Equipped Weapon: None"); }
+        userWeapon.setTextColor(WHITE);
+        userWeapon.setTextSize(23);
+        userWeapon.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+        layout.addView(userWeapon);
+
+        TextView userArmor = new TextView(this);
+        if(user.equiped_armor != null) { userArmor.setText("Equipped Weapon: "+user.equiped_armor); }
+        else { userArmor.setText("Equipped Armor: None"); }
+        userArmor.setTextColor(WHITE);
+        userArmor.setTextSize(23);
+        userArmor.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+        layout.addView(userArmor);
+
+        if(user.current_addtional_stat_points > 0)
+        {
+            TextView userStatpotins = new TextView(this);
+            userStatpotins.setText("Additional Stat Points: "+user.current_addtional_stat_points);
+            userStatpotins.setTextColor(WHITE);
+            userStatpotins.setTextSize(23);
+            userStatpotins.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+            layout.addView(userStatpotins);
+        }
 
         Button backButton = (Button) findViewById(R.id.userInfoBack);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -135,7 +211,7 @@ public class user_information_page extends AppCompatActivity {
             public void onClick(View v) {
                 if(user.experince_bar >= user.experince_needed_to_level)
                 {
-                     user.levelUp();
+                    user.levelUp();
 
                     //temp
                     Intent intent = new Intent(v.getContext(), user_information_page.class);

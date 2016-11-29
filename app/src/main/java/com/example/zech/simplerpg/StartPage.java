@@ -39,7 +39,7 @@ public class StartPage extends AppCompatActivity {
             public void onClick(View l)
             {
                 //load save
-                User_Character user = new User_Character("TEST");
+                User_Character user = new User_Character("Tes");
                 user.sex = "male";
                 user.experince_bar = 101;
                 Intent intent = new Intent(l.getContext(), Testing.class);

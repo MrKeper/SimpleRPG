@@ -34,7 +34,7 @@ public class User_Character extends Actor implements Serializable
         intelligence = 5;
         willpower = 5;
         moveList = new ArrayList<String>();
-        current_gold = 5;
+        current_gold = 10;
         user_level = 1;
         experince_bar = 0;
         experince_needed_to_level = 100;
