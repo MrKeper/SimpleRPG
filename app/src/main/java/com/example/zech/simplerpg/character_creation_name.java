@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import static android.graphics.Color.WHITE;
+
 public class character_creation_name extends AppCompatActivity {
 
     @Override
@@ -17,7 +19,7 @@ public class character_creation_name extends AppCompatActivity {
         setContentView(R.layout.activity_character_creation_name);
         Intent char_creation_name = getIntent();
         final TextView errorName = (TextView) findViewById(R.id.errorMessageName);
-        errorName.setTextColor(Color.WHITE);
+        errorName.setTextColor(WHITE);
         errorName.setVisibility(View.INVISIBLE);
         final EditText enter_name_field = (EditText) findViewById(R.id.editTextCharName);
         Button back_button = (Button) findViewById(R.id.backCharName);
@@ -62,7 +64,6 @@ public class character_creation_name extends AppCompatActivity {
                 //proceed
             }
         });
-
 
     }
 }

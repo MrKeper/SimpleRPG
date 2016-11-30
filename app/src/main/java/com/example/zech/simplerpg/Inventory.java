@@ -20,7 +20,7 @@ import static android.graphics.Color.WHITE;
 public class Inventory extends AppCompatActivity {
 
     public boolean viewingConsumables = true;
-    int[] stat_change = new int[7];
+    public int[] stat_change = new int[7];
     public Consumable test_pot = new Consumable("test health pot",null,"Heals 10 health",stat_change);
     public Weapon test_weapon = new Weapon("test sword",null,"A amazing sword",stat_change);
     public Armor test_armor = new Armor("Test armor",null,"A set of test armror",stat_change);
@@ -37,9 +37,6 @@ public class Inventory extends AppCompatActivity {
         final User_Character user = (User_Character) getIntent().getSerializableExtra("user");
         layout = (ViewGroup) findViewById(R.id.invLayout);
         player_inventory = user.inventory;
-        player_inventory.add(test_pot);
-        player_inventory.add(test_armor);
-        player_inventory.add(test_weapon);
         Button back_button = (Button) findViewById(R.id.invBack);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override

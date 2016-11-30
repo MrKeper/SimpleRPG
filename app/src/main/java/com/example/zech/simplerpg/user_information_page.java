@@ -173,10 +173,10 @@ public class user_information_page extends AppCompatActivity {
         questLogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* Intent intent = new Intent(v.getContext(), QuestLog.class);
+                Intent intent = new Intent(v.getContext(), QuestLog.class);
                 intent.putExtra("user",user);
                 startActivity(intent);
-                finish();*/
+                finish();
             }
         });
 
