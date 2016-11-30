@@ -14,5 +14,13 @@ public class Item implements Serializable
     public String name;
     public Image icon;
     public String description;
-
+    /*
+        base_health = base_health - w.equip()[0];
+        strength = strength + w.equip()[1];
+        defense = defense + w.equip()[2];
+        willpower = willpower + w.equip()[3];
+        dexterity = dexterity + w.equip()[4];
+        constitution = constitution + w.equip()[5];
+     */
+    public int[] stats = new int[6];
 }

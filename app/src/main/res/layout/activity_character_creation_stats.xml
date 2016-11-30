@@ -22,12 +22,12 @@
         android:layout_toEndOf="@+id/charStatsBack" />
 
     <Button
-        android:text="Increase\nINT"
+        android:text="Increase\nDEF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/intInc"
-        android:layout_alignBaseline="@+id/intDec"
-        android:layout_alignBottom="@+id/intDec"
+        android:id="@+id/defInc"
+        android:layout_alignBaseline="@+id/defDec"
+        android:layout_alignBottom="@+id/defDec"
         android:layout_alignStart="@+id/strInc" />
 
     <Button
@@ -58,7 +58,7 @@
         android:id="@+id/wilInc"
         android:layout_alignBaseline="@+id/wilDec"
         android:layout_alignBottom="@+id/wilDec"
-        android:layout_alignStart="@+id/intInc" />
+        android:layout_alignStart="@+id/defInc" />
 
     <Button
         android:text="Stat Info"
@@ -128,7 +128,7 @@
         android:textSize="15sp"
         android:gravity="center"
         android:textColor="#ffffff"
-        android:layout_above="@+id/intDec"
+        android:layout_above="@+id/defDec"
         android:layout_alignEnd="@+id/conView"
         android:layout_marginBottom="15dp" />
 
@@ -185,14 +185,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/wilDec"
-        android:layout_below="@+id/intDec"
+        android:layout_below="@+id/defDec"
         android:layout_alignStart="@+id/conDec" />
 
     <Button
-        android:text="Decrease\nINT"
+        android:text="Decrease\nDEF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/intDec"
+        android:id="@+id/defDec"
         android:layout_below="@+id/strDec"
         android:layout_alignStart="@+id/wilDec" />
 
@@ -203,6 +203,6 @@
         android:layout_marginTop="75dp"
         android:id="@+id/strDec"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/intDec" />
+        android:layout_alignStart="@+id/defDec" />
 
 </RelativeLayout>

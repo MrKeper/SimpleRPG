@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class User_Character extends Actor implements Serializable
 {
     public ArrayList<Item> inventory;
-    public Item equiped_armor;
-    public Item equiped_weapon;
+    public Armor equiped_armor;
+    public Weapon equiped_weapon;
     public int current_gold;
     public int user_level;
     public int experince_bar;
@@ -27,12 +27,11 @@ public class User_Character extends Actor implements Serializable
         type = "user";
         current_health = 100;
         base_health = 100;
-        mana = 100;
         strength = 5;
+        defense = 5;
+        willpower = 5;
         dexterity = 5;
         constitution = 5;
-        intelligence = 5;
-        willpower = 5;
         moveList = new ArrayList<String>();
         current_gold = 10;
         user_level = 1;
@@ -46,17 +45,34 @@ public class User_Character extends Actor implements Serializable
         completedDungeons = new ArrayList<Integer>();
     }
 
-    public void equipWeapon()
+    public void equipWeapon(Weapon w)
     {
+        if(equiped_weapon == null)
+            unequipWeapon();
+        equiped_weapon = w;
+        base_health = base_health - w.equip()[0];
+        strength = strength + w.equip()[1];
+        defense = defense + w.equip()[2];
+        willpower = willpower + w.equip()[3];
+        dexterity = dexterity + w.equip()[4];
+        constitution = constitution + w.equip()[5];
 
     }
 
     public void unequipWeapon()
     {
-
+        Weapon w = equiped_weapon;
+        inventory.add(w);
+        equiped_weapon = null;
+        base_health = base_health - w.equip()[0];
+        strength = strength + w.equip()[1];
+        defense = defense + w.equip()[2];
+        willpower = willpower + w.equip()[3];
+        dexterity = dexterity + w.equip()[4];
+        constitution = constitution + w.equip()[5];
     }
 
-    public void equipArmor()
+    public void equipArmor(Armor a)
     {
 
     }
@@ -66,9 +82,9 @@ public class User_Character extends Actor implements Serializable
 
     }
 
-    public  void destroyItem()
+    public  void destroyItem(Item i)
     {
-
+        //if i in iventory , destroy
     }
 
     public void respawn()
@@ -79,7 +95,7 @@ public class User_Character extends Actor implements Serializable
 
     public void useConsumable()
     {
-
+        //stats change based on item stats
     }
 
     public void levelUp()
