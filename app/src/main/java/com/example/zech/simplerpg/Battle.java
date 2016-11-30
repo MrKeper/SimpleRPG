@@ -1,10 +1,8 @@
 package com.example.zech.simplerpg;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Handler;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +17,16 @@ public class Battle extends AppCompatActivity {
     TextView userHPtext;
     ImageView enemyHitImage;
     ProgressBar userHealthProgress;
+    ImageView monsterImage;
+
+    /* This was suppose to shake the character - BROKEN
+    ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) monsterImage.getLayoutParams();
+                            if(temp % 6 == 0)
+                                p.setMargins(0,0,10,0);
+                            else if(temp % 3 == 0)
+                                p.setMargins(0,0,0,0);
+                            monsterImage.requestLayout();
+     */
 
     public void changeUserHealthBar(final int n){
         final Handler handler = new Handler();
@@ -67,10 +75,11 @@ public class Battle extends AppCompatActivity {
                             String name = "battle_slash"+temp;
                             int id = getResources().getIdentifier(name, "drawable", getPackageName());
                             enemyHitImage.setImageResource(id);
+
                         }
                     });
                     try{
-                        Thread.sleep(80);
+                        Thread.sleep(100);
                     }catch (Exception e){
                         System.out.println("Sleep not working:"+userHealthProgress.getProgress());
                     }
@@ -95,6 +104,7 @@ public class Battle extends AppCompatActivity {
         userHPtext = (TextView)  findViewById(R.id.userHealthText);
         userHealthProgress = (ProgressBar) findViewById(R.id.userHealthBar);
         enemyHitImage = (ImageView) findViewById(R.id.enemyHitImage);
+        monsterImage = (ImageView)  findViewById(R.id.monsterView);
 
         // Initialize stuff
         userHPtext.setText(user.current_health + " / " + user.base_health);
@@ -103,8 +113,9 @@ public class Battle extends AppCompatActivity {
 
 
 
-        MediaPlayer mp  = MediaPlayer.create(this, R.raw.battle_music1);
+        final MediaPlayer mp  = MediaPlayer.create(this, R.raw.battle_music1);
         final MediaPlayer attackSound = MediaPlayer.create(this, R.raw.sword_attack_short);
+        final MediaPlayer fleeSound = MediaPlayer.create(this, R.raw.flee_sound);
         mp.start();
         mp.setLooping(true);
 
@@ -116,6 +127,37 @@ public class Battle extends AppCompatActivity {
                 changeUserHealthBar(40);
                 userAttackAnimation();
                 //attackSound.stop();
+            }
+        });
+
+        Button runButton = (Button) findViewById(R.id.runButton);
+        runButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                mp.stop();
+                attackSound.stop();
+                fleeSound.start();
+                final Handler handler = new Handler();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try{
+                            Thread.sleep(1000);
+                        }catch (Exception e){
+                            System.out.println("FLEE Sleep not working:");
+                        }
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(v.getContext(), Testing.class);
+                                intent.putExtra("user",user);
+                                startActivity(intent);
+                                finish();
+                            }
+                        });
+                    }
+                }).start();
+                //finish();
             }
         });
 
