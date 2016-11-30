@@ -117,8 +117,6 @@ public class Inventory extends AppCompatActivity {
         {
             viewingConsumables = false;
             layout.removeAllViews();
-            viewingConsumables = true;
-            layout.removeAllViews();
             TextView invWeapons = new TextView(this);
             invWeapons.setText("Inventory: Weapons & Armor\n");
             invWeapons.setTextColor(WHITE);
