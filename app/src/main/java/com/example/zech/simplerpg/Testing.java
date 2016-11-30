@@ -18,6 +18,9 @@ public class Testing extends AppCompatActivity {
         battleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //My testing stats for user
+                user.current_health = 180;
+                user.base_health = 200;
                 Intent intent = new Intent(v.getContext(), Battle.class);
                 intent.putExtra("user",user);
                 startActivity(intent);
