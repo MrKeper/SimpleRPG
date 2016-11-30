@@ -21,8 +21,8 @@ public class character_creation_stats extends AppCompatActivity {
         pointsRemaining.setText("Points remaining: "+ user.current_addtional_stat_points);
         final TextView strength = (TextView) findViewById(R.id.StrView);
         strength.setText("STR: "+user.strength);
-        final TextView intelligence= (TextView) findViewById(R.id.intView);
-        intelligence.setText("INT: "+user.intelligence);
+        final TextView defense= (TextView) findViewById(R.id.intView);
+        defense.setText("DEF: "+user.defense);
         final TextView dexterity= (TextView) findViewById(R.id.dexView);
         dexterity.setText("DEX: "+user.dexterity);
         final TextView willpower= (TextView) findViewById(R.id.wilView);
@@ -95,32 +95,32 @@ public class character_creation_stats extends AppCompatActivity {
             }
         });
 ////////////////////////////////////////////////////////////////////////////////////////
-        Button decrease_intelligence = (Button) findViewById(R.id.intDec);
-        decrease_intelligence.setOnClickListener(new View.OnClickListener() {
+        Button decrease_defense = (Button) findViewById(R.id.defDec);
+        decrease_defense.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-                if(user.intelligence > 1 )
+                if(user.defense > 1 )
                 {
-                    user.intelligence--;
+                    user.defense--;
                     user.current_addtional_stat_points++;
-                    intelligence.setText("INT: "+user.intelligence);
+                    defense.setText("DEF: "+user.defense);
                     pointsRemaining.setText("Points remaining: "+ user.current_addtional_stat_points);
                 }
 
             }
         });
 
-        Button increase_intelligence = (Button) findViewById(R.id.intInc);
-        increase_intelligence.setOnClickListener(new View.OnClickListener() {
+        Button increase_defense = (Button) findViewById(R.id.defInc);
+        increase_defense.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
                 if(user.current_addtional_stat_points > 0)
                 {
-                    user.intelligence++;
+                    user.defense++;
                     user.current_addtional_stat_points--;
-                    intelligence.setText("INT: "+user.intelligence);
+                    defense.setText("DEF: "+user.defense);
                     pointsRemaining.setText("Points remaining: "+ user.current_addtional_stat_points);
                 }
 
@@ -198,7 +198,7 @@ public class character_creation_stats extends AppCompatActivity {
             {
                 Intent intent = new Intent(v.getContext(), character_creation_sex.class);
                 user.strength = 5;
-                user.intelligence = 5;
+                user.defense = 5;
                 user.dexterity = 5;
                 user.constitution = 5;
                 user.willpower = 5;

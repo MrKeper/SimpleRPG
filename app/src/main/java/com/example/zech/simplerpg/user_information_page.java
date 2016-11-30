@@ -97,12 +97,12 @@ public class user_information_page extends AppCompatActivity {
         userSTR.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
         layout.addView(userSTR);
 
-        TextView userINT = new TextView(this);
-        userINT.setText("Intelligence: "+user.intelligence);
-        userINT.setTextColor(WHITE);
-        userINT.setTextSize(23);
-        userINT.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
-        layout.addView(userINT);
+        TextView userDEF = new TextView(this);
+        userDEF.setText("Defense: "+user.defense);
+        userDEF.setTextColor(WHITE);
+        userDEF.setTextSize(23);
+        userDEF.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+        layout.addView(userDEF);
 
         TextView userCON = new TextView(this);
         userCON.setText("Constitution: "+user.constitution);

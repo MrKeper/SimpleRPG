@@ -48,7 +48,7 @@ public class StartPage extends AppCompatActivity {
                 User_Character user = new User_Character("Tes");
                 user.sex = "male";
                 user.experince_bar = 101;
-                Mob test_mob = new Mob("Great TestMob Onazuka",1000,1,60,10,3,4,5,8,6);
+                Mob test_mob = new Mob("Great TestMob Onazuka",1000,1,10,3,4,5,8,6);
                 int[] stat_change = new int[7];
                 Weapon test_weapon = new Weapon("Demon Slaying Wooden Sword",null,"A wooden sword",stat_change);
                 Weapon god_weapon = new Weapon("God Slaying Wooden Sword",null,"A wooden sword",stat_change);
