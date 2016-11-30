@@ -21,9 +21,9 @@ public class Inventory extends AppCompatActivity {
 
     public boolean viewingConsumables = true;
     public int[] stat_change = new int[7];
-    public Consumable test_pot = new Consumable("test health pot",null,"Heals 10 health",stat_change);
-    public Weapon test_weapon = new Weapon("test sword",null,"A amazing sword",stat_change);
-    public Armor test_armor = new Armor("Test armor",null,"A set of test armror",stat_change);
+    public Consumable test_pot = new Consumable("test health pot",null,"Heals 10 health",stat_change,0);
+    public Weapon test_weapon = new Weapon("test sword",null,"A amazing sword",stat_change,0);
+    public Armor test_armor = new Armor("Test armor",null,"A set of test armror",stat_change,0);
     public Button item;
     public String selected_item;
     public ArrayList<Item> player_inventory = new ArrayList<>();
@@ -74,13 +74,19 @@ public class Inventory extends AppCompatActivity {
         {
             viewingConsumables = true;
             layout.removeAllViews();
+            TextView invConsume = new TextView(this);
+            invConsume.setText("Inventory: Consumables\n");
+            invConsume.setTextColor(WHITE);
+            invConsume.setTextSize(25);
+            invConsume.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
+            layout.addView(invConsume);
             for(int i = 0; i < player_inventory.size(); i++)
             {
                 if(player_inventory.get(i).getClass() == Consumable.class)
                 {
                     count++;
                     item = new Button(this);
-                    item.setText(player_inventory.get(i).name+"\n-"+player_inventory.get(i).description);
+                    item.setText(player_inventory.get(i).name+"\n-"+player_inventory.get(i).description+"\n Value: "+player_inventory.get(i).value+"g");
                     item.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
                     item.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -111,13 +117,21 @@ public class Inventory extends AppCompatActivity {
         {
             viewingConsumables = false;
             layout.removeAllViews();
+            viewingConsumables = true;
+            layout.removeAllViews();
+            TextView invWeapons = new TextView(this);
+            invWeapons.setText("Inventory: Weapons & Armor\n");
+            invWeapons.setTextColor(WHITE);
+            invWeapons.setTextSize(25);
+            invWeapons.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
+            layout.addView(invWeapons);
             for(int i = 0; i < player_inventory.size(); i++)
             {
                 if(player_inventory.get(i).getClass() == Weapon.class || player_inventory.get(i).getClass() == Armor.class)
                 {
                     count++;
                     item = new Button(this);
-                    item.setText(player_inventory.get(i).name+"\n-"+player_inventory.get(i).description);
+                    item.setText(player_inventory.get(i).name+"\n-"+player_inventory.get(i).description+"\n Value: "+player_inventory.get(i).value+"g");
                     item.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
                     item.setOnClickListener(new View.OnClickListener() {
                         @Override

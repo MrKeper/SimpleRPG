@@ -14,6 +14,7 @@ public class Item implements Serializable
     public String name;
     public Image icon;
     public String description;
+    public int value;
     /*
         base_health = base_health - w.equip()[0];
         strength = strength + w.equip()[1];

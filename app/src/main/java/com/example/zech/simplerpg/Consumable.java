@@ -16,15 +16,14 @@ public class Consumable extends Item implements Serializable
     //public String description;
 
     // Optional - gear graphic for battles(NOT IMPLEMENTED)
-    private int[] stats = new int[7];
-    //{Strength, Intelligence, Defense, Health}
 
-    public Consumable(String n, Image i, String d, int[] ss)
+    public Consumable(String n, Image i, String d, int[] ss, int gold_value)
     {
         name = n;
         icon = i;
         description = d;
         stats = ss;
+        value = gold_value;
     }
 
     public int[] use()
