@@ -18,12 +18,13 @@ public class Armor extends Item implements Serializable
     // Optional - gear graphic for battles(NOT IMPLEMENTED)
 
 
-    public Armor(String n, Image i, String d, int[] ss)
+    public Armor(String n, Image i, String d, int[] ss, int gold_value)
     {
         name = n;
         icon = i;
         description = d;
         stats = ss;
+        value = gold_value;
     }
 
     public int[] equip()
