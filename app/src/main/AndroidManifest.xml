@@ -23,7 +23,13 @@
         <activity android:name=".Battle" />
         <activity android:name=".Testing" />
         <activity android:name=".Inventory" />
-        <activity android:name=".user_information_page"></activity>
+        <activity android:name=".user_information_page" />
+        <activity android:name=".RegionMenu" />
+        <activity android:name=".Shop" />
+        <activity android:name=".ShopBuy" />
+        <activity android:name=".ShopSell" />
+        <activity android:name=".SaveAndLoad" />
+        <activity android:name=".Travel"></activity>
     </application>
 
 </manifest>

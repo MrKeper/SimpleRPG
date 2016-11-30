@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_region_menu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.zech.simplerpg.RegionMenu">
+
+    <Button
+        android:text="TRAVEL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/saveloadButton"
+        android:id="@+id/travelButton" />
+
+    <Button
+        android:text="SAVE_LOAD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/saveloadButton"
+        android:layout_above="@+id/travelButton"
+        android:layout_alignStart="@+id/shopButton" />
+
+    <Button
+        android:text="SHOP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/shopButton"
+        android:layout_above="@+id/saveloadButton"
+        android:layout_alignStart="@+id/dungeonButton" />
+
+    <Button
+        android:text="DUNGEON"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dungeonButton"
+        android:layout_above="@+id/shopButton"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="43dp"
+        android:id="@+id/regionName"
+        android:textSize="30sp"
+        android:textAlignment="center" />
+
+    <Button
+        android:text="STATS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/dungeonButton"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="64dp"
+        android:id="@+id/statsButton" />
+</RelativeLayout>
