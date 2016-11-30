@@ -114,11 +114,11 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/battle_slash11"
+        app:srcCompat="@drawable/battle_slash0"
         android:id="@+id/enemyHitImage"
         android:layout_alignTop="@+id/enemyHealthText"
         android:layout_alignStart="@+id/enemyHealthBar"
-        android:visibility="invisible" />
+        android:visibility="visible" />
 
     <Button
         android:text="Attack"
