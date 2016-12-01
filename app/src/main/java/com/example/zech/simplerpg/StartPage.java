@@ -1,20 +1,19 @@
 package com.example.zech.simplerpg;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.ArrayList;
+import static android.graphics.Color.WHITE;
 
 public class StartPage extends AppCompatActivity {
 
     public MediaPlayer mp;
     // faces from: https://vxresource.wordpress.com/category/resources/faces/
+    //wooden button from: http://www.ronraye.com/TestObjects.html
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -25,7 +24,8 @@ public class StartPage extends AppCompatActivity {
         mp.start();
         mp.setLooping(true);
         Button new_button = (Button) findViewById(R.id.newGame);
-        //new_button.getBackground().setColorFilter(Color.parseColor("#ffffff"), PorterDuff.Mode.MULTIPLY);
+        new_button.setBackgroundResource(R.drawable.woodbutton);
+        new_button.setTextColor(WHITE);
         new_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View n)
@@ -39,7 +39,8 @@ public class StartPage extends AppCompatActivity {
             }
         });
         Button load_button = (Button) findViewById(R.id.loadGame);
-        //load_button.getBackground().setColorFilter(Color.parseColor("#ffffff"), PorterDuff.Mode.MULTIPLY);
+        load_button.setBackgroundResource(R.drawable.woodbutton);
+        load_button.setTextColor(WHITE);
         load_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View l)
@@ -71,8 +72,22 @@ public class StartPage extends AppCompatActivity {
                 mp.stop();
             }
         });
+
+        Button credit_button = (Button) findViewById(R.id.creditsButton);
+        credit_button.setBackgroundResource(R.drawable.woodbutton);
+        credit_button.setTextColor(WHITE);
+        credit_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View e)
+            {
+                finish();
+                mp.stop();
+            }
+        });
+
         Button exit_button = (Button) findViewById(R.id.exitGame);
-        //exit_button.getBackground().setColorFilter(Color.parseColor("#ffffff"), PorterDuff.Mode.MULTIPLY);
+        exit_button.setBackgroundResource(R.drawable.woodbutton);
+        exit_button.setTextColor(WHITE);
         exit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View e)
