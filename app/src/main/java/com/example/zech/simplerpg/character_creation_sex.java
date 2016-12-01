@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import static android.graphics.Color.WHITE;
+
 public class character_creation_sex extends AppCompatActivity {
 
     @Override
@@ -15,7 +17,9 @@ public class character_creation_sex extends AppCompatActivity {
         Intent character_creation_sex = getIntent();
         final User_Character user = (User_Character) getIntent().getSerializableExtra("user");
         Button male_button = (Button) findViewById(R.id.maleButton);
-
+        male_button.setBackgroundResource(R.drawable.woodbutton);
+        male_button.setTextColor(WHITE);
+        male_button.setTextSize(17);
         male_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -29,7 +33,9 @@ public class character_creation_sex extends AppCompatActivity {
         });
 
         Button female_button = (Button) findViewById(R.id.femaleButton);
-
+        female_button.setBackgroundResource(R.drawable.woodbutton);
+        female_button.setTextColor(WHITE);
+        female_button.setTextSize(17);
         female_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)

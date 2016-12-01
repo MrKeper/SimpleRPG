@@ -26,6 +26,7 @@ public class StartPage extends AppCompatActivity {
         Button new_button = (Button) findViewById(R.id.newGame);
         new_button.setBackgroundResource(R.drawable.woodbutton);
         new_button.setTextColor(WHITE);
+        new_button.setTextSize(20);
         new_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View n)
@@ -41,6 +42,7 @@ public class StartPage extends AppCompatActivity {
         Button load_button = (Button) findViewById(R.id.loadGame);
         load_button.setBackgroundResource(R.drawable.woodbutton);
         load_button.setTextColor(WHITE);
+        load_button.setTextSize(20);
         load_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View l)
@@ -76,6 +78,7 @@ public class StartPage extends AppCompatActivity {
         Button credit_button = (Button) findViewById(R.id.creditsButton);
         credit_button.setBackgroundResource(R.drawable.woodbutton);
         credit_button.setTextColor(WHITE);
+        credit_button.setTextSize(20);
         credit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View e)
@@ -88,6 +91,7 @@ public class StartPage extends AppCompatActivity {
         Button exit_button = (Button) findViewById(R.id.exitGame);
         exit_button.setBackgroundResource(R.drawable.woodbutton);
         exit_button.setTextColor(WHITE);
+        exit_button.setTextSize(20);
         exit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View e)

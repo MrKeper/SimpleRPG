@@ -24,6 +24,9 @@ public class character_creation_name extends AppCompatActivity {
         errorName.setVisibility(View.INVISIBLE);
         final EditText enter_name_field = (EditText) findViewById(R.id.editTextCharName);
         Button back_button = (Button) findViewById(R.id.backCharName);
+        back_button.setBackgroundResource(R.drawable.woodbutton);
+        back_button.setTextColor(WHITE);
+        back_button.setTextSize(17);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -35,6 +38,9 @@ public class character_creation_name extends AppCompatActivity {
         });
 
         Button confirm_button = (Button) findViewById(R.id.confirmCharName);
+        confirm_button.setBackgroundResource(R.drawable.woodbutton);
+        confirm_button.setTextColor(WHITE);
+        confirm_button.setTextSize(17);
         confirm_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)

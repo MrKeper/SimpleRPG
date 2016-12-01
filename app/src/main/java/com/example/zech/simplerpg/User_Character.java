@@ -21,6 +21,7 @@ public class User_Character extends Actor implements Serializable
     public String sex;
     public int max_health;
     public ArrayList<Integer> completedDungeons;
+    public int superAttackCharge;
 
     public User_Character(String name)
     {
@@ -34,7 +35,7 @@ public class User_Character extends Actor implements Serializable
         constitution = 5;
         max_health = 50 + constitution*10;
         current_health = max_health;
-        //moveList = new ArrayList<String>();
+        superAttackCharge = 0;
         current_gold = 10;
         user_level = 1;
         experince_bar = 0;
