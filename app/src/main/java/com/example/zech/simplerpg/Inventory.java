@@ -8,7 +8,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -20,7 +19,7 @@ import static android.graphics.Color.WHITE;
 public class Inventory extends AppCompatActivity {
 
     public boolean viewingConsumables = true;
-    public int[] stat_change = new int[7];
+    public int stat_change[] = {0,1,2,3,4,5};
     public Consumable test_pot = new Consumable("test health pot",null,"Heals 10 health",stat_change,0);
     public Weapon test_weapon = new Weapon("test sword",null,"A amazing sword",stat_change,0);
     public Armor test_armor = new Armor("Test armor",null,"A set of test armror",stat_change,0);
@@ -28,13 +27,16 @@ public class Inventory extends AppCompatActivity {
     public String selected_item;
     public ArrayList<Item> player_inventory = new ArrayList<>();
     public ViewGroup layout;
+    public User_Character user;
+    public boolean equippedWeapon = false;
+    public boolean equippedArmor = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
         Intent inventory_intent_get = getIntent();
-        final User_Character user = (User_Character) getIntent().getSerializableExtra("user");
+        user = (User_Character) getIntent().getSerializableExtra("user");
         layout = (ViewGroup) findViewById(R.id.invLayout);
         player_inventory = user.inventory;
         Button back_button = (Button) findViewById(R.id.invBack);
@@ -116,6 +118,8 @@ public class Inventory extends AppCompatActivity {
         if(!isConsume)
         {
             viewingConsumables = false;
+            equippedWeapon = false;
+            equippedArmor = false;
             layout.removeAllViews();
             TextView invWeapons = new TextView(this);
             invWeapons.setText("Inventory: Weapons & Armor\n");
@@ -129,7 +133,18 @@ public class Inventory extends AppCompatActivity {
                 {
                     count++;
                     item = new Button(this);
-                    item.setText(player_inventory.get(i).name+"\n-"+player_inventory.get(i).description+"\n Value: "+player_inventory.get(i).value+"g");
+                    if(player_inventory.get(i).isEquipped)
+                    {
+                        item.setText(player_inventory.get(i).name+"\n-"+player_inventory.get(i).description+"\n Value: "+player_inventory.get(i).value+"g"+"\n-Equipped-");
+                        if(player_inventory.get(i).getClass() == Weapon.class)
+                        { equippedWeapon = true; }
+                        if(player_inventory.get(i).getClass() == Armor.class)
+                        {   equippedArmor = true; }
+                    }
+                    else
+                    {
+                        item.setText(player_inventory.get(i).name+"\n-"+player_inventory.get(i).description+"\n Value: "+player_inventory.get(i).value+"g");
+                    }
                     item.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
                     item.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -162,6 +177,7 @@ public class Inventory extends AppCompatActivity {
     final int CONTEXT_MENU_DESTORY = 2;
     final int CONTEXT_MENU_CANCEL = 3;
     final int CONTEXT_MENU_EQUIP = 4;
+    final int CONTEXT_MENU_UNEQUIP = 5;
     @Override
     public void onCreateContextMenu (ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo)
     {
@@ -175,10 +191,31 @@ public class Inventory extends AppCompatActivity {
         }
         else
         {
-            menu.setHeaderTitle("Equipables Options");
-            menu.add(Menu.NONE, CONTEXT_MENU_EQUIP, Menu.NONE, "Equip");
-            menu.add(Menu.NONE, CONTEXT_MENU_DESTORY, Menu.NONE, "Destory");
-            menu.add(Menu.NONE, CONTEXT_MENU_CANCEL, Menu.NONE, "Cancel");
+            for(int i= 0; i < player_inventory.size(); i++)
+            {
+                if(player_inventory.get(i).name.equals(selected_item))
+                {
+                    if(player_inventory.get(i).getClass() == Weapon.class)
+                    {
+                        menu.setHeaderTitle("Weapon Options");
+                        if(equippedWeapon) {menu.add(Menu.NONE, CONTEXT_MENU_UNEQUIP, Menu.NONE, "Unequip");}
+                        else  {menu.add(Menu.NONE, CONTEXT_MENU_EQUIP, Menu.NONE, "Equip");}
+                        menu.add(Menu.NONE, CONTEXT_MENU_DESTORY, Menu.NONE, "Destory");
+                        menu.add(Menu.NONE, CONTEXT_MENU_CANCEL, Menu.NONE, "Cancel");
+                    }
+                    if(player_inventory.get(i).getClass() == Armor.class)
+                    {
+                        menu.setHeaderTitle("Armor Options");
+                        if(equippedArmor) {menu.add(Menu.NONE, CONTEXT_MENU_UNEQUIP, Menu.NONE, "Unequip");}
+                        else  {menu.add(Menu.NONE, CONTEXT_MENU_EQUIP, Menu.NONE, "Equip");}
+                        menu.add(Menu.NONE, CONTEXT_MENU_DESTORY, Menu.NONE, "Destory");
+                        menu.add(Menu.NONE, CONTEXT_MENU_CANCEL, Menu.NONE, "Cancel");
+
+                    }
+                    break;
+                }
+            }
+
         }
 
     }
@@ -191,8 +228,17 @@ public class Inventory extends AppCompatActivity {
             switch (item.getItemId()) {
                 case CONTEXT_MENU_USE:
                 {
-                    //find item
-                    // user.consumeItem
+                    for(int i= 0; i < player_inventory.size(); i++)
+                    {
+                        if(player_inventory.get(i).name.equals(selected_item))
+                        {
+                            Consumable remove =  (Consumable) player_inventory.get(i);
+                            player_inventory.remove(remove);
+                            user.useConsumable(remove);
+                            break;
+                        }
+                    }
+                    refreshLayout(true);
                 }
                 break;
                 case CONTEXT_MENU_DESTORY:
@@ -219,12 +265,42 @@ public class Inventory extends AppCompatActivity {
         }
         else
         {
-            switch (item.getItemId()) {
+            switch (item.getItemId())
+            {
+                case CONTEXT_MENU_UNEQUIP:
+                {
+                    for(int i= 0; i < player_inventory.size(); i++)
+                    {
+                        if(player_inventory.get(i).name.equals(selected_item))
+                        {
+                            if(player_inventory.get(i).getClass() == Weapon.class)
+                            {   user.unequipWeapon(); }
+                            if(player_inventory.get(i).getClass() == Armor.class)
+                            { user.unequipArmor();    }
+                            player_inventory.get(i).isEquipped = false;
+                            break;
+                        }
+                    }
+                    refreshLayout(false);
+                }
+                break;
                 case CONTEXT_MENU_EQUIP:
                 {
-                    //find item
-                    //if armor user.equipArmor
-                    // if weapon user.equipWeapon
+                    Weapon w = null;
+                    Armor a = null;
+                    for(int i= 0; i < player_inventory.size(); i++)
+                    {
+                        if(player_inventory.get(i).name.equals(selected_item))
+                        {
+                            if(player_inventory.get(i).getClass() == Weapon.class)
+                            { w =  (Weapon) player_inventory.get(i); user.equipWeapon(w); }
+                            if(player_inventory.get(i).getClass() == Armor.class)
+                            { a = (Armor)  player_inventory.get(i);  user.equipArmor(a);  }
+                            player_inventory.get(i).isEquipped = true;
+                            break;
+                        }
+                    }
+                    refreshLayout(false);
                 }
                 break;
                 case CONTEXT_MENU_DESTORY:
@@ -233,6 +309,10 @@ public class Inventory extends AppCompatActivity {
                     {
                         if(player_inventory.get(i).name.equals(selected_item))
                         {
+                            if(player_inventory.get(i).getClass() == Weapon.class && equippedWeapon)
+                            { user.unequipWeapon(); }
+                            if(player_inventory.get(i).getClass() == Armor.class && equippedArmor)
+                            { user.unequipArmor(); }
                             Item remove = player_inventory.get(i);
                             player_inventory.remove(remove);
                             break;

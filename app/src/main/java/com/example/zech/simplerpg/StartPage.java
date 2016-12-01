@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class StartPage extends AppCompatActivity {
 
     public MediaPlayer mp;
-
+    // faces from: https://vxresource.wordpress.com/category/resources/faces/
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -48,15 +48,22 @@ public class StartPage extends AppCompatActivity {
                 User_Character user = new User_Character("Tes");
                 user.sex = "male";
                 user.experince_bar = 101;
-                Mob test_mob = new Mob("Great TestMob Onazuka",1000,1,10,3,4,5,8,6);
-                int[] stat_change = new int[7];
-                Weapon test_weapon = new Weapon("Demon Slaying Wooden Sword",null,"A wooden sword",stat_change,0);
-                Weapon god_weapon = new Weapon("God Slaying Wooden Sword",null,"A wooden sword",stat_change,0);
-                Consumable water = new Consumable("Water",null,"A bottle of water.",stat_change,0);
-                Quest test_quest = new Quest("TEST","All your base are belong to us","Complete the game",1,"Holy Grail",1000,25,test_weapon);
+                Mob test_mob = new Mob("Great TestMob Onazuka",1000,1,50,7,5,5,5);
+                int[] weapon_stat_change = {0,3,0,0,0,0};
+                int[] armor_stat_change   = {0,0,3,0,0,0};
+                int[] item_stat_change   = {10,0,0,0,0,0};
+                Armor startArmor = new Armor("Leather Armor",null,"makes you feel a little safer (+3 DEF)",armor_stat_change,0);
+                Weapon test_weapon = new Weapon("Demon Slaying Wooden Sword",null,"A wooden sword (+3 STR)",weapon_stat_change,0);
+                Weapon god_weapon = new Weapon("God Slaying Wooden Sword",null,"A wooden sword (+3 STR)",weapon_stat_change,0);
+                Consumable water = new Consumable("Water",null,"A bottle of water (+10 HP).",item_stat_change,0);
+                Quest test_quest1 = new Quest("TEST","All your base are belong to us","Complete the game",1,"Holy Grail",1000,25,test_weapon);
+                Quest test_quest2 = new Quest("TEST","Welcome to Papa's House","Start the game",0,"?",0,0,god_weapon);
+                test_quest2.isComplete = true;
                 user.inventory.add(god_weapon);
+                user.inventory.add(startArmor);
                 user.inventory.add(water);
-                user.quest_list.add(test_quest);
+                user.quest_list.add(test_quest1);
+                user.quest_list.add(test_quest2);
                 Intent intent = new Intent(l.getContext(), user_information_page.class);
                 intent.putExtra("user",user);
                 startActivity(intent);

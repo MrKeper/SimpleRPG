@@ -19,9 +19,9 @@ public class character_creation_stats extends AppCompatActivity {
         spend_points_message.setVisibility(View.INVISIBLE);
         final TextView pointsRemaining = (TextView) findViewById(R.id.remainingPoints);
         pointsRemaining.setText("Points remaining: "+ user.current_addtional_stat_points);
-        final TextView strength = (TextView) findViewById(R.id.StrView);
+        final TextView strength = (TextView) findViewById(R.id.strView);
         strength.setText("STR: "+user.strength);
-        final TextView defense= (TextView) findViewById(R.id.intView);
+        final TextView defense= (TextView) findViewById(R.id.defView);
         defense.setText("DEF: "+user.defense);
         final TextView dexterity= (TextView) findViewById(R.id.dexView);
         dexterity.setText("DEX: "+user.dexterity);
@@ -168,6 +168,8 @@ public class character_creation_stats extends AppCompatActivity {
                 {
                     user.constitution--;
                     user.current_addtional_stat_points++;
+                    user.max_health = 50 + user.constitution*10;
+                    user.current_health = user.max_health;
                     constitution.setText("CON: "+user.constitution);
                     pointsRemaining.setText("Points remaining: "+ user.current_addtional_stat_points);
                 }
@@ -184,6 +186,8 @@ public class character_creation_stats extends AppCompatActivity {
                 {
                     user.constitution++;
                     user.current_addtional_stat_points--;
+                    user.max_health = 50 + user.constitution*10;
+                    user.current_health = user.max_health;
                     constitution.setText("CON: "+user.constitution);
                     pointsRemaining.setText("Points remaining: "+ user.current_addtional_stat_points);
                 }
@@ -235,9 +239,9 @@ public class character_creation_stats extends AppCompatActivity {
             public void onClick(View v)
             {
                 Intent intent = new Intent(v.getContext(), stats_information.class);
-                intent.putExtra("user",user);
+                //intent.putExtra("user",user);
                 startActivity(intent);
-                finish();
+                //finish();
             }
         });
     }

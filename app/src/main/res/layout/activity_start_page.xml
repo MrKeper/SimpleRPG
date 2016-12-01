@@ -30,12 +30,19 @@
         android:layout_centerHorizontal="true" />
 
     <Button
+        android:text="Credits"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loadGame"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/creditsButton" />
+
+    <Button
         android:text="Exit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/exitGame"
-        android:layout_below="@+id/loadGame"
-        android:layout_alignParentStart="true"
-        />
+        android:layout_below="@+id/creditsButton"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

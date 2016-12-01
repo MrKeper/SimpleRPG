@@ -15,7 +15,7 @@ public class Actor implements Serializable
     public String type;
     public int base_health;
     public int current_health;
-    public ArrayList<String> moveList;
+    //public ArrayList<String> moveList;
     public int strength;
     public int dexterity;
     public int constitution;

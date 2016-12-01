@@ -16,7 +16,6 @@ public class Weapon extends Item implements Serializable
     //public String description;
 
     // Optional - gear graphic for battles(NOT IMPLEMENTED)
-
     public Weapon(String n, Image i, String d, int[] ss, int gold_value)
     {
         name = n;
@@ -26,7 +25,7 @@ public class Weapon extends Item implements Serializable
         value = gold_value;
     }
 
-    public int[] equip()
+    public int[] getStatBuffs()
     {
         return stats;
     }

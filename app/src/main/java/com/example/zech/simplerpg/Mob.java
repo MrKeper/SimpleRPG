@@ -11,25 +11,24 @@ public class Mob extends Actor
     public  int mob_id;
     public int mob_level;
 
-    public Mob(String name,int id,int lvl,int hp, int str, int def ,int wil, int dex ,int con)
+    public Mob(String name,int id,int lvl,int hp, int str, int def ,int wil, int dex)
     {
         actor_name = name;
-        current_health= hp;
         base_health = hp;
+        current_health= hp;
         strength = str;
         dexterity = dex;
-        constitution = con;
         defense = def;
         willpower = wil;
         type = "mob";
         mob_id = id;
         mob_level = lvl;
-        moveList = new ArrayList<>();
+        //moveList = new ArrayList<>();
     }
 
     public void addMove(String move)
     {
-        moveList.add(move);
+        //moveList.add(move);
         return;
     }
 }

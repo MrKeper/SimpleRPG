@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_allocate_stats_user_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/background_char_outershade"
+    tools:context="com.example.zech.simplerpg.AllocateStatsUserInfo">
+
+    <Button
+        android:text="Back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/backButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+         />
+
+    <Button
+        android:text="Increase\nStr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/strDec"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="25dp"
+        android:id="@+id/strInc" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/strView"
+        android:layout_alignBaseline="@+id/strInc"
+        android:layout_alignBottom="@+id/strInc"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/defView"
+        android:layout_alignBaseline="@+id/defDec"
+        android:layout_alignBottom="@+id/defDec"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Increase\nDef"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/defInc"
+        android:layout_alignBaseline="@+id/defView"
+        android:layout_alignBottom="@+id/defView"
+        android:layout_alignStart="@+id/strInc" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/wilDec"
+        android:layout_alignStart="@+id/defView"
+        android:layout_marginTop="9dp"
+        android:id="@+id/wilView" />
+
+    <Button
+        android:text="Increase\nWil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/wilInc"
+        android:layout_alignBaseline="@+id/wilDec"
+        android:layout_alignBottom="@+id/wilDec"
+        android:layout_alignStart="@+id/defInc" />
+
+    <Button
+        android:text="Decrease\nDex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/wilDec"
+        android:layout_alignStart="@+id/wilDec"
+        android:layout_marginTop="29dp"
+        android:id="@+id/dexDec" />
+
+    <Button
+        android:text="Decrease\nWil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:id="@+id/wilDec"
+        android:layout_below="@+id/defDec"
+        android:layout_alignStart="@+id/defDec" />
+
+    <Button
+        android:text="Decrease\nDef"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:id="@+id/defDec"
+        android:layout_below="@+id/strDec"
+        android:layout_alignStart="@+id/strDec" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dexView"
+        android:layout_alignBaseline="@+id/dexDec"
+        android:layout_alignBottom="@+id/dexDec"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Increase\nDex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dexInc"
+        android:layout_alignBaseline="@+id/dexView"
+        android:layout_alignBottom="@+id/dexView"
+        android:layout_alignStart="@+id/wilInc" />
+
+    <Button
+        android:text="Decrease\nCon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dexDec"
+        android:layout_alignStart="@+id/dexDec"
+        android:layout_marginTop="21dp"
+        android:id="@+id/conDec" />
+
+    <Button
+        android:text="Increase\nCon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/conInc"
+        android:layout_alignBaseline="@+id/conDec"
+        android:layout_alignBottom="@+id/conDec"
+        android:layout_alignStart="@+id/dexInc" />
+
+    <Button
+        android:text="Decrease\nStr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="86dp"
+        android:id="@+id/strDec"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/remainingPoints" />
+
+    <Button
+        android:text="Stat Info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/statInfo"
+        android:layout_above="@+id/strInc"
+        android:layout_alignEnd="@+id/strInc"
+        android:layout_marginBottom="15dp" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:id="@+id/remainingPoints"
+        android:layout_alignBaseline="@+id/statInfo"
+        android:layout_alignBottom="@+id/statInfo"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:id="@+id/conView"
+        android:layout_alignBottom="@+id/conDec"
+        android:layout_alignStart="@+id/dexView" />
+
+    <TextView
+        android:text="Use Remaining Points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/backButton"
+        android:layout_alignStart="@+id/conDec"
+        android:layout_marginStart="12dp"
+        android:id="@+id/spendPointsMessage" />
+
+</RelativeLayout>

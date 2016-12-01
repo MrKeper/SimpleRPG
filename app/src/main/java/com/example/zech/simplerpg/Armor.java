@@ -17,7 +17,6 @@ public class Armor extends Item implements Serializable
 
     // Optional - gear graphic for battles(NOT IMPLEMENTED)
 
-
     public Armor(String n, Image i, String d, int[] ss, int gold_value)
     {
         name = n;
@@ -27,7 +26,7 @@ public class Armor extends Item implements Serializable
         value = gold_value;
     }
 
-    public int[] equip()
+    public int[] getStatBuffs()
     {
         return stats;
     }
