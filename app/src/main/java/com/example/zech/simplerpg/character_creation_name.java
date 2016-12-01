@@ -20,6 +20,7 @@ public class character_creation_name extends AppCompatActivity {
         Intent char_creation_name = getIntent();
         final TextView errorName = (TextView) findViewById(R.id.errorMessageName);
         errorName.setTextColor(WHITE);
+        errorName.setTextSize(20);
         errorName.setVisibility(View.INVISIBLE);
         final EditText enter_name_field = (EditText) findViewById(R.id.editTextCharName);
         Button back_button = (Button) findViewById(R.id.backCharName);

@@ -170,7 +170,7 @@ public class AllocateStatsUserInfo extends AppCompatActivity {
                 if (user.constitution > 1) {
                     user.constitution--;
                     user.current_addtional_stat_points++;
-                    user.max_health = 100 + user.constitution*10;
+                    user.max_health = 50 + user.constitution*10;
                     constitution.setText("CON: " + user.constitution);
                     pointsRemaining.setText("Points remaining: " + user.current_addtional_stat_points);
                 }
@@ -185,7 +185,7 @@ public class AllocateStatsUserInfo extends AppCompatActivity {
                 if (user.current_addtional_stat_points > 0) {
                     user.constitution++;
                     user.current_addtional_stat_points--;
-                    user.max_health = 100 + user.constitution*10;
+                    user.max_health = 50 + user.constitution*10;
                     constitution.setText("CON: " + user.constitution);
                     pointsRemaining.setText("Points remaining: " + user.current_addtional_stat_points);
                 }

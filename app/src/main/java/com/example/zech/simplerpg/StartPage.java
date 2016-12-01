@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class StartPage extends AppCompatActivity {
 
     public MediaPlayer mp;
-
+    // faces from: https://vxresource.wordpress.com/category/resources/faces/
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
