@@ -11,6 +11,11 @@ import static android.graphics.Color.WHITE;
 import static android.graphics.Color.RED;
 
 public class AllocateStatsUserInfo extends AppCompatActivity {
+    public int initStr;
+    public int initDef;
+    public int initWil;
+    public int initDex;
+    public int initCon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +27,12 @@ public class AllocateStatsUserInfo extends AppCompatActivity {
         {
             user.levelUp();
         }
+        initStr = user.strength;
+        initDef = user.defense;
+        initWil = user.willpower;
+        initDex = user.dexterity;
+        initCon = user.constitution;
+
         final TextView spend_points_message = (TextView) findViewById(R.id.spendPointsMessage);
         spend_points_message.setVisibility(View.INVISIBLE);
         spend_points_message.setTextColor(RED);
@@ -29,39 +40,41 @@ public class AllocateStatsUserInfo extends AppCompatActivity {
         final TextView pointsRemaining = (TextView) findViewById(R.id.remainingPoints);
         pointsRemaining.setText("Points remaining: " + user.current_addtional_stat_points);
         pointsRemaining.setTextColor(WHITE);
-        pointsRemaining.setTextSize(25);
+        pointsRemaining.setTextSize(19);
         final TextView strength = (TextView) findViewById(R.id.strView);
         strength.setText("STR: " + user.strength);
         strength.setTextColor(WHITE);
-        strength.setTextSize(15);
+        strength.setTextSize(17);
         final TextView defense = (TextView) findViewById(R.id.defView);
         defense.setText("DEF: " + user.defense);
         defense.setTextColor(WHITE);
-        defense.setTextSize(15);
+        defense.setTextSize(17);
         final TextView dexterity = (TextView) findViewById(R.id.dexView);
         dexterity.setText("DEX: " + user.dexterity);
         dexterity.setTextColor(WHITE);
-        dexterity.setTextSize(15);
+        dexterity.setTextSize(17);
         final TextView willpower = (TextView) findViewById(R.id.wilView);
         willpower.setText("WIL: " + user.willpower);
         willpower.setTextColor(WHITE);
-        willpower.setTextSize(15);
+        willpower.setTextSize(17);
         final TextView constitution = (TextView) findViewById(R.id.conView);
         constitution.setText("CON: " + user.constitution);
         constitution.setTextColor(WHITE);
-        constitution.setTextSize(15);
+        constitution.setTextSize(17);
 ////////////////////////////////////////////////////////////////////////////////////////
         Button decrease_strength = (Button) findViewById(R.id.strDec);
         decrease_strength.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (user.strength > 1) {
-                    user.strength--;
-                    user.current_addtional_stat_points++;
-                    strength.setText("STR: " + user.strength);
-                    pointsRemaining.setText("Points remaining: " + user.current_addtional_stat_points);
+                if(user.strength-1 >= initStr)
+                {
+                    if (user.strength > 1) {
+                        user.strength--;
+                        user.current_addtional_stat_points++;
+                        strength.setText("STR: " + user.strength);
+                        pointsRemaining.setText("Points remaining: " + user.current_addtional_stat_points);
+                    }
                 }
-
             }
         });
 
@@ -83,13 +96,16 @@ public class AllocateStatsUserInfo extends AppCompatActivity {
         decrease_dexterity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (user.dexterity > 1) {
-                    user.dexterity--;
-                    user.current_addtional_stat_points++;
-                    dexterity.setText("DEX: " + user.dexterity);
-                    pointsRemaining.setText("Points remaining: " + user.current_addtional_stat_points);
+                if(user.dexterity-1 >= initDex)
+                {
+                    if (user.dexterity > 1)
+                    {
+                        user.dexterity--;
+                        user.current_addtional_stat_points++;
+                        dexterity.setText("DEX: " + user.dexterity);
+                        pointsRemaining.setText("Points remaining: " + user.current_addtional_stat_points);
+                    }
                 }
-
             }
         });
 
@@ -111,13 +127,15 @@ public class AllocateStatsUserInfo extends AppCompatActivity {
         decrease_defense.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (user.defense > 1) {
-                    user.defense--;
-                    user.current_addtional_stat_points++;
-                    defense.setText("DEF: " + user.defense);
-                    pointsRemaining.setText("Points remaining: " + user.current_addtional_stat_points);
+                if(user.defense-1 >= initDef)
+                {
+                    if (user.defense > 1) {
+                        user.defense--;
+                        user.current_addtional_stat_points++;
+                        defense.setText("DEF: " + user.defense);
+                        pointsRemaining.setText("Points remaining: " + user.current_addtional_stat_points);
+                    }
                 }
-
             }
         });
 
@@ -139,13 +157,15 @@ public class AllocateStatsUserInfo extends AppCompatActivity {
         decrease_willpower.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (user.willpower > 1) {
-                    user.willpower--;
-                    user.current_addtional_stat_points++;
-                    willpower.setText("WIL: " + user.willpower);
-                    pointsRemaining.setText("Points remaining: " + user.current_addtional_stat_points);
+                if(user.willpower-1 >= initWil)
+                {
+                    if (user.willpower > 1) {
+                        user.willpower--;
+                        user.current_addtional_stat_points++;
+                        willpower.setText("WIL: " + user.willpower);
+                        pointsRemaining.setText("Points remaining: " + user.current_addtional_stat_points);
+                    }
                 }
-
             }
         });
 
@@ -167,14 +187,16 @@ public class AllocateStatsUserInfo extends AppCompatActivity {
         decrease_constitution.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (user.constitution > 1) {
-                    user.constitution--;
-                    user.current_addtional_stat_points++;
-                    user.max_health = 50 + user.constitution*10;
-                    constitution.setText("CON: " + user.constitution);
-                    pointsRemaining.setText("Points remaining: " + user.current_addtional_stat_points);
+                if(user.constitution-1 >= initCon)
+                {
+                    if (user.constitution > 1) {
+                        user.constitution--;
+                        user.current_addtional_stat_points++;
+                        user.max_health = 50 + user.constitution*10;
+                        constitution.setText("CON: " + user.constitution);
+                        pointsRemaining.setText("Points remaining: " + user.current_addtional_stat_points);
+                    }
                 }
-
             }
         });
 
