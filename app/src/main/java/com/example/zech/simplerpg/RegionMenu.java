@@ -1,17 +1,33 @@
 package com.example.zech.simplerpg;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
 
 public class RegionMenu extends Activity {
+
+    //Current_info temp2 = (Current_info) getIntent().getSerializableExtra("temp");
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_region_menu);
+
+
+        //final Current_info temp2 = (Current_info) getIntent().getSerializableExtra("temp");
+
+        //TextView textViewGold = (TextView) findViewById(R.id.textView2);
+        //textViewGold.setText(String.valueOf(temp2.current_gold));
+
+
 
 
         Button dungeonButton = (Button) findViewById(R.id.dungeonButton);
@@ -30,9 +46,9 @@ public class RegionMenu extends Activity {
 
             public void onClick(View v) {
 
-                Intent intent2 = new Intent(getApplicationContext(), Shop.class);
-                //intent2.putExtra("objTown", object1);
-                startActivity(intent2);
+                Intent intent11 = new Intent(getApplicationContext(), Shop.class);
+                //intent11.putExtra("tempObj", temp2);
+                startActivity(intent11);
             }
         });
 

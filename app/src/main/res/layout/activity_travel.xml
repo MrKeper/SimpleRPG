@@ -8,7 +8,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.zech.simplerpg.Travel">
+    tools:context="com.example.zech.simplerpg.Travel"
+    android:background="@drawable/townimg"
+    >
 
     <TextView
         android:text="REGION_1"
@@ -18,7 +20,9 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="155dp"
         android:id="@+id/region1TextView"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:textColor="@android:color/background_light"
+        android:textStyle="normal|bold" />
 
     <Button
         android:text="Travel to Region 1"
@@ -52,7 +56,9 @@
         android:id="@+id/region3TextView"
         android:textSize="30sp"
         android:layout_below="@+id/region2TextView"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="@android:color/background_light"
+        android:textStyle="normal|bold" />
 
     <TextView
         android:text="REGION_2"
@@ -62,7 +68,9 @@
         android:textSize="30sp"
         android:layout_below="@+id/region1TextView"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="76dp" />
+        android:layout_marginTop="76dp"
+        android:textColor="@android:color/background_light"
+        android:textStyle="normal|bold" />
 
     <CheckBox
         android:text="Unlocked"
@@ -71,7 +79,9 @@
         android:id="@+id/region1CheckBox"
         android:clickable="false"
         android:layout_below="@+id/region1TextView"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="@android:color/background_light"
+        android:textStyle="normal|bold" />
 
     <CheckBox
         android:text="Unlocked"
@@ -80,7 +90,9 @@
         android:layout_below="@+id/region2TextView"
         android:layout_alignParentStart="true"
         android:id="@+id/region2CheckBox"
-        android:clickable="false" />
+        android:clickable="false"
+        android:textColor="@android:color/background_light"
+        android:textStyle="normal|bold" />
 
     <CheckBox
         android:text="Unlocked"
@@ -89,5 +101,7 @@
         android:layout_below="@+id/region3TextView"
         android:layout_alignParentStart="true"
         android:id="@+id/region3CheckBox"
-        android:clickable="false" />
+        android:clickable="false"
+        android:textColor="@android:color/background_light"
+        android:textStyle="normal|bold" />
 </RelativeLayout>

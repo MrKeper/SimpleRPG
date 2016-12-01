@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 public class ShopBuy extends AppCompatActivity {
 
+    Current_info temp2 = (Current_info) getIntent().getSerializableExtra("temp");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

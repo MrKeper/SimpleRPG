@@ -44,4 +44,21 @@
         android:layout_below="@+id/playerInfo"
         android:layout_alignParentStart="true"
         android:id="@+id/testingExit" />
+
+
+    //Temp Julian code START
+    ///////////////////////////////////////////////////////////////
+
+    <Button
+        android:text="Go_to_region"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:id="@+id/testButton"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/playerInfo"
+        android:layout_marginBottom="93dp" />
+
+    //Temp Julian code END
+    /////////////////////////////////////////////////////////////////
 </RelativeLayout>

@@ -8,7 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.zech.simplerpg.Shop">
+    tools:context="com.example.zech.simplerpg.Shop"
+    android:background="@drawable/shopimg">
 
     <Button
         android:text="BUY"
@@ -35,4 +36,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="47dp"
         android:id="@+id/questButton" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buyButton"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="47dp"
+        android:id="@+id/button" />
 </RelativeLayout>
