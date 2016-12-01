@@ -34,7 +34,7 @@ public class User_Character extends Actor implements Serializable
         constitution = 5;
         max_health = 100 + constitution*10;
         current_health = max_health;
-        moveList = new ArrayList<String>();
+        //moveList = new ArrayList<String>();
         current_gold = 10;
         user_level = 1;
         experince_bar = 0;

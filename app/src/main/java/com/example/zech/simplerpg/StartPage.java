@@ -48,7 +48,7 @@ public class StartPage extends AppCompatActivity {
                 User_Character user = new User_Character("Tes");
                 user.sex = "male";
                 user.experince_bar = 101;
-                Mob test_mob = new Mob("Great TestMob Onazuka",1000,1,10,3,4,5,8,6);
+                Mob test_mob = new Mob("Great TestMob Onazuka",1000,1,50,7,5,5,5);
                 int[] weapon_stat_change = {0,3,0,0,0,0};
                 int[] armor_stat_change   = {0,0,3,0,0,0};
                 int[] item_stat_change   = {10,0,0,0,0,0};
