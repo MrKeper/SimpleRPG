@@ -56,11 +56,14 @@ public class StartPage extends AppCompatActivity {
                 Weapon test_weapon = new Weapon("Demon Slaying Wooden Sword",null,"A wooden sword (+3 STR)",weapon_stat_change,0);
                 Weapon god_weapon = new Weapon("God Slaying Wooden Sword",null,"A wooden sword (+3 STR)",weapon_stat_change,0);
                 Consumable water = new Consumable("Water",null,"A bottle of water (+10 HP).",item_stat_change,0);
-                Quest test_quest = new Quest("TEST","All your base are belong to us","Complete the game",1,"Holy Grail",1000,25,test_weapon);
+                Quest test_quest1 = new Quest("TEST","All your base are belong to us","Complete the game",1,"Holy Grail",1000,25,test_weapon);
+                Quest test_quest2 = new Quest("TEST","Welcome to Papa's House","Start the game",0,"?",0,0,god_weapon);
+                test_quest2.isComplete = true;
                 user.inventory.add(god_weapon);
                 user.inventory.add(startArmor);
                 user.inventory.add(water);
-                user.quest_list.add(test_quest);
+                user.quest_list.add(test_quest1);
+                user.quest_list.add(test_quest2);
                 Intent intent = new Intent(l.getContext(), user_information_page.class);
                 intent.putExtra("user",user);
                 startActivity(intent);

@@ -12,6 +12,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import static android.graphics.Color.WHITE;
+import static android.graphics.Color.GREEN;
+import static android.graphics.Color.YELLOW;
+
 
 public class QuestLog extends AppCompatActivity
 {
@@ -29,15 +32,15 @@ public class QuestLog extends AppCompatActivity
 
         ArrayList<Quest> quest_log = user.quest_list;
         TextView questText = new TextView(this);
-        questText.setText("Current Quests: \n");
-        questText.setTextColor(WHITE);
+        questText.setText("\nActive Quests: \n");
+        questText.setTextColor(YELLOW);
         questText.setTextSize(25);
         questText.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
         layout.addView(questText);
         if(quest_log.size()  == 0)
         {
             TextView quest_info = new TextView(this);
-            quest_info.setText("No Current Quests");
+            quest_info.setText("No Quests Currently");
             quest_info.setTextColor(WHITE);
             quest_info.setTextSize(17);
             quest_info.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
@@ -48,7 +51,40 @@ public class QuestLog extends AppCompatActivity
             for(int i = 0; i < quest_log.size(); i++)
             {
                 Quest quest = quest_log.get(i);
+                if(quest.isComplete)
+                    continue;
                 TextView quest_info = new TextView(this);
+                if(quest.item_reward != null)
+                {
+                        quest_info.setText("Quest: "+quest.quest_name+"\n"+quest.quest_description
+                                +"\nProgress: ("+quest.count+"/"+quest.amountWanted+")"
+                                +"\nRewards:\nExperince: "+quest.experince_reward+"  \nItem: "+quest.item_reward.name+"\n");
+                }
+                else
+                {
+
+                        quest_info.setText("Quest: "+quest.quest_name+"\n"+quest.quest_description
+                                +"\nProgress: ("+quest.count+"/"+quest.amountWanted+")"
+                                +"\nRewards: \nExperince: "+quest.experince_reward+"\nItem: N/A\n");
+
+                }
+                quest_info.setTextColor(WHITE);
+                quest_info.setTextSize(23);
+                quest_info.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
+                layout.addView(quest_info);
+            }
+            TextView questReadyText = new TextView(this);
+            questReadyText.setText("Ready to Turn In: \n");
+            questReadyText.setTextColor(GREEN);
+            questReadyText.setTextSize(25);
+            questReadyText.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
+            layout.addView(questReadyText);
+            for(int i = 0; i < quest_log.size(); i++)
+            {
+                Quest quest = quest_log.get(i);
+                TextView quest_info = new TextView(this);
+                if(!quest.isComplete)
+                    continue;
                 if(quest.item_reward != null)
                 {
                     quest_info.setText("Quest: "+quest.quest_name+"\n"+quest.quest_description
@@ -57,9 +93,11 @@ public class QuestLog extends AppCompatActivity
                 }
                 else
                 {
+
                     quest_info.setText("Quest: "+quest.quest_name+"\n"+quest.quest_description
                             +"\nProgress: ("+quest.count+"/"+quest.amountWanted+")"
-                            +"\nRewards: \nExperince: "+quest.experince_reward+"\nItem: N/A");
+                            +"\nRewards: \nExperince: "+quest.experince_reward+"\nItem: N/A\n");
+
                 }
                 quest_info.setTextColor(WHITE);
                 quest_info.setTextSize(23);
