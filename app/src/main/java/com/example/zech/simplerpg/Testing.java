@@ -96,6 +96,7 @@ public class Testing extends AppCompatActivity {
                 editor.putInt("user_level", user.user_level);
                 editor.putInt("experience_bar", user.experince_bar);
                 editor.putInt("current_additional_stat_points", user.current_addtional_stat_points);
+                editor.putInt("current_potions", 3);
                 editor.apply();
                 //editor.putString("username", "TheName");
                 //editor.putString("username", "TheName");
