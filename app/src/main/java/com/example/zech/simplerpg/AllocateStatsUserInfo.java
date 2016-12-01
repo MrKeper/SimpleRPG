@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import static android.graphics.Color.WHITE;
+import static android.graphics.Color.RED;
 
 public class AllocateStatsUserInfo extends AppCompatActivity {
 
@@ -23,7 +24,7 @@ public class AllocateStatsUserInfo extends AppCompatActivity {
         }
         final TextView spend_points_message = (TextView) findViewById(R.id.spendPointsMessage);
         spend_points_message.setVisibility(View.INVISIBLE);
-        spend_points_message.setTextColor(WHITE);
+        spend_points_message.setTextColor(RED);
         spend_points_message.setTextSize(18);
         final TextView pointsRemaining = (TextView) findViewById(R.id.remainingPoints);
         pointsRemaining.setText("Points remaining: " + user.current_addtional_stat_points);
