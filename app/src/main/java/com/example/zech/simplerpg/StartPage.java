@@ -12,6 +12,7 @@ import static android.graphics.Color.WHITE;
 public class StartPage extends AppCompatActivity {
 
     public MediaPlayer mp;
+    public MediaPlayer buttonSound;
     // faces from: https://vxresource.wordpress.com/category/resources/faces/
     //wooden button from: http://www.ronraye.com/TestObjects.html
     @Override
@@ -23,10 +24,13 @@ public class StartPage extends AppCompatActivity {
         mp  = MediaPlayer.create(this, R.raw.backgroundmusic);
         mp.start();
         mp.setLooping(true);
+        buttonSound  = MediaPlayer.create(this, R.raw.button_press);
         Button new_button = (Button) findViewById(R.id.newGame);
         new_button.setBackgroundResource(R.drawable.woodbutton);
         new_button.setTextColor(WHITE);
         new_button.setTextSize(20);
+        new_button.setSoundEffectsEnabled(false);
+
         new_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View n)
@@ -34,8 +38,9 @@ public class StartPage extends AppCompatActivity {
                 //intent char creation
 
                 Intent intent = new Intent(n.getContext(), character_creation_name.class);
-                mp.stop();
+                buttonSound.start();
                 startActivity(intent);
+                mp.stop();
                 finish();
             }
         });
@@ -43,11 +48,14 @@ public class StartPage extends AppCompatActivity {
         load_button.setBackgroundResource(R.drawable.woodbutton);
         load_button.setTextColor(WHITE);
         load_button.setTextSize(20);
+        load_button.setSoundEffectsEnabled(false);
+
         load_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View l)
             {
                 //load save
+                buttonSound.start();
                 User_Character user = new User_Character("Tes");
                 user.sex = "male";
                 user.experince_bar = 101;
@@ -69,9 +77,10 @@ public class StartPage extends AppCompatActivity {
                 user.quest_list.add(test_quest2);
                 Intent intent = new Intent(l.getContext(), user_information_page.class);
                 intent.putExtra("user",user);
+                mp.stop();
                 startActivity(intent);
                 finish();
-                mp.stop();
+
             }
         });
 
@@ -79,12 +88,15 @@ public class StartPage extends AppCompatActivity {
         credit_button.setBackgroundResource(R.drawable.woodbutton);
         credit_button.setTextColor(WHITE);
         credit_button.setTextSize(20);
+        credit_button.setSoundEffectsEnabled(false);
+
         credit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View e)
             {
-                finish();
                 mp.stop();
+                buttonSound.start();
+                finish();
             }
         });
 
@@ -92,12 +104,15 @@ public class StartPage extends AppCompatActivity {
         exit_button.setBackgroundResource(R.drawable.woodbutton);
         exit_button.setTextColor(WHITE);
         exit_button.setTextSize(20);
+        exit_button.setSoundEffectsEnabled(false);
+
         exit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View e)
             {
-                finish();
                 mp.stop();
+                buttonSound.start();
+                finish();
             }
         });
 
