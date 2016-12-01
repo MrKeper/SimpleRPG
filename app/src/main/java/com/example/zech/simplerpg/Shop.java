@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class Shop extends Activity {
 
@@ -18,6 +19,8 @@ public class Shop extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
 
+        ImageView klili = (ImageView)  findViewById(R.id.shopklili);
+        klili.setVisibility(View.VISIBLE);
 
         //final Current_info temp2 = (Current_info) getIntent().getSerializableExtra("temp");
 
@@ -41,7 +44,7 @@ public class Shop extends Activity {
 
             public void onClick(View v) {
 
-                Intent intent11 = new Intent(getApplicationContext(), ShopBuy.class);
+                Intent intent11 = new Intent(getApplicationContext(), shopBuy.class);
                 //intent11.putExtra("tempObj", temp2);
                 startActivity(intent11);
             }
@@ -57,7 +60,7 @@ public class Shop extends Activity {
 
             public void onClick(View v) {
 
-                Intent intent11 = new Intent(getApplicationContext(), ShopBuy.class);
+                Intent intent11 = new Intent(getApplicationContext(), shopBuy.class);
                 //intent11.putExtra("tempObj", temp2);
                 startActivity(intent11);
             }
