@@ -28,7 +28,12 @@ public class QuestLog extends AppCompatActivity
         //if completed but not turned in,  Have a Complelte , mabye in green
 
         ArrayList<Quest> quest_log = user.quest_list;
-
+        TextView questText = new TextView(this);
+        questText.setText("Current Quests: \n");
+        questText.setTextColor(WHITE);
+        questText.setTextSize(25);
+        questText.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
+        layout.addView(questText);
         if(quest_log.size()  == 0)
         {
             TextView quest_info = new TextView(this);

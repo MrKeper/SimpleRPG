@@ -26,7 +26,7 @@ public class Consumable extends Item implements Serializable
         value = gold_value;
     }
 
-    public int[] use()
+    public int[] getStatBuffs()
     {
         return stats;
     }

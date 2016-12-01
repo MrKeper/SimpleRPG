@@ -77,14 +77,14 @@ public class user_information_page extends AppCompatActivity {
         layout.addView(userLevel);
 
         TextView userEXP = new TextView(this);
-        userEXP.setText("("+user.experince_bar+"/"+user.experince_needed_to_level+")");
+        userEXP.setText("Experince for next level: ("+user.experince_bar+"/"+user.experince_needed_to_level+")");
         userEXP.setTextColor(WHITE);
         userEXP.setTextSize(23);
         userEXP.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
         layout.addView(userEXP);
 
         TextView userHealth = new TextView(this);
-        userHealth.setText("Health: "+user.current_health);
+        userHealth.setText("Health:("+user.current_health+"/"+user.max_health+")");
         userHealth.setTextColor(WHITE);
         userHealth.setTextSize(23);
         userHealth.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -104,13 +104,6 @@ public class user_information_page extends AppCompatActivity {
         userDEF.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
         layout.addView(userDEF);
 
-        TextView userCON = new TextView(this);
-        userCON.setText("Constitution: "+user.constitution);
-        userCON.setTextColor(WHITE);
-        userCON.setTextSize(23);
-        userCON.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
-        layout.addView(userCON);
-
         TextView userDEX = new TextView(this);
         userDEX.setText("Dexterity: "+user.dexterity);
         userDEX.setTextColor(WHITE);
@@ -125,6 +118,14 @@ public class user_information_page extends AppCompatActivity {
         userWIL.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
         layout.addView(userWIL);
 
+
+        TextView userCON = new TextView(this);
+        userCON.setText("Constitution: "+user.constitution);
+        userCON.setTextColor(WHITE);
+        userCON.setTextSize(23);
+        userCON.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+        layout.addView(userCON);
+
         TextView userGold = new TextView(this);
         userGold.setText("Gold: "+user.current_gold+"g");
         userGold.setTextColor(WHITE);
@@ -133,7 +134,7 @@ public class user_information_page extends AppCompatActivity {
         layout.addView(userGold);
 
         TextView userWeapon = new TextView(this);
-        if(user.equiped_weapon != null) { userWeapon.setText("Equipped Weapon: "+user.equiped_weapon); }
+        if(user.equiped_weapon != null) { userWeapon.setText("Equipped Weapon: \n"+user.equiped_weapon.name); }
         else { userWeapon.setText("Equipped Weapon: None"); }
         userWeapon.setTextColor(WHITE);
         userWeapon.setTextSize(23);
@@ -141,7 +142,7 @@ public class user_information_page extends AppCompatActivity {
         layout.addView(userWeapon);
 
         TextView userArmor = new TextView(this);
-        if(user.equiped_armor != null) { userArmor.setText("Equipped Weapon: "+user.equiped_armor); }
+        if(user.equiped_armor != null) { userArmor.setText("Equipped Weapon: \n"+user.equiped_armor.name); }
         else { userArmor.setText("Equipped Armor: None"); }
         userArmor.setTextColor(WHITE);
         userArmor.setTextSize(23);

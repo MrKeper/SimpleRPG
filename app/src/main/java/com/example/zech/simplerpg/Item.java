@@ -15,13 +15,14 @@ public class Item implements Serializable
     public Image icon;
     public String description;
     public int value;
+    public boolean isEquipped = false; //used for weapons and armor;
     /*
-        base_health = base_health - w.equip()[0];
-        strength = strength + w.equip()[1];
-        defense = defense + w.equip()[2];
-        willpower = willpower + w.equip()[3];
-        dexterity = dexterity + w.equip()[4];
-        constitution = constitution + w.equip()[5];
+        base_health = base_health - w.getStatBuffs()[0];
+        strength = strength + w.getStatBuffs()[1];
+        defense = defense + w.getStatBuffs()[2];
+        willpower = willpower + w.getStatBuffs()[3];
+        dexterity = dexterity + w.getStatBuffs()[4];
+        constitution = constitution + w.getStatBuffs()[5];
      */
     public int[] stats = new int[6];
 }
