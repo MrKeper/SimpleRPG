@@ -1,6 +1,9 @@
 package com.example.zech.simplerpg;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +21,7 @@ public class Battle extends AppCompatActivity {
     ImageView enemyHitImage;
     ProgressBar userHealthProgress;
     ImageView monsterImage;
+    Boolean isFleeing = false;
 
     /* This was suppose to shake the character - BROKEN
     ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) monsterImage.getLayoutParams();
@@ -27,6 +31,44 @@ public class Battle extends AppCompatActivity {
                                 p.setMargins(0,0,0,0);
                             monsterImage.requestLayout();
      */
+    public void healthBarColorMonitor(){
+        final Handler handler = new Handler();
+        final int userOrange = user.base_health / 2;
+        final int userRed = user.base_health / 5;
+        final MediaPlayer lowHPsound = MediaPlayer.create(this, R.raw.low_health_sound);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(user.current_health > 0 ) {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(user.current_health < userOrange){
+                                userHealthProgress.getProgressDrawable().setColorFilter(Color.rgb(255,165,0), PorterDuff.Mode.SRC_IN);
+                            }
+                            if(user.current_health < userRed){
+                                userHealthProgress.getProgressDrawable().setColorFilter(Color.rgb(200,0,0), PorterDuff.Mode.SRC_IN);
+                                if(!lowHPsound.isPlaying() && !isFleeing){
+                                    lowHPsound.start();
+                                    lowHPsound.setLooping(true);
+                                }else if(isFleeing){
+                                    lowHPsound.stop();
+                                    return;
+                                }
+                            }
+                        }
+                    });
+                    try {
+                        Thread.sleep(300);
+                    } catch (Exception e) {
+                        System.out.println("ColorMonitor Sleep ERROR");
+                    }
+                }
+                lowHPsound.stop();
+            }
+        }).start();
+    }
 
     public void changeUserHealthBar(final int n){
         final Handler handler = new Handler();
@@ -110,7 +152,7 @@ public class Battle extends AppCompatActivity {
         userHPtext.setText(user.current_health + " / " + user.base_health);
         userHealthProgress.setMax(user.base_health);
         userHealthProgress.setProgress(user.current_health);
-
+        userHealthProgress.getProgressDrawable().setColorFilter(Color.rgb(0,200,0), PorterDuff.Mode.SRC_IN);
 
 
         final MediaPlayer mp  = MediaPlayer.create(this, R.raw.battle_music1);
@@ -119,12 +161,14 @@ public class Battle extends AppCompatActivity {
         mp.start();
         mp.setLooping(true);
 
+        healthBarColorMonitor();
+
         Button attackButton = (Button) findViewById(R.id.attackButton);
         attackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 attackSound.start();
-                changeUserHealthBar(40);
+                changeUserHealthBar(user.current_health - 30);
                 userAttackAnimation();
                 //attackSound.stop();
             }
@@ -137,7 +181,10 @@ public class Battle extends AppCompatActivity {
                 mp.stop();
                 attackSound.stop();
                 fleeSound.start();
+
                 final Handler handler = new Handler();
+                isFleeing = true;
+
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
