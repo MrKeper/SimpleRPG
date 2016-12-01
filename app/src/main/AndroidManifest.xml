@@ -27,7 +27,7 @@
         <activity android:name=".QuestLog" />
         <activity android:name=".RegionMenu" />
         <activity android:name=".Shop" />
-        <activity android:name=".ShopBuy" />
+        <activity android:name=".shopBuy" />
         <activity android:name=".ShopSell" />
         <activity android:name=".SaveAndLoad" />
         <activity android:name=".Travel" />
