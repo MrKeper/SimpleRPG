@@ -210,21 +210,10 @@ public class user_information_page extends AppCompatActivity {
         levelUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(user.experince_bar >= user.experince_needed_to_level)
-                {
-                    user.levelUp();
-
-                    //temp
-                    Intent intent = new Intent(v.getContext(), user_information_page.class);
-                    intent.putExtra("user",user);
-                    startActivity(intent);
-                    finish();
-                    //intent to alloc screen
-                }
-                else
-                {
-                    //intent to alloc screen
-                }
+        Intent intent = new Intent(v.getContext(),AllocateStatsUserInfo.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+        finish();
             }
         });
 

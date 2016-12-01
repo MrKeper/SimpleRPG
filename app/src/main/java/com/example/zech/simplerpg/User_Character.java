@@ -39,7 +39,7 @@ public class User_Character extends Actor implements Serializable
         user_level = 1;
         experince_bar = 0;
         experince_needed_to_level = 100;
-        current_addtional_stat_points = 5;
+        current_addtional_stat_points = 3;
         equiped_armor = null;
         equiped_weapon = null;
         inventory = new ArrayList<Item>();
@@ -54,12 +54,12 @@ public class User_Character extends Actor implements Serializable
         if(equiped_weapon != null)
             unequipWeapon();
         equiped_weapon = w;
-        max_health = max_health + w.getStatBuffs()[0];
         strength = strength + w.getStatBuffs()[1];
         defense = defense + w.getStatBuffs()[2];
         willpower = willpower + w.getStatBuffs()[3];
         dexterity = dexterity + w.getStatBuffs()[4];
         constitution = constitution + w.getStatBuffs()[5];
+        max_health = 100 + constitution*10 + w.getStatBuffs()[0];
     }
 
     public void unequipWeapon()
@@ -68,12 +68,12 @@ public class User_Character extends Actor implements Serializable
             return;
         Weapon w = equiped_weapon;
         equiped_weapon = null;
-        max_health = max_health - w.getStatBuffs()[0];
         strength = strength - w.getStatBuffs()[1];
         defense = defense - w.getStatBuffs()[2];
         willpower = willpower - w.getStatBuffs()[3];
         dexterity = dexterity - w.getStatBuffs()[4];
         constitution = constitution - w.getStatBuffs()[5];
+        max_health = 100 + constitution*10 - w.getStatBuffs()[0];
     }
 
     public void equipArmor(Armor a)
@@ -83,12 +83,12 @@ public class User_Character extends Actor implements Serializable
         if(equiped_armor != null)
             unequipArmor();
         equiped_armor = a;
-        max_health = max_health + a.getStatBuffs()[0];
         strength = strength + a.getStatBuffs()[1];
         defense = defense + a.getStatBuffs()[2];
         willpower = willpower + a.getStatBuffs()[3];
         dexterity = dexterity + a.getStatBuffs()[4];
         constitution = constitution + a.getStatBuffs()[5];
+        max_health = 100 + constitution*10 + a.getStatBuffs()[0];
     }
 
 
@@ -104,6 +104,7 @@ public class User_Character extends Actor implements Serializable
         willpower = willpower - a.getStatBuffs()[3];
         dexterity = dexterity - a.getStatBuffs()[4];
         constitution = constitution - a.getStatBuffs()[5];
+        max_health = 100 + constitution*10 - a.getStatBuffs()[0];
     }
 
 
@@ -136,6 +137,7 @@ public class User_Character extends Actor implements Serializable
         user_level++;
         experince_bar = Math.abs(experince_needed_to_level-experince_bar);
         experince_needed_to_level = (user_level*50)+50;
+        max_health = 100 + constitution*10;
         current_addtional_stat_points = current_addtional_stat_points + 3;
     }
 }

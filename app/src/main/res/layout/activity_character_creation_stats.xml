@@ -124,7 +124,7 @@
         android:text="STR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/StrView"
+        android:id="@+id/strView"
         android:textSize="15sp"
         android:gravity="center"
         android:textColor="#ffffff"
@@ -133,16 +133,16 @@
         android:layout_marginBottom="15dp" />
 
     <TextView
-        android:text="INT"
+        android:text="DEF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/intView"
+        android:id="@+id/defView"
         android:textSize="15sp"
         android:textColor="#ffffff"
         android:gravity="center"
         android:layout_marginBottom="17dp"
         android:layout_above="@+id/wilDec"
-        android:layout_alignEnd="@+id/StrView" />
+        android:layout_alignEnd="@+id/strView" />
 
     <Button
         android:text="Increase\nSTR"
@@ -151,18 +151,7 @@
         android:id="@+id/strInc"
         android:layout_marginStart="23dp"
         android:layout_alignTop="@+id/strDec"
-        android:layout_toEndOf="@+id/StrView" />
-
-    <TextView
-        android:text="Points remaining: \n5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/remainingPoints"
-        android:textSize="18sp"
-        android:textColor="#ffffff"
-        android:layout_marginBottom="9dp"
-        android:layout_above="@+id/spendPointsMessage"
-        android:layout_alignEnd="@+id/wilView" />
+        android:layout_toEndOf="@+id/strView" />
 
     <Button
         android:text="Decrease\nDEX"
@@ -204,5 +193,16 @@
         android:id="@+id/strDec"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/defDec" />
+
+    <TextView
+        android:text="Points remaining: \n5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/remainingPoints"
+        android:textSize="18sp"
+        android:textColor="#ffffff"
+        android:layout_marginBottom="8dp"
+        android:layout_above="@+id/spendPointsMessage"
+        android:layout_alignEnd="@+id/wilView" />
 
 </RelativeLayout>

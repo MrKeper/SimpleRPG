@@ -305,11 +305,14 @@ public class Inventory extends AppCompatActivity {
                 break;
                 case CONTEXT_MENU_DESTORY:
                 {
-                    user.unequipWeapon();
                     for(int i= 0; i < player_inventory.size(); i++)
                     {
                         if(player_inventory.get(i).name.equals(selected_item))
                         {
+                            if(player_inventory.get(i).getClass() == Weapon.class && equippedWeapon)
+                            { user.unequipWeapon(); }
+                            if(player_inventory.get(i).getClass() == Armor.class && equippedArmor)
+                            { user.unequipArmor(); }
                             Item remove = player_inventory.get(i);
                             player_inventory.remove(remove);
                             break;
