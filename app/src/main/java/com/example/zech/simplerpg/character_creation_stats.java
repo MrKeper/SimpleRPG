@@ -168,7 +168,7 @@ public class character_creation_stats extends AppCompatActivity {
                 {
                     user.constitution--;
                     user.current_addtional_stat_points++;
-                    user.max_health = 100 + user.constitution*10;
+                    user.max_health = 50 + user.constitution*10;
                     user.current_health = user.max_health;
                     constitution.setText("CON: "+user.constitution);
                     pointsRemaining.setText("Points remaining: "+ user.current_addtional_stat_points);
@@ -186,7 +186,7 @@ public class character_creation_stats extends AppCompatActivity {
                 {
                     user.constitution++;
                     user.current_addtional_stat_points--;
-                    user.max_health = 100 + user.constitution*10;
+                    user.max_health = 50 + user.constitution*10;
                     user.current_health = user.max_health;
                     constitution.setText("CON: "+user.constitution);
                     pointsRemaining.setText("Points remaining: "+ user.current_addtional_stat_points);

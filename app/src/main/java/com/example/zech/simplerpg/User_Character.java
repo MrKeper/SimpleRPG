@@ -32,7 +32,7 @@ public class User_Character extends Actor implements Serializable
         willpower = 5;
         dexterity = 5;
         constitution = 5;
-        max_health = 100 + constitution*10;
+        max_health = 50 + constitution*10;
         current_health = max_health;
         //moveList = new ArrayList<String>();
         current_gold = 10;
@@ -59,7 +59,7 @@ public class User_Character extends Actor implements Serializable
         willpower = willpower + w.getStatBuffs()[3];
         dexterity = dexterity + w.getStatBuffs()[4];
         constitution = constitution + w.getStatBuffs()[5];
-        max_health = 100 + constitution*10 + w.getStatBuffs()[0];
+        max_health = 50 + constitution*10 + w.getStatBuffs()[0];
     }
 
     public void unequipWeapon()
@@ -73,7 +73,7 @@ public class User_Character extends Actor implements Serializable
         willpower = willpower - w.getStatBuffs()[3];
         dexterity = dexterity - w.getStatBuffs()[4];
         constitution = constitution - w.getStatBuffs()[5];
-        max_health = 100 + constitution*10 - w.getStatBuffs()[0];
+        max_health = 50 + constitution*10 - w.getStatBuffs()[0];
     }
 
     public void equipArmor(Armor a)
@@ -88,7 +88,7 @@ public class User_Character extends Actor implements Serializable
         willpower = willpower + a.getStatBuffs()[3];
         dexterity = dexterity + a.getStatBuffs()[4];
         constitution = constitution + a.getStatBuffs()[5];
-        max_health = 100 + constitution*10 + a.getStatBuffs()[0];
+        max_health = 50 + constitution*10 + a.getStatBuffs()[0];
     }
 
 
@@ -104,7 +104,7 @@ public class User_Character extends Actor implements Serializable
         willpower = willpower - a.getStatBuffs()[3];
         dexterity = dexterity - a.getStatBuffs()[4];
         constitution = constitution - a.getStatBuffs()[5];
-        max_health = 100 + constitution*10 - a.getStatBuffs()[0];
+        max_health = 50 + constitution*10 - a.getStatBuffs()[0];
     }
 
 
@@ -137,7 +137,7 @@ public class User_Character extends Actor implements Serializable
         user_level++;
         experince_bar = Math.abs(experince_needed_to_level-experince_bar);
         experince_needed_to_level = (user_level*50)+50;
-        max_health = 100 + constitution*10;
+        max_health = 50 + constitution*10;
         current_addtional_stat_points = current_addtional_stat_points + 3;
     }
 }
