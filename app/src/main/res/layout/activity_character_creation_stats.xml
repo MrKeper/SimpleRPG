@@ -176,14 +176,6 @@
         android:layout_above="@+id/spendPointsMessage"
         android:layout_alignStart="@+id/spendPointsMessage" />
 
-    <Button
-        android:text="Stat Info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/statInfo"
-        android:layout_above="@+id/spendPointsMessage"
-        android:layout_alignParentEnd="true" />
-
     <TextView
         android:text="You must allocate all remaining points to proceed"
         android:layout_width="wrap_content"
@@ -201,5 +193,13 @@
         android:id="@+id/charStatsBack"
         android:layout_alignParentBottom="true"
         android:layout_alignEnd="@+id/dexDec" />
+
+    <Button
+        android:text="Stat Info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/statInfo"
+        android:layout_alignTop="@+id/remainingPoints"
+        android:layout_alignEnd="@+id/dexInc" />
 
 </RelativeLayout>

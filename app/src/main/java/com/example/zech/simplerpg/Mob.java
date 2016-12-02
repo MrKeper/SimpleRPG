@@ -9,11 +9,12 @@ import java.util.ArrayList;
 public class Mob extends Actor
 {
     public  int mob_id;
-    public int mob_level;
+    public String imagename;
 
-    public Mob(String name,int id,int lvl,int hp, int str, int def ,int wil, int dex)
+    public Mob(String name,String image_name,int id,int hp, int str, int def ,int wil, int dex)
     {
         actor_name = name;
+        imagename = image_name;
         base_health = hp;
         current_health= hp;
         strength = str;
@@ -22,7 +23,6 @@ public class Mob extends Actor
         willpower = wil;
         type = "mob";
         mob_id = id;
-        mob_level = lvl;
         //moveList = new ArrayList<>();
     }
 

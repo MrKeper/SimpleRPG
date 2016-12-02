@@ -9,32 +9,30 @@ import java.io.Serializable;
 public class Quest implements Serializable
 {
     public int quest_id;
-    public static int quest_id_count = 1;
-    public String quest_type;
+    //public String quest_type;
     public String quest_name;
     public String quest_description;
     public String item_name;
-    public int mob_id;
-    public int amountWanted;
+    //public String mob_name;
+    //public int amountWanted;
     public int count;
     public Boolean isActive;
     public Boolean isComplete;
     public int experince_reward;
     public Item item_reward;
 
-    public Quest (String type, String qname, String description, int amount ,String iname, int mid, int er, Item ir)
+    public Quest (int id,String qname, String description,String iname, int er, Item ir)
     {
-        quest_id = quest_id_count;
-        quest_id_count++;
-        quest_type = type;
+        quest_id = id;
+        //quest_type = type;
         quest_name = qname;
         quest_description = description;
-        amountWanted = amount;
+        //amountWanted = amount;
         count = 0;
         isActive = true;
         isComplete = false;
         item_name = iname;
-        mob_id = mid;
+       // mob_name = mname;
         experince_reward = er;
         item_reward = ir;
     }

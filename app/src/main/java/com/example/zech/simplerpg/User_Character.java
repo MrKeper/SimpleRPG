@@ -49,19 +49,53 @@ public class User_Character extends Actor implements Serializable
         completedDungeons = new ArrayList<Integer>();
         lastTownAt = null;
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        Mob test_mob = new Mob("Great TestMob Onazuka",1000,1,50,7,5,5,5);
+        Mob spider = new Mob("Giant Spider","giantspider",1,30,5,2,4,5);
+        Mob serpant = new Mob("Silver King Snake","silverserpant",2,80,9,8,6,7);
+        Mob beast = new Mob("Wild Beast","wildbeast",3,60,10,2,6,6);
+        Mob drsgon = new Mob("Young Twin-Headed Dragon","twinheadeddragon",4,300,18,12,8,8);
+
         int[] weapon_stat_change = {0,1,0,0,0,0};
         int[] item_stat_change   = {10,0,0,0,0,0};
         Weapon start_weapon = new Weapon("Wooden Sword",null,"Its something.(+1 STR)",weapon_stat_change,0);
         Consumable water = new Consumable("Water",null,"A bottle of water (+10 HP).",item_stat_change,0);
-        Quest test_quest1 = new Quest("TEST","All your base are belong to us","Complete the game",1,"Holy Grail",1000,25,start_weapon);
-        Quest test_quest2 = new Quest("TEST","Welcome to Papa's House","Start the game",0,"?",0,0,start_weapon);
-        test_quest2.isComplete = true;
+        Quest test_quest1 = new Quest(1,"All your base are belong to us","Complete the game","God's Heart",25000,start_weapon);
+        Quest test_quest2 = new Quest(2,"Welcome to Papa's House","Start the game","Wooden Sword",0,start_weapon);
         inventory.add(start_weapon);
         inventory.add(water);
         quest_list.add(test_quest1);
         quest_list.add(test_quest2);
+    }
 
+    public void refeshQuestList()
+    {
+        if(quest_list.isEmpty())
+            return;
+        for(int i = 0; i < quest_list.size(); i++)
+        {
+            String itemname = quest_list.get(i).item_name;
+            for(int k = 0; k < inventory.size(); k++)
+            {
+                if(itemname.equals(inventory.get(k).name))
+                {
+                    quest_list.get(i).isComplete = true;
+                }
+            }
+        }
+    }
+
+    public void turnInQuest(Quest quest)
+    {
+        for(int i = 0; i < quest_list.size(); i++)
+        {
+            if(quest.quest_id == quest_list.get(i).quest_id && quest_list.get(i).isComplete)
+            {
+                experince_bar = experince_bar + quest.experince_reward;
+                if(quest.item_reward != null)
+                {
+                    inventory.add(quest.item_reward);
+                }
+            }
+        }
     }
 
     public void equipWeapon(Weapon w)
@@ -108,7 +142,6 @@ public class User_Character extends Actor implements Serializable
         max_health = 50 + constitution*10 + a.getStatBuffs()[0];
     }
 
-
     public void unequipArmor()
     {
         if(equiped_armor == null)
@@ -123,7 +156,6 @@ public class User_Character extends Actor implements Serializable
         constitution = constitution - a.getStatBuffs()[5];
         max_health = 50 + constitution*10 - a.getStatBuffs()[0];
     }
-
 
     public void useConsumable(Consumable c)
     {
@@ -140,8 +172,6 @@ public class User_Character extends Actor implements Serializable
         dexterity = dexterity + c.getStatBuffs()[4];
         constitution = constitution + c.getStatBuffs()[5];
     }
-
-
 
     public void respawn()
     {
