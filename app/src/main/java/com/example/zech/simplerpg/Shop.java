@@ -69,7 +69,7 @@ public class Shop extends Activity {
 
             public void onClick(View v) {
 
-                Intent intent11 = new Intent(getApplicationContext(), ShopBuy.class);
+                Intent intent11 = new Intent(getApplicationContext(), shopBuy.class);
                 //intent11.putExtra("tempObj", temp2);
                 startActivity(intent11);
 

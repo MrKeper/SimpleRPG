@@ -28,7 +28,7 @@ public class User_Character extends Actor implements Serializable
     {
         actor_name = name;
         type = "user";
-        //base_health = 100;
+        sex = null;
         strength = 5;
         defense = 5;
         willpower = 5;

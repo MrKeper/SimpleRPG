@@ -271,6 +271,7 @@ public class character_creation_stats extends AppCompatActivity {
         Button confirm_button = (Button) findViewById(R.id.charStatConfirm);
         confirm_button.setBackgroundResource(R.drawable.woodbutton);
         confirm_button.setTextColor(WHITE);
+        confirm_button.setTextSize(10);
         confirm_button.setSoundEffectsEnabled(false);
         confirm_button.setOnClickListener(new View.OnClickListener()
         {

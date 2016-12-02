@@ -1,5 +1,6 @@
 package com.example.zech.simplerpg;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -83,18 +84,21 @@ public class prologue_one extends AppCompatActivity {
 
     private void sendScroll(){
         final Handler handler = new Handler();
-        new Thread(new Runnable() {
+        ObjectAnimator.ofInt(sv, "scrollY",  10000).setDuration(165000).start();
+
+        /*new Thread(new Runnable() {
             @Override
             public void run() {
-                try {Thread.sleep(38000);} catch (InterruptedException e) {}
+                try {Thread.sleep(36000);} catch (InterruptedException e) {}
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        sv.fullScroll(View.FOCUS_DOWN);
+                        //sv.smoothScrollTo(0,View.FOCUS_DOWN);
+
                     }
                 });
             }
-        }).start();
+        }).start();*/
     }
 
     public void save (User_Character user, String filename)
