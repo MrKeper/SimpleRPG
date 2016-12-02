@@ -10,6 +10,9 @@ import android.widget.Button;
 
 import com.google.gson.Gson;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+
 public class Testing extends AppCompatActivity {
 
     @Override
@@ -60,6 +63,7 @@ public class Testing extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), user_information_page.class);
+                //save(user,"savefile.txt");
                 intent.putExtra("user",user);
                 startActivity(intent);
                 finish();
@@ -70,6 +74,7 @@ public class Testing extends AppCompatActivity {
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                save(user,"savefile.txt");
                 finish();
             }
         });
@@ -131,6 +136,20 @@ public class Testing extends AppCompatActivity {
 
 
 
+    }
+
+    public void save (User_Character user, String filename)
+    {
+        FileOutputStream fos = null;
+        try {
+            fos = getApplicationContext().openFileOutput(filename, Context.MODE_PRIVATE);
+            ObjectOutputStream os = new ObjectOutputStream(fos);
+            os.writeObject(user);
+            os.close();
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
