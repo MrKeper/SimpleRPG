@@ -54,5 +54,6 @@
         android:id="@+id/shopklili"
         android:layout_below="@+id/buyButton"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="28dp" />
+        android:layout_marginTop="28dp"
+        app:srcCompat="@drawable/klili" />
 </RelativeLayout>
