@@ -27,4 +27,14 @@
         android:id="@+id/loadButton"
         android:layout_below="@+id/saveButton"
         android:layout_alignStart="@+id/saveButton" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/saveButton"
+        android:layout_toStartOf="@+id/loadButton"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="62dp"
+        android:id="@+id/textView7" />
 </RelativeLayout>

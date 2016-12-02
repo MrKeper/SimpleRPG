@@ -12,17 +12,17 @@ import java.util.ArrayList;
 
 public class Current_info extends Application{
 
-    //public ArrayList<Item> inventory;
-    //public Armor equiped_armor;
-    //public Weapon equiped_weapon;
+    public ArrayList<Item> inventory;
+    public Armor equiped_armor;
+    public Weapon equiped_weapon;
     public int current_gold = 10;
-    //public int user_level;
-    //public int experince_bar;
-    //public int experince_needed_to_level;
-    //public ArrayList<Quest> quest_list;
-    //public int current_addtional_stat_points;
-    //public String sex;
-    //public ArrayList<Integer> completedDungeons;
+    public int user_level;
+    public int experince_bar;
+    public int experince_needed_to_level;
+    public ArrayList<Quest> quest_list;
+    public int current_addtional_stat_points;
+    public String sex;
+    public ArrayList<Integer> completedDungeons;
 
 
 
