@@ -8,7 +8,7 @@ import android.media.Image;
 
 import java.io.Serializable;
 
-public class Consumable extends Item implements Serializable
+ class Consumable extends Item implements Serializable
 {
     //=== enherited from Item ===
     //public String name;
@@ -17,16 +17,17 @@ public class Consumable extends Item implements Serializable
 
     // Optional - gear graphic for battles(NOT IMPLEMENTED)
 
-    public Consumable(String n, Image i, String d, int[] ss, int gold_value)
+     Consumable(String n, Image i, String d, int[] ss, int gold_value)
     {
-        name = n;
+        super(n);
+        //name = n;
         icon = i;
         description = d;
         stats = ss;
         value = gold_value;
     }
 
-    public int[] getStatBuffs()
+     int[] getStatBuffs()
     {
         return stats;
     }
