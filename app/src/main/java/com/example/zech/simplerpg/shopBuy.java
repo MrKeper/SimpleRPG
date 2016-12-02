@@ -3,7 +3,7 @@ package com.example.zech.simplerpg;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class shopBuy extends AppCompatActivity {
+public class ShopBuy extends AppCompatActivity {
 
     //Current_info temp2 = (Current_info) getIntent().getSerializableExtra("temp");
 
