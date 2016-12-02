@@ -21,6 +21,8 @@ public class User_Character extends Actor implements Serializable
     public String sex;
     public int max_health;
     public ArrayList<Integer> completedDungeons;
+    public int superAttackCharge;
+    public String lastTownAt;
 
     public User_Character(String name)
     {
@@ -34,7 +36,7 @@ public class User_Character extends Actor implements Serializable
         constitution = 5;
         max_health = 50 + constitution*10;
         current_health = max_health;
-        //moveList = new ArrayList<String>();
+        superAttackCharge = 0;
         current_gold = 10;
         user_level = 1;
         experince_bar = 0;
@@ -45,6 +47,21 @@ public class User_Character extends Actor implements Serializable
         inventory = new ArrayList<Item>();
         quest_list = new ArrayList<Quest>();
         completedDungeons = new ArrayList<Integer>();
+        lastTownAt = null;
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        Mob test_mob = new Mob("Great TestMob Onazuka",1000,1,50,7,5,5,5);
+        int[] weapon_stat_change = {0,1,0,0,0,0};
+        int[] item_stat_change   = {10,0,0,0,0,0};
+        Weapon start_weapon = new Weapon("Wooden Sword",null,"Its something.(+1 STR)",weapon_stat_change,0);
+        Consumable water = new Consumable("Water",null,"A bottle of water (+10 HP).",item_stat_change,0);
+        Quest test_quest1 = new Quest("TEST","All your base are belong to us","Complete the game",1,"Holy Grail",1000,25,start_weapon);
+        Quest test_quest2 = new Quest("TEST","Welcome to Papa's House","Start the game",0,"?",0,0,start_weapon);
+        test_quest2.isComplete = true;
+        inventory.add(start_weapon);
+        inventory.add(water);
+        quest_list.add(test_quest1);
+        quest_list.add(test_quest2);
+
     }
 
     public void equipWeapon(Weapon w)

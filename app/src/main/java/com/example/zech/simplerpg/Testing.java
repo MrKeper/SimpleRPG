@@ -10,6 +10,9 @@ import android.widget.Button;
 
 import com.google.gson.Gson;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+
 public class Testing extends AppCompatActivity {
 
     @Override
@@ -22,20 +25,20 @@ public class Testing extends AppCompatActivity {
         /////////////////////////////////////////////////////////////////////////
         //final Current_info tempSTATS = new Current_info();
 
-        //Current_info tempSTATS2 = new Current_info();
+        final Current_info tempSTATS2 = new Current_info();
 
 
-        //tempSTATS2.inventory = user.inventory;
-        //tempSTATS2.equiped_armor = user.equiped_armor;
-        //tempSTATS2.equiped_weapon = user.equiped_weapon;
-        //tempSTATS2.current_gold = user.current_gold;
-        //tempSTATS2.user_level = user.user_level;
-        //tempSTATS2.experince_bar = user.experince_bar;
-        //tempSTATS2.experince_needed_to_level = user.experince_needed_to_level;
-        //tempSTATS2.quest_list = user.quest_list;
-        //tempSTATS2.current_addtional_stat_points = user.current_addtional_stat_points;
-        //tempSTATS2.sex = user.sex;
-        //tempSTATS2.completedDungeons = user.completedDungeons;
+        tempSTATS2.inventory = user.inventory;
+        tempSTATS2.equiped_armor = user.equiped_armor;
+        tempSTATS2.equiped_weapon = user.equiped_weapon;
+        tempSTATS2.current_gold = user.current_gold;
+        tempSTATS2.user_level = user.user_level;
+        tempSTATS2.experince_bar = user.experince_bar;
+        tempSTATS2.experince_needed_to_level = user.experince_needed_to_level;
+        tempSTATS2.quest_list = user.quest_list;
+        tempSTATS2.current_addtional_stat_points = user.current_addtional_stat_points;
+        tempSTATS2.sex = user.sex;
+        tempSTATS2.completedDungeons = user.completedDungeons;
         ////////////////////////////////////////////////////////////////////////
         //Temp Julian code END
 
@@ -60,6 +63,7 @@ public class Testing extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), user_information_page.class);
+                //save(user,"savefile.txt");
                 intent.putExtra("user",user);
                 startActivity(intent);
                 finish();
@@ -70,6 +74,7 @@ public class Testing extends AppCompatActivity {
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                save(user,"savefile.txt");
                 finish();
             }
         });
@@ -88,15 +93,30 @@ public class Testing extends AppCompatActivity {
             public void onClick(View v) {
 
 
+
+                /*
                 SharedPreferences sharedPref = getSharedPreferences("userinfo", Context.MODE_PRIVATE);
 
+
                 SharedPreferences.Editor editor = sharedPref.edit();
+
+
                 editor.putString("username", "TheName");
                 editor.putInt("current_gold", user.current_gold);
                 editor.putInt("user_level", user.user_level);
                 editor.putInt("experience_bar", user.experince_bar);
                 editor.putInt("current_additional_stat_points", user.current_addtional_stat_points);
-                editor.apply();
+                editor.putInt("current_potions", 3);
+
+
+                Gson gson = new Gson();
+                String json = gson.toJson(tempSTATS2);
+                editor.putString("MyObject", json);
+
+
+
+
+                editor.commit();
                 //editor.putString("username", "TheName");
                 //editor.putString("username", "TheName");
                 //editor.putString("username", "TheName");
@@ -118,9 +138,11 @@ public class Testing extends AppCompatActivity {
                 //editor.putString("username", "TheNewName");
                 //editor.apply();
 
+                */
 
 
                 Intent intent2 = new Intent(getApplicationContext(), RegionMenu.class);
+                intent2.putExtra("user",user);
                 //intent2.putExtra("temp",tempSTATS);
                 startActivity(intent2);
                 finish();
@@ -131,6 +153,20 @@ public class Testing extends AppCompatActivity {
 
 
 
+    }
+
+    public void save (User_Character user, String filename)
+    {
+        FileOutputStream fos = null;
+        try {
+            fos = getApplicationContext().openFileOutput(filename, Context.MODE_PRIVATE);
+            ObjectOutputStream os = new ObjectOutputStream(fos);
+            os.writeObject(user);
+            os.close();
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

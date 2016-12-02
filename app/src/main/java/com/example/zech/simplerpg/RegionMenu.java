@@ -21,6 +21,7 @@ public class RegionMenu extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_region_menu);
 
+        final User_Character user = (User_Character) getIntent().getSerializableExtra("user");
 
         //final Current_info temp2 = (Current_info) getIntent().getSerializableExtra("temp");
 
@@ -60,6 +61,7 @@ public class RegionMenu extends Activity {
             public void onClick(View v) {
 
                 Intent intent3 = new Intent(getApplicationContext(), SaveAndLoad.class);
+                intent3.putExtra("user",user);
                 startActivity(intent3);
             }
         });

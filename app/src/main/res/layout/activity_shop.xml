@@ -51,7 +51,6 @@
     <ImageView
         android:layout_width="100dp"
         android:layout_height="140dp"
-        app:srcCompat="@drawable/klili"
         android:id="@+id/shopklili"
         android:layout_below="@+id/buyButton"
         android:layout_alignParentEnd="true"
