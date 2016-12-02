@@ -48,12 +48,4 @@
         android:layout_marginTop="47dp"
         android:id="@+id/button" />
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="140dp"
-        android:id="@+id/shopklili"
-        android:layout_below="@+id/buyButton"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="28dp"
-        app:srcCompat="@drawable/klili" />
 </RelativeLayout>
