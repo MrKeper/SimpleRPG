@@ -9,20 +9,20 @@ import java.util.ArrayList;
 
 public class User_Character extends Actor implements Serializable
 {
-    public ArrayList<Item> inventory;
-    public Armor equiped_armor;
-    public Weapon equiped_weapon;
-    public int current_gold;
-    public int user_level;
-    public int experince_bar;
-    public int experince_needed_to_level;
-    public ArrayList<Quest> quest_list;
-    public int current_addtional_stat_points;
-    public String sex;
-    public int max_health;
-    public ArrayList<Integer> completedDungeons;
-    public int superAttackCharge;
-    public String lastTownAt;
+     ArrayList<Item> inventory;
+     Armor equiped_armor;
+     Weapon equiped_weapon;
+     int current_gold;
+     int user_level;
+     int experince_bar;
+     int experince_needed_to_level;
+     ArrayList<Quest> quest_list;
+     int current_addtional_stat_points;
+     String sex;
+     int max_health;
+     ArrayList<Integer> completedDungeons;
+     int superAttackCharge;
+     String lastTownAt;
 
     public User_Character(String name)
     {
@@ -90,6 +90,14 @@ public class User_Character extends Actor implements Serializable
         {
             if(quest.quest_id == quest_list.get(i).quest_id && quest_list.get(i).isComplete)
             {
+               /* for(int k = 0; k < inventory.size(); k++)
+                {
+                    if(quest_list.get(i).item_name.equals(inventory.get(k).name))
+                    {
+                        inventory.remove(k);
+                        break;
+                    }
+                }*/ //deltes quest item from inventory, not completely neccesary
                 experince_bar = experince_bar + quest.experince_reward;
                 if(quest.item_reward != null)
                 {

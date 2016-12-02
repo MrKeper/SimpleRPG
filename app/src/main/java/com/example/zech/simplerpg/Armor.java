@@ -19,7 +19,8 @@ public class Armor extends Item implements Serializable
 
     public Armor(String n, Image i, String d, int[] ss, int gold_value)
     {
-        name = n;
+        super(n);
+        //name = n;
         icon = i;
         description = d;
         stats = ss;

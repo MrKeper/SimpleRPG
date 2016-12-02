@@ -9,13 +9,13 @@ import android.media.Image;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Item implements Serializable
+class Item implements Serializable
 {
-    public String name;
-    public Image icon;
-    public String description;
-    public int value;
-    public boolean isEquipped = false; //used for weapons and armor;
+     String name;
+     Image icon;
+     String description;
+     int value;
+     boolean isEquipped = false; //used for weapons and armor;
     /*
         base_health = base_health - w.getStatBuffs()[0];
         strength = strength + w.getStatBuffs()[1];
@@ -24,5 +24,12 @@ public class Item implements Serializable
         dexterity = dexterity + w.getStatBuffs()[4];
         constitution = constitution + w.getStatBuffs()[5];
      */
-    public int[] stats = new int[6];
+     public Item (String n)
+     {
+         name = n;
+         icon = null;
+         description = null;
+     }
+
+     int[] stats = new int[6];
 }
