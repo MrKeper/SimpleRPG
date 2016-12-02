@@ -29,12 +29,12 @@ public class ShopSell extends AppCompatActivity {
 
         //Show potions
         int cPotions = sharedPref.getInt("current_potions", 0);
-        TextView textViewPotion = (TextView) findViewById(R.id.textView10);
-        textViewPotion.setText(String.valueOf(cPotions));
+        //TextView textViewPotion = (TextView) findViewById(R.id.textView10);
+        //textViewPotion.setText(String.valueOf(cPotions));
 
 
 
-        Button sellButton = (Button) findViewById(R.id.sellPotionButton);
+        /*Button sellButton = (Button) findViewById(R.id.sellPotionButton);
         sellButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -54,11 +54,11 @@ public class ShopSell extends AppCompatActivity {
                     TextView textViewGold = (TextView) findViewById(R.id.textView3);
                     textViewGold.setText(String.valueOf(String.valueOf(sharedPref.getInt("current_gold", 0))));
 
-                    TextView textViewPotion = (TextView) findViewById(R.id.textView10);
-                    textViewPotion.setText(String.valueOf(String.valueOf(sharedPref.getInt("current_potions", 0))));
+                    //TextView textViewPotion = (TextView) findViewById(R.id.textView10);
+                    //textViewPotion.setText(String.valueOf(String.valueOf(sharedPref.getInt("current_potions", 0))));
                 }
             }
-        });
+        });*/
 
 
 
