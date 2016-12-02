@@ -60,14 +60,6 @@
         android:layout_alignBottom="@+id/wilDec"
         android:layout_alignStart="@+id/defInc" />
 
-    <Button
-        android:text="Stat Info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/statInfo"
-        android:layout_alignTop="@+id/remainingPoints"
-        android:layout_alignStart="@+id/dexInc" />
-
     <TextView
         android:text="WIL"
         android:layout_width="wrap_content"
@@ -154,28 +146,13 @@
         android:layout_toEndOf="@+id/strView" />
 
     <Button
-        android:text="Decrease\nDEX"
+        android:text="Decrease\nSTR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/dexDec"
-        android:layout_below="@+id/conDec"
-        android:layout_alignStart="@+id/remainingPoints" />
-
-    <Button
-        android:text="Decrease\nCON"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/conDec"
-        android:layout_below="@+id/wilDec"
-        android:layout_alignStart="@+id/dexDec" />
-
-    <Button
-        android:text="Decrease\nWIL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/wilDec"
-        android:layout_below="@+id/defDec"
-        android:layout_alignStart="@+id/conDec" />
+        android:layout_marginTop="78dp"
+        android:id="@+id/strDec"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/spendPointsMessage" />
 
     <Button
         android:text="Decrease\nDEF"
@@ -183,16 +160,31 @@
         android:layout_height="wrap_content"
         android:id="@+id/defDec"
         android:layout_below="@+id/strDec"
-        android:layout_alignStart="@+id/wilDec" />
+        android:layout_alignStart="@+id/strDec" />
 
     <Button
-        android:text="Decrease\nSTR"
+        android:text="Decrease\nWIL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
-        android:id="@+id/strDec"
-        android:layout_alignParentTop="true"
+        android:id="@+id/wilDec"
+        android:layout_below="@+id/defDec"
         android:layout_alignStart="@+id/defDec" />
+
+    <Button
+        android:text="Decrease\nDEX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dexDec"
+        android:layout_below="@+id/conDec"
+        android:layout_alignStart="@+id/conDec" />
+
+    <Button
+        android:text="Decrease\nCON"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/conDec"
+        android:layout_below="@+id/wilDec"
+        android:layout_alignStart="@+id/wilDec" />
 
     <TextView
         android:text="Points remaining: \n5"
@@ -201,8 +193,17 @@
         android:id="@+id/remainingPoints"
         android:textSize="18sp"
         android:textColor="#ffffff"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
         android:layout_above="@+id/spendPointsMessage"
-        android:layout_alignEnd="@+id/wilView" />
+        android:layout_alignStart="@+id/spendPointsMessage"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:text="Stat Info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/statInfo"
+        android:layout_alignBottom="@+id/remainingPoints"
+        android:layout_alignStart="@+id/dexInc" />
 
 </RelativeLayout>

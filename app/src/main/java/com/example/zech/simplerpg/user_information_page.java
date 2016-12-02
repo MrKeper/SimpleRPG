@@ -142,7 +142,7 @@ public class user_information_page extends AppCompatActivity {
         layout.addView(userWeapon);
 
         TextView userArmor = new TextView(this);
-        if(user.equiped_armor != null) { userArmor.setText("Equipped Weapon: \n"+user.equiped_armor.name); }
+        if(user.equiped_armor != null) { userArmor.setText("Equipped Armor: \n"+user.equiped_armor.name); }
         else { userArmor.setText("Equipped Armor: None"); }
         userArmor.setTextColor(WHITE);
         userArmor.setTextSize(23);
