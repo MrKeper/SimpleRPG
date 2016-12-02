@@ -49,6 +49,7 @@ public class User_Character extends Actor implements Serializable
         completedDungeons = new ArrayList<Integer>();
         lastTownAt = null;
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         Mob spider = new Mob("Giant Spider","giantspider",1,30,5,2,4,5);
         Mob serpant = new Mob("Silver King Snake","silverserpant",2,80,9,8,6,7);
         Mob beast = new Mob("Wild Beast","wildbeast",3,60,10,2,6,6);

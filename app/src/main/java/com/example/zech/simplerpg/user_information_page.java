@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.media.Image;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,12 +19,14 @@ import static android.graphics.Color.WHITE;
 public class user_information_page extends AppCompatActivity {
 
     public ViewGroup layout;
+    public  MediaPlayer buttonSound;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_information_page);
         Intent inventory_intent_get = getIntent();
+        buttonSound  = MediaPlayer.create(this, R.raw.button_press);
         final User_Character user = (User_Character) getIntent().getSerializableExtra("user");
         layout = (ViewGroup) findViewById(R.id.userInfoLayout);
 
@@ -159,10 +162,12 @@ public class user_information_page extends AppCompatActivity {
             layout.addView(userStatpotins);
         }
 
-        Button backButton = (Button) findViewById(R.id.userInfoBack);
+        final Button backButton = (Button) findViewById(R.id.userInfoBack);
+        backButton.setSoundEffectsEnabled(false);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                buttonSound.start();
                 Intent intent = new Intent(v.getContext(), Testing.class);
                 intent.putExtra("user",user);
                 startActivity(intent);
@@ -171,9 +176,11 @@ public class user_information_page extends AppCompatActivity {
         });
 
         Button questLogButton =  (Button) findViewById(R.id.questLogUserInfoButton);
+        questLogButton.setSoundEffectsEnabled(false);
         questLogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                buttonSound.start();
                 Intent intent = new Intent(v.getContext(), QuestLog.class);
                 intent.putExtra("user",user);
                 startActivity(intent);
@@ -182,9 +189,11 @@ public class user_information_page extends AppCompatActivity {
         });
 
         Button inventoryButton =  (Button) findViewById(R.id.userInfoInventoryButton);
+        inventoryButton.setSoundEffectsEnabled(false);
         inventoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                buttonSound.start();
                 Intent intent = new Intent(v.getContext(), Inventory.class);
                 intent.putExtra("user",user);
                 startActivity(intent);
@@ -210,6 +219,7 @@ public class user_information_page extends AppCompatActivity {
         levelUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                buttonSound.start();
         Intent intent = new Intent(v.getContext(),AllocateStatsUserInfo.class);
         intent.putExtra("user",user);
         startActivity(intent);

@@ -27,8 +27,7 @@ public class StartPage extends AppCompatActivity {
     public MediaPlayer buttonSound;
     public User_Character u;
     public  boolean overwrite;
-    // faces from: https://vxresource.wordpress.com/category/resources/faces/
-    //wooden button from: http://www.ronraye.com/TestObjects.html
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -107,9 +106,9 @@ public class StartPage extends AppCompatActivity {
             @Override
             public void onClick(View e)
             {
-                mp.stop();
                 buttonSound.start();
-                finish();
+                Intent intent = new Intent(e.getContext(), credits.class);
+                startActivity(intent);
             }
         });
 

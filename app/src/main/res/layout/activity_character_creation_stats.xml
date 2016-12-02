@@ -157,25 +157,6 @@
         android:layout_below="@+id/wilDec"
         android:layout_alignStart="@+id/wilDec" />
 
-    <Button
-        android:text="Decrease\nSTR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="79dp"
-        android:id="@+id/strDec"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:text="Points remaining: \n5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/remainingPoints"
-        android:textSize="18sp"
-        android:textColor="#ffffff"
-        android:layout_above="@+id/spendPointsMessage"
-        android:layout_alignStart="@+id/spendPointsMessage" />
-
     <TextView
         android:text="You must allocate all remaining points to proceed"
         android:layout_width="wrap_content"
@@ -187,19 +168,43 @@
         android:layout_alignParentEnd="true" />
 
     <Button
+        android:text="Stat Info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/statInfo"
+        android:layout_above="@+id/spendPointsMessage"
+        android:layout_alignEnd="@+id/dexInc"
+        android:layout_marginBottom="18dp" />
+
+    <TextView
+        android:text="Points remaining: \n5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/remainingPoints"
+        android:textSize="18sp"
+        android:textColor="#ffffff"
+        android:layout_alignBaseline="@+id/statInfo"
+        android:layout_alignBottom="@+id/statInfo"
+        android:layout_alignStart="@+id/charStatsBack"
+        android:layout_marginStart="11dp" />
+
+    <Button
+        android:text="Decrease\nSTR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:id="@+id/strDec"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/conView"
+        android:layout_marginEnd="21dp" />
+
+    <Button
         android:text="Back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/charStatsBack"
         android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/dexDec" />
-
-    <Button
-        android:text="Stat Info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/statInfo"
-        android:layout_alignTop="@+id/remainingPoints"
-        android:layout_alignEnd="@+id/dexInc" />
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="12dp" />
 
 </RelativeLayout>

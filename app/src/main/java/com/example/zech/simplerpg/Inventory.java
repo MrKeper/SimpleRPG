@@ -1,6 +1,7 @@
 package com.example.zech.simplerpg;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 import static android.graphics.Color.WHITE;
 
 public class Inventory extends AppCompatActivity {
-
+    public MediaPlayer buttonSound;
     public boolean viewingConsumables = true;
     public int stat_change[] = {0,1,2,3,4,5};
     public Consumable test_pot = new Consumable("test health pot",null,"Heals 10 health",stat_change,0);
@@ -39,10 +40,13 @@ public class Inventory extends AppCompatActivity {
         user = (User_Character) getIntent().getSerializableExtra("user");
         layout = (ViewGroup) findViewById(R.id.invLayout);
         player_inventory = user.inventory;
+        buttonSound  = MediaPlayer.create(this, R.raw.button_press);
         Button back_button = (Button) findViewById(R.id.invBack);
+        back_button.setSoundEffectsEnabled(false);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                buttonSound.start();
                 Intent intent = new Intent(v.getContext(), user_information_page.class);
                 intent.putExtra("user",user);
                 startActivity(intent);
@@ -50,18 +54,22 @@ public class Inventory extends AppCompatActivity {
             }
         });
         Button consume = (Button) findViewById(R.id.consumeButton);
+        consume.setSoundEffectsEnabled(false);
         consume.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
+                buttonSound.start();
                 refreshLayout(true);
             }
         });
         Button equips = (Button) findViewById(R.id.equipsButton);
+        equips.setSoundEffectsEnabled(false);
         equips.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
+                buttonSound.start();
                 refreshLayout(false);
             }
         });
@@ -90,11 +98,14 @@ public class Inventory extends AppCompatActivity {
                     item = new Button(this);
                     item.setText(player_inventory.get(i).name+"\n-"+player_inventory.get(i).description+"\n Value: "+player_inventory.get(i).value+"g");
                     item.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
+                    item.setTextSize(20);
+                    item.setSoundEffectsEnabled(false);
                     item.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v)
                         {
                             Button button = (Button) v;
+                            buttonSound.start();
                             String button_text = button.getText().toString();
                             String [] name = button_text.split("\n");
                             selected_item = name[0];
@@ -133,6 +144,8 @@ public class Inventory extends AppCompatActivity {
                 {
                     count++;
                     item = new Button(this);
+                    item.setTextSize(20);
+                    item.setSoundEffectsEnabled(false);
                     if(player_inventory.get(i).isEquipped)
                     {
                         item.setText(player_inventory.get(i).name+"\n-"+player_inventory.get(i).description+"\n Value: "+player_inventory.get(i).value+"g"+"\n-Equipped-");
@@ -150,6 +163,7 @@ public class Inventory extends AppCompatActivity {
                         @Override
                         public void onClick(View v)
                         {
+                            buttonSound.start();
                             Button button = (Button) v;
                             String button_text = button.getText().toString();
                             String [] name = button_text.split("\n");

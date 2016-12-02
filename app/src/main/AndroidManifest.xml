@@ -31,7 +31,8 @@
         <activity android:name=".ShopSell" />
         <activity android:name=".SaveAndLoad" />
         <activity android:name=".Travel" />
-        <activity android:name=".AllocateStatsUserInfo"></activity>
+        <activity android:name=".AllocateStatsUserInfo" />
+        <activity android:name=".credits"></activity>
     </application>
 
 </manifest>

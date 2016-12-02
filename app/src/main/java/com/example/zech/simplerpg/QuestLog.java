@@ -1,6 +1,7 @@
 package com.example.zech.simplerpg;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +20,7 @@ import static android.graphics.Color.YELLOW;
 public class QuestLog extends AppCompatActivity
 {
     public ViewGroup layout;
+    public MediaPlayer buttonSound;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,10 +28,8 @@ public class QuestLog extends AppCompatActivity
         Intent questLogIntent = getIntent();
         final User_Character user = (User_Character) getIntent().getSerializableExtra("user");
         layout = (ViewGroup) findViewById(R.id.questLogLayout);
-        //For every Qust put TextView with infomation
-        //add to layout.
-        //if completed but not turned in,  Have a Complelte , mabye in green
-
+        buttonSound  = MediaPlayer.create(this, R.raw.button_press);
+        user.refeshQuestList();
         ArrayList<Quest> quest_log = user.quest_list;
         TextView questText = new TextView(this);
         questText.setText("\nActive Quests: \n");
@@ -57,15 +57,15 @@ public class QuestLog extends AppCompatActivity
                 if(quest.item_reward != null)
                 {
                         quest_info.setText("Quest: "+quest.quest_name+"\n"+quest.quest_description
-                                +"\nProgress: ("+quest.count+"/"+quest.amountWanted+")"
-                                +"\nRewards:\nExperince: "+quest.experince_reward+"  \nItem: "+quest.item_reward.name+"\n");
+                                +"\nProgress: (0/1)"
+                                +"\n-Rewards-\nExperince: "+quest.experince_reward+"  \nItem: "+quest.item_reward.name+"\n");
                 }
                 else
                 {
 
                         quest_info.setText("Quest: "+quest.quest_name+"\n"+quest.quest_description
-                                +"\nProgress: ("+quest.count+"/"+quest.amountWanted+")"
-                                +"\nRewards: \nExperince: "+quest.experince_reward+"\nItem: N/A\n");
+                                +"\nProgress: (0/1)"
+                                +"\n-Rewards-\nExperince: "+quest.experince_reward+"\nItem: N/A\n");
 
                 }
                 quest_info.setTextColor(WHITE);
@@ -88,15 +88,15 @@ public class QuestLog extends AppCompatActivity
                 if(quest.item_reward != null)
                 {
                     quest_info.setText("Quest: "+quest.quest_name+"\n"+quest.quest_description
-                            +"\nProgress: ("+quest.count+"/"+quest.amountWanted+")"
-                            +"\nRewards:\nExperince: "+quest.experince_reward+"  \nItem: "+quest.item_reward.name+"\n");
+                            +"\nProgress: (1/1)"
+                            +"\n-Rewards-\nExperince: "+quest.experince_reward+"  \nItem: "+quest.item_reward.name+"\n");
                 }
                 else
                 {
 
                     quest_info.setText("Quest: "+quest.quest_name+"\n"+quest.quest_description
-                            +"\nProgress: ("+quest.count+"/"+quest.amountWanted+")"
-                            +"\nRewards: \nExperince: "+quest.experince_reward+"\nItem: N/A\n");
+                            +"\nProgress: (1/1)"
+                            +"\n-Rewards-\nExperince: "+quest.experince_reward+"\nItem: N/A\n");
 
                 }
                 quest_info.setTextColor(WHITE);
@@ -106,9 +106,12 @@ public class QuestLog extends AppCompatActivity
             }
         }
         Button backButton = (Button) findViewById(R.id.questLogBack);
+        backButton.setTextSize(20);
+        backButton.setSoundEffectsEnabled(false);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                buttonSound.start();
                 Intent intent = new Intent(v.getContext(), user_information_page.class);
                 intent.putExtra("user",user);
                 startActivity(intent);

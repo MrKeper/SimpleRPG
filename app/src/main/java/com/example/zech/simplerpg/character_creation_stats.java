@@ -36,8 +36,6 @@ public class character_creation_stats extends AppCompatActivity {
         constitution.setText("CON: "+user.constitution);
 ////////////////////////////////////////////////////////////////////////////////////////
         Button decrease_strength = (Button) findViewById(R.id.strDec);
-        decrease_strength.setBackgroundResource(R.drawable.woodbutton);
-        decrease_strength.setTextColor(WHITE);
         decrease_strength.setSoundEffectsEnabled(false);
         decrease_strength.setOnClickListener(new View.OnClickListener()
         {
@@ -57,8 +55,6 @@ public class character_creation_stats extends AppCompatActivity {
         });
 
         Button increase_strength = (Button) findViewById(R.id.strInc);
-        increase_strength.setBackgroundResource(R.drawable.woodbutton);
-        increase_strength.setTextColor(WHITE);
         increase_strength.setSoundEffectsEnabled(false);
         increase_strength.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,8 +73,6 @@ public class character_creation_stats extends AppCompatActivity {
         });
 ////////////////////////////////////////////////////////////////////////////////////////
         Button decrease_dexterity = (Button) findViewById(R.id.dexDec);
-        decrease_dexterity.setBackgroundResource(R.drawable.woodbutton);
-        decrease_dexterity.setTextColor(WHITE);
         decrease_dexterity.setSoundEffectsEnabled(false);
         decrease_dexterity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,8 +91,6 @@ public class character_creation_stats extends AppCompatActivity {
         });
 
         Button increase_dexterity = (Button) findViewById(R.id.dexInc);
-        increase_dexterity.setBackgroundResource(R.drawable.woodbutton);
-        increase_dexterity.setTextColor(WHITE);
         increase_dexterity.setSoundEffectsEnabled(false);
         increase_dexterity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,8 +109,6 @@ public class character_creation_stats extends AppCompatActivity {
         });
 ////////////////////////////////////////////////////////////////////////////////////////
         Button decrease_defense = (Button) findViewById(R.id.defDec);
-        decrease_defense.setBackgroundResource(R.drawable.woodbutton);
-        decrease_defense.setTextColor(WHITE);
         decrease_defense.setSoundEffectsEnabled(false);
         decrease_defense.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,8 +127,6 @@ public class character_creation_stats extends AppCompatActivity {
         });
 
         Button increase_defense = (Button) findViewById(R.id.defInc);
-        increase_defense.setBackgroundResource(R.drawable.woodbutton);
-        increase_defense.setTextColor(WHITE);
         increase_defense.setSoundEffectsEnabled(false);
         increase_defense.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,8 +145,6 @@ public class character_creation_stats extends AppCompatActivity {
         });
 ////////////////////////////////////////////////////////////////////////////////////////
         Button decrease_willpower = (Button) findViewById(R.id.wilDec);
-        decrease_willpower.setBackgroundResource(R.drawable.woodbutton);
-        decrease_willpower.setTextColor(WHITE);
         decrease_willpower.setSoundEffectsEnabled(false);
         decrease_willpower.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,8 +163,6 @@ public class character_creation_stats extends AppCompatActivity {
         });
 
         Button increase_willpower = (Button) findViewById(R.id.wilInc);
-        increase_willpower.setBackgroundResource(R.drawable.woodbutton);
-        increase_willpower.setTextColor(WHITE);
         increase_willpower.setSoundEffectsEnabled(false);
         increase_willpower.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -197,8 +181,6 @@ public class character_creation_stats extends AppCompatActivity {
         });
 ////////////////////////////////////////////////////////////////////////////////////////
         Button decrease_constitution = (Button) findViewById(R.id.conDec);
-        decrease_constitution.setBackgroundResource(R.drawable.woodbutton);
-        decrease_constitution.setTextColor(WHITE);
         decrease_constitution.setSoundEffectsEnabled(false);
         decrease_constitution.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -219,8 +201,6 @@ public class character_creation_stats extends AppCompatActivity {
         });
 
         Button increase_constitution = (Button) findViewById(R.id.conInc);
-        increase_constitution.setBackgroundResource(R.drawable.woodbutton);
-        increase_constitution.setTextColor(WHITE);
         increase_constitution.setSoundEffectsEnabled(false);
         increase_constitution.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -271,7 +251,7 @@ public class character_creation_stats extends AppCompatActivity {
         Button confirm_button = (Button) findViewById(R.id.charStatConfirm);
         confirm_button.setBackgroundResource(R.drawable.woodbutton);
         confirm_button.setTextColor(WHITE);
-        confirm_button.setTextSize(10);
+        confirm_button.setTextSize(12);
         confirm_button.setSoundEffectsEnabled(false);
         confirm_button.setOnClickListener(new View.OnClickListener()
         {
@@ -300,8 +280,6 @@ public class character_creation_stats extends AppCompatActivity {
         });
 
         Button stat_info = (Button) findViewById(R.id.statInfo);
-        stat_info.setBackgroundResource(R.drawable.woodbutton);
-        stat_info.setTextColor(WHITE);
         stat_info.setSoundEffectsEnabled(false);
         stat_info.setOnClickListener(new View.OnClickListener() {
             @Override
