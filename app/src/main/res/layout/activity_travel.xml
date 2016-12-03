@@ -104,4 +104,12 @@
         android:clickable="false"
         android:textColor="@android:color/background_light"
         android:textStyle="normal|bold" />
+
+    <Button
+        android:text="Back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/backButton" />
 </RelativeLayout>

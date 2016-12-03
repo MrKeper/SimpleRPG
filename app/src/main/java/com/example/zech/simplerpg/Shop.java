@@ -22,24 +22,7 @@ public class Shop extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
 
-
-        //final Current_info temp2 = (Current_info) getIntent().getSerializableExtra("temp");
-
-
-        SharedPreferences  mPrefs = getPreferences(MODE_PRIVATE);
-        //SharedPreferences.Editor editor = mPrefs.edit();
-
-        //SharedPreferences sharedPref = getSharedPreferences("userinfo", Context.MODE_PRIVATE);
-        //SharedPreferences.Editor editor = sharedPref.edit();
-
-        //Gson gson = new Gson();
-
-        //String json = mPrefs.getString("MyObject", "");
-        //Current_info obj = gson.fromJson(json, Current_info.class);
-
-        //int cGold = obj.current_gold;
-        //TextView textViewGold = (TextView) findViewById(R.id.textView4);
-        //textViewGold.setText(String.valueOf(cGold));
+        final User_Character user = (User_Character) getIntent().getSerializableExtra("user");
 
 
 
@@ -51,12 +34,9 @@ public class Shop extends Activity {
             public void onClick(View v) {
 
                 Intent intent22 = new Intent(getApplicationContext(), ShopSell.class);
-                //intent22.putExtra("tempObj", temp2);
+                intent22.putExtra("user", user);
                 startActivity(intent22);
-
-
-
-
+                finish();
 
             }
         });
@@ -69,15 +49,26 @@ public class Shop extends Activity {
 
             public void onClick(View v) {
 
-                Intent intent11 = new Intent(getApplicationContext(), shopBuy.class);
-                //intent11.putExtra("tempObj", temp2);
-                startActivity(intent11);
-
-
-
+                Intent intent44 = new Intent(getApplicationContext(), shopNewBuy.class);
+                intent44.putExtra("user", user);
+                startActivity(intent44);
+                finish();
             }
         });
 
+
+
+        Button backButton = (Button) findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+
+                Intent intent4 = new Intent(getApplicationContext(), RegionMenu.class);
+                intent4.putExtra("user", user);
+                startActivity(intent4);
+                finish();
+            }
+        });
 
 
     }

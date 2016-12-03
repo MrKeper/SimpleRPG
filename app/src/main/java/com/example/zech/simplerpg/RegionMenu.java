@@ -23,12 +23,6 @@ public class RegionMenu extends Activity {
 
         final User_Character user = (User_Character) getIntent().getSerializableExtra("user");
 
-        //final Current_info temp2 = (Current_info) getIntent().getSerializableExtra("temp");
-
-        //TextView textViewGold = (TextView) findViewById(R.id.textView2);
-        //textViewGold.setText(String.valueOf(temp2.current_gold));
-
-
 
 
         Button dungeonButton = (Button) findViewById(R.id.dungeonButton);
@@ -48,8 +42,9 @@ public class RegionMenu extends Activity {
             public void onClick(View v) {
 
                 Intent intent11 = new Intent(getApplicationContext(), Shop.class);
-                //intent11.putExtra("tempObj", temp2);
+                intent11.putExtra("user", user);
                 startActivity(intent11);
+                finish();
             }
         });
 
@@ -63,6 +58,7 @@ public class RegionMenu extends Activity {
                 Intent intent3 = new Intent(getApplicationContext(), SaveAndLoad.class);
                 intent3.putExtra("user",user);
                 startActivity(intent3);
+                finish();
             }
         });
 
@@ -74,7 +70,9 @@ public class RegionMenu extends Activity {
             public void onClick(View v) {
 
                 Intent intent4 = new Intent(getApplicationContext(), Travel.class);
+                intent4.putExtra("user",user);
                 startActivity(intent4);
+                finish();
             }
         });
 
@@ -85,8 +83,10 @@ public class RegionMenu extends Activity {
 
             public void onClick(View v) {
 
-                Intent intent4 = new Intent(getApplicationContext(), stats_information.class);
-                startActivity(intent4);
+                Intent intent5 = new Intent(getApplicationContext(), stats_information.class);
+                intent5.putExtra("user",user);
+                startActivity(intent5);
+                finish();
             }
         });
 

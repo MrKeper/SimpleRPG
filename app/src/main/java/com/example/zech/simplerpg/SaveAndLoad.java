@@ -24,8 +24,7 @@ public class SaveAndLoad extends AppCompatActivity {
 
         final User_Character user = (User_Character) getIntent().getSerializableExtra("user");
 
-
-
+    /*
         Button saveButton = (Button) findViewById(R.id.saveButton);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,9 +73,25 @@ public class SaveAndLoad extends AppCompatActivity {
 
             }
         });
+*/
+
+                Button backButton = (Button) findViewById(R.id.backButton);
+                backButton.setOnClickListener(new View.OnClickListener() {
+
+                    public void onClick(View v) {
+
+                        Intent intent4 = new Intent(getApplicationContext(), RegionMenu.class);
+                        intent4.putExtra("user",user);
+                        startActivity(intent4);
+                        finish();
+                    }
+                });
 
         }
 
 
 
-    });}}
+    }
+//)
+//        ;
+        //}}

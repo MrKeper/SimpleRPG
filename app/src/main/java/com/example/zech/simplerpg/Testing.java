@@ -24,8 +24,9 @@ public class Testing extends AppCompatActivity {
         //Temp Julian code START
         /////////////////////////////////////////////////////////////////////////
         //final Current_info tempSTATS = new Current_info();
-
+        /*
         final Current_info tempSTATS2 = new Current_info();
+        final Junk junkObj = new Junk();
 
 
         tempSTATS2.inventory = user.inventory;
@@ -39,6 +40,7 @@ public class Testing extends AppCompatActivity {
         tempSTATS2.current_addtional_stat_points = user.current_addtional_stat_points;
         tempSTATS2.sex = user.sex;
         tempSTATS2.completedDungeons = user.completedDungeons;
+        */
         ////////////////////////////////////////////////////////////////////////
         //Temp Julian code END
 
@@ -94,12 +96,10 @@ public class Testing extends AppCompatActivity {
 
 
 
-                /*
-                SharedPreferences sharedPref = getSharedPreferences("userinfo", Context.MODE_PRIVATE);
 
-
-                SharedPreferences.Editor editor = sharedPref.edit();
-
+                //SharedPreferences sharedPref = getSharedPreferences("userinfo", Context.MODE_PRIVATE);
+                //SharedPreferences.Editor editor = sharedPref.edit();
+/*
 
                 editor.putString("username", "TheName");
                 editor.putInt("current_gold", user.current_gold);
@@ -107,16 +107,18 @@ public class Testing extends AppCompatActivity {
                 editor.putInt("experience_bar", user.experince_bar);
                 editor.putInt("current_additional_stat_points", user.current_addtional_stat_points);
                 editor.putInt("current_potions", 3);
+*/
+
+                //Gson gson = new Gson();
+                //String json = gson.toJson(junkObj);
+                //editor.putString("JUNKOBJ", json);
 
 
-                Gson gson = new Gson();
-                String json = gson.toJson(tempSTATS2);
-                editor.putString("MyObject", json);
 
 
+                //editor.apply();
 
-
-                editor.commit();
+                /*
                 //editor.putString("username", "TheName");
                 //editor.putString("username", "TheName");
                 //editor.putString("username", "TheName");
