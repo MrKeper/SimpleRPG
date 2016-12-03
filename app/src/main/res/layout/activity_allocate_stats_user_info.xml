@@ -12,15 +12,6 @@
     tools:context="com.example.zech.simplerpg.AllocateStatsUserInfo">
 
     <Button
-        android:text="Back"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/backButton"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-         />
-
-    <Button
         android:text="Increase\nStr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -182,5 +173,13 @@
         android:layout_alignStart="@+id/conDec"
         android:layout_marginStart="12dp"
         android:id="@+id/spendPointsMessage" />
+
+    <Button
+        android:text="Back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/backButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

@@ -2,6 +2,7 @@ package com.example.zech.simplerpg;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,7 +33,8 @@ public class character_creation_sex extends AppCompatActivity {
                 intent.putExtra("user",user);
                 buttonSound.start();
                 startActivity(intent);
-                finish();
+                finishAfterSound(buttonSound);
+                //finish();
             }
         });
 
@@ -49,7 +51,8 @@ public class character_creation_sex extends AppCompatActivity {
                 intent.putExtra("user",user);
                 buttonSound.start();
                 startActivity(intent);
-                finish();
+                finishAfterSound(buttonSound);
+                //finish();
             }
         });
 
@@ -63,10 +66,32 @@ public class character_creation_sex extends AppCompatActivity {
                 Intent intent = new Intent(v.getContext(), character_creation_name.class);
                 buttonSound.start();
                 startActivity(intent);
-                buttonSound.stop();
-                finish();
+                finishAfterSound(buttonSound);
+                //finish();
             }
         });
 
+    }
+
+    public void finishAfterSound(final MediaPlayer mp){
+        final Handler handler = new Handler();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(1000);
+                } catch (Exception e) {
+                    System.out.println("finishAfterSound sleep ERROR");
+                }
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mp.release();
+                        finish();
+                    }
+                });
+
+            }
+        }).start();
     }
 }

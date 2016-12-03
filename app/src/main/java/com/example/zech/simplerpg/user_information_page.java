@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.media.Image;
 import android.media.MediaPlayer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -171,7 +172,8 @@ public class user_information_page extends AppCompatActivity {
                 Intent intent = new Intent(v.getContext(), Testing.class);
                 intent.putExtra("user",user);
                 startActivity(intent);
-                finish();
+                finishAfterSound(buttonSound);
+                //finish();
             }
         });
 
@@ -184,7 +186,8 @@ public class user_information_page extends AppCompatActivity {
                 Intent intent = new Intent(v.getContext(), QuestLog.class);
                 intent.putExtra("user",user);
                 startActivity(intent);
-                finish();
+                finishAfterSound(buttonSound);
+                //finish();
             }
         });
 
@@ -197,7 +200,8 @@ public class user_information_page extends AppCompatActivity {
                 Intent intent = new Intent(v.getContext(), Inventory.class);
                 intent.putExtra("user",user);
                 startActivity(intent);
-                finish();
+                finishAfterSound(buttonSound);
+                //finish();
 
             }
         });
@@ -227,5 +231,27 @@ public class user_information_page extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void finishAfterSound(final MediaPlayer mp){
+        final Handler handler = new Handler();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(1000);
+                } catch (Exception e) {
+                    System.out.println("finishAfterSound sleep ERROR");
+                }
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mp.release();
+                        finish();
+                    }
+                });
+
+            }
+        }).start();
     }
 }

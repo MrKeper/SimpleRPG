@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -56,8 +57,9 @@ public class StartPage extends AppCompatActivity {
                     Intent intent = new Intent(n.getContext(), character_creation_name.class);
                     buttonSound.start();
                     startActivity(intent);
-                    mp.stop();
-                    finish();
+                    mp.release();
+                    finishAfterSound(buttonSound);
+                    //finish();
                 }
                 else
                 {
@@ -88,10 +90,11 @@ public class StartPage extends AppCompatActivity {
                 else
                 {
                     Intent intent = new Intent(l.getContext(), user_information_page.class);
-                    mp.stop();
+                    mp.release();
                     intent.putExtra("user",u);
                     startActivity(intent);
-                    finish();
+                    finishAfterSound(buttonSound);
+                   //finish();
                 }
             }
         });
@@ -122,13 +125,36 @@ public class StartPage extends AppCompatActivity {
             @Override
             public void onClick(View e)
             {
-                mp.stop();
+                mp.release();
                 buttonSound.start();
-                finish();
+                finishAfterSound(buttonSound);
+                //finish();
             }
         });
 
 
+    }
+
+    public void finishAfterSound(final MediaPlayer mp){
+        final Handler handler = new Handler();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(1000);
+                } catch (Exception e) {
+                    System.out.println("finishAfterSound sleep ERROR");
+                }
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mp.release();
+                        finish();
+                    }
+                });
+
+            }
+        }).start();
     }
 
     public void save (User_Character user, String filename)

@@ -1,6 +1,8 @@
 package com.example.zech.simplerpg;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +18,7 @@ public class AllocateStatsUserInfo extends AppCompatActivity {
     public int initWil;
     public int initDex;
     public int initCon;
+    public MediaPlayer buttonSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,7 @@ public class AllocateStatsUserInfo extends AppCompatActivity {
         setContentView(R.layout.activity_allocate_stats_user_info);
         Intent character_creation_stat = getIntent();
         final User_Character user = (User_Character) getIntent().getSerializableExtra("user");
+        buttonSound = MediaPlayer.create(this,R.raw.button_press);
         if(user.experince_bar >= user.experince_needed_to_level)
         {
             user.levelUp();
@@ -71,6 +75,7 @@ public class AllocateStatsUserInfo extends AppCompatActivity {
                     if (user.strength > 1) {
                         user.strength--;
                         user.current_addtional_stat_points++;
+                        buttonSound.start();
                         strength.setText("STR: " + user.strength);
                         pointsRemaining.setText("Points remaining: " + user.current_addtional_stat_points);
                     }
@@ -84,6 +89,7 @@ public class AllocateStatsUserInfo extends AppCompatActivity {
             public void onClick(View v) {
                 if (user.current_addtional_stat_points > 0) {
                     user.strength++;
+                    buttonSound.start();
                     user.current_addtional_stat_points--;
                     strength.setText("STR: " + user.strength);
                     pointsRemaining.setText("Points remaining: " + user.current_addtional_stat_points);
@@ -102,6 +108,7 @@ public class AllocateStatsUserInfo extends AppCompatActivity {
                     {
                         user.dexterity--;
                         user.current_addtional_stat_points++;
+                        buttonSound.start();
                         dexterity.setText("DEX: " + user.dexterity);
                         pointsRemaining.setText("Points remaining: " + user.current_addtional_stat_points);
                     }
@@ -116,6 +123,7 @@ public class AllocateStatsUserInfo extends AppCompatActivity {
                 if (user.current_addtional_stat_points > 0) {
                     user.dexterity++;
                     user.current_addtional_stat_points--;
+                    buttonSound.start();
                     dexterity.setText("DEX: " + user.dexterity);
                     pointsRemaining.setText("Points remaining: " + user.current_addtional_stat_points);
                 }
@@ -131,6 +139,7 @@ public class AllocateStatsUserInfo extends AppCompatActivity {
                 {
                     if (user.defense > 1) {
                         user.defense--;
+                        buttonSound.start();
                         user.current_addtional_stat_points++;
                         defense.setText("DEF: " + user.defense);
                         pointsRemaining.setText("Points remaining: " + user.current_addtional_stat_points);
@@ -145,6 +154,7 @@ public class AllocateStatsUserInfo extends AppCompatActivity {
             public void onClick(View v) {
                 if (user.current_addtional_stat_points > 0) {
                     user.defense++;
+                    buttonSound.start();
                     user.current_addtional_stat_points--;
                     defense.setText("DEF: " + user.defense);
                     pointsRemaining.setText("Points remaining: " + user.current_addtional_stat_points);
@@ -161,6 +171,7 @@ public class AllocateStatsUserInfo extends AppCompatActivity {
                 {
                     if (user.willpower > 1) {
                         user.willpower--;
+                        buttonSound.start();
                         user.current_addtional_stat_points++;
                         willpower.setText("WIL: " + user.willpower);
                         pointsRemaining.setText("Points remaining: " + user.current_addtional_stat_points);
@@ -175,6 +186,7 @@ public class AllocateStatsUserInfo extends AppCompatActivity {
             public void onClick(View v) {
                 if (user.current_addtional_stat_points > 0) {
                     user.willpower++;
+                    buttonSound.start();
                     user.current_addtional_stat_points--;
                     willpower.setText("WIL: " + user.willpower);
                     pointsRemaining.setText("Points remaining: " + user.current_addtional_stat_points);
@@ -191,6 +203,7 @@ public class AllocateStatsUserInfo extends AppCompatActivity {
                 {
                     if (user.constitution > 1) {
                         user.constitution--;
+                        buttonSound.start();
                         user.current_addtional_stat_points++;
                         user.max_health = 50 + user.constitution*10;
                         constitution.setText("CON: " + user.constitution);
@@ -206,6 +219,7 @@ public class AllocateStatsUserInfo extends AppCompatActivity {
             public void onClick(View v) {
                 if (user.current_addtional_stat_points > 0) {
                     user.constitution++;
+                    buttonSound.start();
                     user.current_addtional_stat_points--;
                     user.max_health = 50 + user.constitution*10;
                     constitution.setText("CON: " + user.constitution);
@@ -219,6 +233,7 @@ public class AllocateStatsUserInfo extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                buttonSound.start();
                 if(user.current_addtional_stat_points != 0)
                 {
                     spend_points_message.setVisibility(View.VISIBLE);
@@ -229,7 +244,8 @@ public class AllocateStatsUserInfo extends AppCompatActivity {
                     Intent intent = new Intent(v.getContext(), user_information_page.class);
                     intent.putExtra("user", user);
                     startActivity(intent);
-                    finish();
+                    finishAfterSound(buttonSound);
+                    //finish();
                 }
             }
         });
@@ -244,5 +260,27 @@ public class AllocateStatsUserInfo extends AppCompatActivity {
                 //finish();
             }
         });
+    }
+
+    public void finishAfterSound(final MediaPlayer mp){
+        final Handler handler = new Handler();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(1000);
+                } catch (Exception e) {
+                    System.out.println("finishAfterSound sleep ERROR");
+                }
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mp.release();
+                        finish();
+                    }
+                });
+
+            }
+        }).start();
     }
 }

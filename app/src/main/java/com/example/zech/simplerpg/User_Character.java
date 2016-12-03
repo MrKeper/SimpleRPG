@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 /**
  * Created by Keenan on 11/11/2016.
+ *
  */
 
 public class User_Character extends Actor implements Serializable
@@ -44,9 +45,9 @@ public class User_Character extends Actor implements Serializable
         current_addtional_stat_points = 3;
         equiped_armor = null;
         equiped_weapon = null;
-        inventory = new ArrayList<Item>();
-        quest_list = new ArrayList<Quest>();
-        completedDungeons = new ArrayList<Integer>();
+        inventory = new ArrayList<>();
+        quest_list = new ArrayList<>();
+        completedDungeons = new ArrayList<>();
         lastTownAt = null;
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -54,7 +55,9 @@ public class User_Character extends Actor implements Serializable
         Mob serpant = new Mob("Silver King Snake","silverserpant",2,80,9,8,6,7);
         Mob beast = new Mob("Wild Beast","wildbeast",3,60,10,2,6,6);
         Mob drsgon = new Mob("Young Twin-Headed Dragon","twinheadeddragon",4,300,18,12,8,8);
-
+        //deusex
+        //bigsnake
+        //bloodsucker
         int[] weapon_stat_change = {0,1,0,0,0,0};
         int[] item_stat_change   = {10,0,0,0,0,0};
         Weapon start_weapon = new Weapon("Wooden Sword",null,"Its something.(+1 STR)",weapon_stat_change,0);
@@ -67,7 +70,7 @@ public class User_Character extends Actor implements Serializable
         quest_list.add(test_quest2);
     }
 
-    public void refeshQuestList()
+    void refeshQuestList()
     {
         if(quest_list.isEmpty())
             return;
@@ -84,7 +87,7 @@ public class User_Character extends Actor implements Serializable
         }
     }
 
-    public void turnInQuest(Quest quest)
+    void turnInQuest(Quest quest)
     {
         for(int i = 0; i < quest_list.size(); i++)
         {
@@ -107,7 +110,7 @@ public class User_Character extends Actor implements Serializable
         }
     }
 
-    public void equipWeapon(Weapon w)
+    void equipWeapon(Weapon w)
     {
         if(w == null)
             return;
@@ -122,7 +125,7 @@ public class User_Character extends Actor implements Serializable
         max_health = 50 + constitution*10 + w.getStatBuffs()[0];
     }
 
-    public void unequipWeapon()
+    void unequipWeapon()
     {
         if(equiped_weapon == null)
             return;
@@ -136,7 +139,7 @@ public class User_Character extends Actor implements Serializable
         max_health = 50 + constitution*10 - w.getStatBuffs()[0];
     }
 
-    public void equipArmor(Armor a)
+    void equipArmor(Armor a)
     {
         if(a == null)
             return;
@@ -151,7 +154,7 @@ public class User_Character extends Actor implements Serializable
         max_health = 50 + constitution*10 + a.getStatBuffs()[0];
     }
 
-    public void unequipArmor()
+    void unequipArmor()
     {
         if(equiped_armor == null)
             return;
@@ -166,7 +169,7 @@ public class User_Character extends Actor implements Serializable
         max_health = 50 + constitution*10 - a.getStatBuffs()[0];
     }
 
-    public void useConsumable(Consumable c)
+    void useConsumable(Consumable c)
     {
         if(c == null)
             return;
@@ -182,13 +185,13 @@ public class User_Character extends Actor implements Serializable
         constitution = constitution + c.getStatBuffs()[5];
     }
 
-    public void respawn()
+    void respawn()
     {
         current_gold = (int)(current_gold * 0.8);
         experince_bar = 0;
     }
 
-    public void levelUp()
+    void levelUp()
     {
         user_level++;
         experince_bar = Math.abs(experince_needed_to_level-experince_bar);

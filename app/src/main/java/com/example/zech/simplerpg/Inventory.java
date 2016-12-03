@@ -2,6 +2,7 @@ package com.example.zech.simplerpg;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -50,7 +51,8 @@ public class Inventory extends AppCompatActivity {
                 Intent intent = new Intent(v.getContext(), user_information_page.class);
                 intent.putExtra("user",user);
                 startActivity(intent);
-                finish();
+                finishAfterSound(buttonSound);
+                //finish();
             }
         });
         Button consume = (Button) findViewById(R.id.consumeButton);
@@ -187,6 +189,28 @@ public class Inventory extends AppCompatActivity {
         }
     }
 
+    public void finishAfterSound(final MediaPlayer mp){
+        final Handler handler = new Handler();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(1000);
+                } catch (Exception e) {
+                    System.out.println("finishAfterSound sleep ERROR");
+                }
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mp.release();
+                        finish();
+                    }
+                });
+
+            }
+        }).start();
+    }
+
     final int CONTEXT_MENU_USE = 1;
     final int CONTEXT_MENU_DESTORY = 2;
     final int CONTEXT_MENU_CANCEL = 3;
@@ -233,6 +257,7 @@ public class Inventory extends AppCompatActivity {
         }
 
     }
+
 
     @Override
     public boolean onContextItemSelected (MenuItem item)

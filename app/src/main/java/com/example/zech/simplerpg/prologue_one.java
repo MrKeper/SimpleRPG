@@ -73,13 +73,36 @@ public class prologue_one extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 buttonSound.start();
-                intro.stop();
+                intro.release();
                 Intent intent = new Intent(v.getContext(), Testing.class);
                 intent.putExtra("user",user);
                 startActivity(intent);
-                finish();
+                finishAfterSound(buttonSound);
+                //finsih();
             }
         });
+    }
+
+    public void finishAfterSound(final MediaPlayer mp){
+        final Handler handler = new Handler();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(1000);
+                } catch (Exception e) {
+                    System.out.println("finishAfterSound sleep ERROR");
+                }
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mp.release();
+                        finish();
+                    }
+                });
+
+            }
+        }).start();
     }
 
     private void sendScroll(){

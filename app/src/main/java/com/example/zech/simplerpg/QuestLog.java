@@ -125,6 +125,8 @@ public class QuestLog extends AppCompatActivity
             }
         });
     }
+
+
     public void finishAfterSound(final MediaPlayer mp){
         final Handler handler = new Handler();
         new Thread(new Runnable() {

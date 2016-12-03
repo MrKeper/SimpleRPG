@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -48,7 +49,8 @@ public class character_creation_name extends AppCompatActivity {
                 Intent intent = new Intent(v.getContext(), StartPage.class);
                 buttonSound.start();
                 startActivity(intent);
-                finish();
+                finishAfterSound(buttonSound);
+                //finish();
             }
         });
 
@@ -84,12 +86,33 @@ public class character_creation_name extends AppCompatActivity {
                 intent.putExtra("user",u);
                 buttonSound.start();
                 startActivity(intent);
-                finish();
-                //make actor
-                //proceed
+                finishAfterSound(buttonSound);
+                //finish();
             }
         });
 
+    }
+
+    public void finishAfterSound(final MediaPlayer mp){
+        final Handler handler = new Handler();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(1000);
+                } catch (Exception e) {
+                    System.out.println("finishAfterSound sleep ERROR");
+                }
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mp.release();
+                        finish();
+                    }
+                });
+
+            }
+        }).start();
     }
 
     public void save (User_Character user, String filename)
