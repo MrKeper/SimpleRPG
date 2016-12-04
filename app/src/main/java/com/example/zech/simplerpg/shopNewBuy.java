@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
@@ -23,22 +24,48 @@ public class shopNewBuy extends AppCompatActivity {
 
         int gold = user.current_gold;
 
-        TextView t = (TextView)findViewById(R.id.textView3);
-        //t.setText(String.valueOf(gold));
-        ArrayList<Item> newInv= user.inventory;
-        Item item = newInv.get(0);
-        t.setText(String.valueOf(item.name));
 
-        String[] itemList = new String[10];
-        for (int i = 0; (i < newInv.size()) && ((newInv.get(i).name) != null); i++)
+
+        TextView t = (TextView)findViewById(R.id.textView10);
+        t.setText(String.valueOf(gold));
+        final ArrayList<Item> newInv= user.inventory;
+
+        String[] foods = {"empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"};
+        for (int i = 0; i < newInv.size(); i++)
         {
-            itemList[i] = newInv.get(i).name;
+            foods[i] = newInv.get(i).name;
         }
 
-        ListAdapter adap = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, itemList);
+        ListAdapter adap = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, foods);
         ListView list = (ListView) findViewById(R.id.theList);
-        //list.setAdapter(adap);
+        list.setAdapter(adap);
 
+
+
+        Button buyWater = (Button) findViewById(R.id.button);
+        buyWater.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+
+                if(user.current_gold >= 5)
+                {
+
+                    int[] item_stat_change = {10, 0, 0, 0, 0, 0};
+                    Consumable water = new Consumable("Water", null, "A bottle of water (+10 HP).", item_stat_change, 0);
+                    user.inventory.add(water);
+                    user.current_gold -= 5;
+                    //}
+                    Intent intent4 = new Intent(getApplicationContext(), shopNewBuy.class);
+                    intent4.putExtra("user", user);
+                    startActivity(intent4);
+                    finish();
+                }
+                else
+                {
+
+                }
+            }
+        });
 
 
         Button backButton = (Button) findViewById(R.id.backButton);

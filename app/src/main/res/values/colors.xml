@@ -4,5 +4,5 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#008000</color>
     <color name="healthOrange">#ff8000</color>
-    <color name="healthRed">#B30000</color>
+    <color name="healthRed">#b30000</color>
 </resources>

@@ -20,4 +20,35 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:id="@+id/backButton" />
+
+    <ListView
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_width="200dp"
+        android:id="@+id/inventoryList" />
+
+    <TextView
+        android:text="Gold ="
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:id="@+id/textView4"
+        android:textSize="24sp"
+        android:layout_above="@+id/backButton"
+        android:layout_alignParentStart="true"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/background_light" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/goldText"
+        android:textSize="24sp"
+        android:layout_alignBaseline="@+id/textView4"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_toEndOf="@+id/backButton"
+        android:textColor="@android:color/background_light"
+        android:textStyle="normal|bold" />
 </RelativeLayout>
