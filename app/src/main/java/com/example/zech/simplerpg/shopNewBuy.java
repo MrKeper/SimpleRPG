@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
@@ -42,7 +41,7 @@ public class shopNewBuy extends AppCompatActivity {
 
 
 
-        Button buyWater = (Button) findViewById(R.id.button);
+        Button buyWater = (Button) findViewById(R.id.enterBattle1);
         buyWater.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {

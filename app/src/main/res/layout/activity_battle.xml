@@ -124,7 +124,7 @@
         android:scaleY="3"
         android:layout_height="8dp"
         android:layout_alignBottom="@+id/userView"
-        android:layout_alignEnd="@+id/runButton" />
+        android:layout_toEndOf="@+id/textchooseaction" />
 
     <TextView
         android:text="HP:  "
@@ -148,4 +148,5 @@
         android:layout_alignBottom="@+id/userHealthBar"
         android:layout_alignStart="@+id/monsterView"
         android:translationY="3dp" />
+
 </RelativeLayout>
