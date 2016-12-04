@@ -3,6 +3,7 @@ package com.example.zech.simplerpg;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.Region;
 import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.Handler;
@@ -169,7 +170,7 @@ public class user_information_page extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 buttonSound.start();
-                Intent intent = new Intent(v.getContext(), Testing.class);
+                Intent intent = new Intent(v.getContext(), RegionMenu.class);
                 intent.putExtra("user",user);
                 startActivity(intent);
                 finishAfterSound(buttonSound);

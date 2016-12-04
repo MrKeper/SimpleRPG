@@ -30,8 +30,10 @@ public class RegionMenu extends Activity {
 
             public void onClick(View v) {
 
-                //Intent intent1 = new Intent(getApplicationContext(), Shop.class);
-                //startActivity(intent1);
+                Intent intent = new Intent(getApplicationContext(), Dungeon.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -78,12 +80,12 @@ public class RegionMenu extends Activity {
 
 
 
-        Button statsButton = (Button) findViewById(R.id.statsButton);
-        statsButton.setOnClickListener(new View.OnClickListener() {
+        Button playerInfoButton = (Button) findViewById(R.id.playerInfoButton);
+        playerInfoButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
 
-                Intent intent5 = new Intent(getApplicationContext(), stats_information.class);
+                Intent intent5 = new Intent(getApplicationContext(), user_information_page.class);
                 intent5.putExtra("user",user);
                 startActivity(intent5);
                 finish();
