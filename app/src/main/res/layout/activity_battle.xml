@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.zech.simplerpg.Battle"
-    android:background="@drawable/battle_background2"
+    android:background="@drawable/dungeon2"
 >
 
     <ImageView
@@ -28,45 +28,6 @@
     <ProgressBar
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="150dp"
-        android:layout_marginStart="11dp"
-        android:id="@+id/userHealthBar"
-        android:visibility="visible"
-        tools:visibility="visible"
-        android:max="100"
-        android:progress="100"
-        android:background="#002000"
-        android:scrollbarSize="20dp"
-        android:scaleY="3"
-        android:layout_height="8dp"
-        android:layout_alignBottom="@+id/userView"
-        android:layout_toEndOf="@+id/userView" />
-
-    <TextView
-        android:text="HP:  "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/HPLabel"
-        android:textColor="@android:color/white"
-        android:layout_above="@+id/userHealthBar"
-        android:layout_alignStart="@+id/userHealthBar"
-        android:textSize="15sp"
-        android:textStyle="normal|bold" />
-
-    <TextView
-        android:text="100 / 100"
-        android:layout_width="wrap_content"
-        android:id="@+id/userHealthText"
-        android:textColor="@android:color/white"
-        android:textSize="12sp"
-        android:textAlignment="center"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/userHealthBar"
-        android:layout_alignStart="@+id/monsterView"
-        android:translationY="3dp" />
-
-    <ProgressBar
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="150dp"
         android:layout_height="8dp"
         android:id="@+id/enemyHealthBar"
         android:layout_alignParentEnd="true"
@@ -75,17 +36,6 @@
         android:scaleY="3"
         android:max="100"
         android:progress="100" />
-
-    <ImageView
-        android:layout_width="180dp"
-        android:layout_height="200dp"
-        app:srcCompat="@drawable/monster1"
-        android:id="@+id/monsterView"
-        android:cropToPadding="true"
-        android:layout_marginBottom="36dp"
-        android:scaleType="centerCrop"
-        android:layout_above="@+id/userView"
-        android:layout_alignParentEnd="true" />
 
     <TextView
         android:text="Enemy HP:"
@@ -125,7 +75,7 @@
         android:text="Choose an action:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView6"
+        android:id="@+id/textchooseaction"
         android:layout_marginBottom="46dp"
         android:textColor="@android:color/black"
         android:fontFamily="serif"
@@ -143,6 +93,16 @@
         android:translationX="-30dp" />
 
     <ImageView
+        android:layout_width="180dp"
+        android:layout_height="200dp"
+        app:srcCompat="@drawable/monster1"
+        android:id="@+id/monsterView"
+        android:cropToPadding="true"
+        android:scaleType="centerCrop"
+        android:layout_above="@+id/userView"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/battle_slash0"
@@ -150,4 +110,42 @@
         android:layout_alignTop="@+id/enemyHealthText"
         android:layout_alignStart="@+id/enemyHealthBar"
         android:visibility="visible" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="150dp"
+        android:id="@+id/userHealthBar"
+        android:visibility="visible"
+        tools:visibility="visible"
+        android:max="100"
+        android:progress="100"
+        android:background="@android:color/black"
+        android:scrollbarSize="20dp"
+        android:scaleY="3"
+        android:layout_height="8dp"
+        android:layout_alignBottom="@+id/userView"
+        android:layout_alignEnd="@+id/runButton" />
+
+    <TextView
+        android:text="HP:  "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/HPLabel"
+        android:textColor="@android:color/white"
+        android:layout_above="@+id/userHealthBar"
+        android:layout_alignStart="@+id/userHealthBar"
+        android:textSize="15sp"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:text="100 / 100"
+        android:layout_width="wrap_content"
+        android:id="@+id/userHealthText"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        android:textAlignment="center"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/userHealthBar"
+        android:layout_alignStart="@+id/monsterView"
+        android:translationY="3dp" />
 </RelativeLayout>

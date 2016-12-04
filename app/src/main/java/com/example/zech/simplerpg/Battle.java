@@ -14,13 +14,22 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import static android.graphics.Color.WHITE;
+
 public class Battle extends AppCompatActivity {
 
     User_Character user;
+    Mob enemy;
+    Button attackButton;
+    Button runButton;
     TextView userHPtext;
+    TextView enemyHPtext;
+    TextView chooseActiontext;
     ImageView enemyHitImage;
     ProgressBar userHealthProgress;
+    ProgressBar enemyHealthProgress;
     ImageView monsterImage;
+    ImageView userImage;
     Boolean isFleeing = false;
 
     /* This was suppose to shake the character - BROKEN
@@ -31,6 +40,26 @@ public class Battle extends AppCompatActivity {
                                 p.setMargins(0,0,0,0);
                             monsterImage.requestLayout();
      */
+    public void actionChosen(){
+        attackButton.setVisibility(View.INVISIBLE);
+        runButton.setVisibility(View.INVISIBLE);
+        chooseActiontext.setVisibility(View.INVISIBLE);
+    }
+    public void turnFinish(){
+        attackButton.setVisibility(View.VISIBLE);
+        runButton.setVisibility(View.VISIBLE);
+        chooseActiontext.setVisibility(View.VISIBLE);
+    }
+
+    public void turnSequence(boolean playerFirst){
+        if(playerFirst){
+            changeEnemyHealthBar(enemy.current_health - user.strength*3);
+            userAttackAnimation();
+        }else{
+
+        }
+    }
+
     public void healthBarColorMonitor(){
         final Handler handler = new Handler();
         final int userOrange = user.base_health / 2;
@@ -54,6 +83,7 @@ public class Battle extends AppCompatActivity {
                                     lowHPsound.setLooping(true);
                                 }else if(isFleeing){
                                     lowHPsound.stop();
+                                    lowHPsound.release();
                                     return;
                                 }
                             }
@@ -66,6 +96,7 @@ public class Battle extends AppCompatActivity {
                     }
                 }
                 lowHPsound.stop();
+                lowHPsound.release();
             }
         }).start();
     }
@@ -83,7 +114,37 @@ public class Battle extends AppCompatActivity {
                         @Override
                         public void run() {
                             userHealthProgress.setProgress(user.current_health);
-                            userHPtext.setText(user.current_health + " / " + user.base_health);
+                            String hpText = user.current_health + " / " + user.base_health;
+                            while(hpText.length() < 9) hpText = " "+hpText;
+                            userHPtext.setText(hpText);
+                        }
+                    });
+                    try{
+                        Thread.sleep(50);
+                    }catch (Exception e){
+                        System.out.println("Sleep not working:"+userHealthProgress.getProgress());
+                    }
+                }
+            }
+        }).start();
+    }
+
+    public void changeEnemyHealthBar(final int n){
+        final Handler handler = new Handler();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(enemy.current_health >  Math.max(0,n)){
+                    enemy.current_health = enemy.current_health - 1;
+                    //final int tempHP = userHealthProgress.getProgress() - 1;
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            enemyHealthProgress.setProgress(enemy.current_health);
+                            String hpText = enemy.current_health + " / " + enemy.base_health;
+                            while(hpText.length() < 9) hpText = " "+hpText;
+                            enemyHPtext.setText(hpText);
                         }
                     });
                     try{
@@ -132,6 +193,7 @@ public class Battle extends AppCompatActivity {
                     public void run() {
                         int id = getResources().getIdentifier("battle_slash0", "drawable", getPackageName());
                         enemyHitImage.setImageResource(id);
+                        turnFinish();
                     }
                 });
             }
@@ -143,16 +205,33 @@ public class Battle extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle);
         user = (User_Character) getIntent().getSerializableExtra("user");
+        enemy = (Mob) getIntent().getSerializableExtra("enemy");
         userHPtext = (TextView)  findViewById(R.id.userHealthText);
+        enemyHPtext = (TextView)  findViewById(R.id.enemyHealthText);
+        chooseActiontext = (TextView)  findViewById(R.id.textchooseaction);
         userHealthProgress = (ProgressBar) findViewById(R.id.userHealthBar);
+        enemyHealthProgress = (ProgressBar) findViewById(R.id.enemyHealthBar);
         enemyHitImage = (ImageView) findViewById(R.id.enemyHitImage);
+        userImage = (ImageView)  findViewById(R.id.userView);
         monsterImage = (ImageView)  findViewById(R.id.monsterView);
+
 
         // Initialize stuff
         userHPtext.setText(user.current_health + " / " + user.base_health);
         userHealthProgress.setMax(user.base_health);
         userHealthProgress.setProgress(user.current_health);
         userHealthProgress.getProgressDrawable().setColorFilter(Color.rgb(0,200,0), PorterDuff.Mode.SRC_IN);
+        if(user.sex.equalsIgnoreCase("female")){
+            int id = getResources().getIdentifier("female_high_health", "drawable", getPackageName());
+            userImage.setImageResource(id);
+        }
+
+        enemyHPtext.setText(enemy.current_health + " / " + enemy.base_health);
+        enemyHealthProgress.setMax(enemy.base_health);
+        enemyHealthProgress.setProgress(enemy.current_health);
+        enemyHealthProgress.getProgressDrawable().setColorFilter(Color.rgb(0,200,0), PorterDuff.Mode.SRC_IN);
+        int id = getResources().getIdentifier(enemy.imagename, "drawable", getPackageName());
+        monsterImage.setImageResource(id);
 
 
         final MediaPlayer mp  = MediaPlayer.create(this, R.raw.battle_music1);
@@ -163,23 +242,29 @@ public class Battle extends AppCompatActivity {
 
         healthBarColorMonitor();
 
-        Button attackButton = (Button) findViewById(R.id.attackButton);
+        attackButton = (Button) findViewById(R.id.attackButton);
+        attackButton.setBackgroundResource(R.drawable.woodbutton);
+        attackButton.setTextColor(WHITE);
         attackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 attackSound.start();
-                changeUserHealthBar(user.current_health - 30);
-                userAttackAnimation();
-                //attackSound.stop();
+                actionChosen();
+                turnSequence(true);
             }
         });
 
-        Button runButton = (Button) findViewById(R.id.runButton);
+        runButton = (Button) findViewById(R.id.runButton);
+        runButton.setBackgroundResource(R.drawable.woodbutton);
+        runButton.setTextColor(WHITE);
         runButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
                 mp.stop();
                 attackSound.stop();
+                actionChosen();
+                mp.release();
+                attackSound.release();
                 fleeSound.start();
 
                 final Handler handler = new Handler();

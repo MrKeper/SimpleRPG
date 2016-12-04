@@ -51,10 +51,14 @@ public class Testing extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //My testing stats for user
-                user.current_health = 180;
-                user.base_health = 200;
+                //user.current_health = 180;
+                //user.base_health = 200;
+                // MOB test
+                //Mob(String name,String image_name,int id,int hp, int str, int def ,int wil, int dex)
+                Mob snake = new Mob("snake","bigsnake",111,80,4,4,4,4);
                 Intent intent = new Intent(v.getContext(), Battle.class);
                 intent.putExtra("user",user);
+                intent.putExtra("enemy",snake);
                 startActivity(intent);
                 finish();
             }

@@ -13,16 +13,16 @@ public class Mob extends Actor
 
     public Mob(String name,String image_name,int id,int hp, int str, int def ,int wil, int dex)
     {
-        actor_name = name;
-        imagename = image_name;
-        base_health = hp;
+        actor_name    = name;
+        imagename     = image_name;
+        base_health   = hp;
         current_health= hp;
-        strength = str;
-        dexterity = dex;
-        defense = def;
-        willpower = wil;
-        type = "mob";
-        mob_id = id;
+        strength      = str;
+        dexterity     = dex;
+        defense       = def;
+        willpower     = wil;
+        type          = "mob";
+        mob_id        = id;
         //moveList = new ArrayList<>();
     }
 
