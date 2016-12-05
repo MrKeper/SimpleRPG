@@ -25,16 +25,6 @@
         android:layout_alignParentTop="true"
         android:id="@+id/theList" />
 
-    <Button
-        android:text="Water    Cost: 5g"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:id="@+id/button"
-        android:layout_below="@+id/theList"
-        android:layout_alignParentStart="true"
-        android:layout_width="200dp"
-        android:textAlignment="viewStart" />
-
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
@@ -45,5 +35,28 @@
         android:textColor="@android:color/background_light"
         android:layout_above="@+id/backButton"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Make me invis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/makeInvs"
+        android:layout_below="@+id/theList"
+        android:layout_alignParentEnd="true" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/theList"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/goldText"
+        android:layout_toStartOf="@+id/makeInvs">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/shopBuyLayout" />
+    </ScrollView>
 
 </RelativeLayout>

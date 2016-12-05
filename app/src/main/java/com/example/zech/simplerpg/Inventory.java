@@ -100,7 +100,7 @@ public class Inventory extends AppCompatActivity {
                     item = new Button(this);
                     item.setText(player_inventory.get(i).name+"\n-"+player_inventory.get(i).description+"\n Value: "+player_inventory.get(i).value+"g");
                     item.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
-                    item.setTextSize(20);
+                    item.setTextSize(16);
                     item.setSoundEffectsEnabled(false);
                     item.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -146,7 +146,7 @@ public class Inventory extends AppCompatActivity {
                 {
                     count++;
                     item = new Button(this);
-                    item.setTextSize(20);
+                    item.setTextSize(16);
                     item.setSoundEffectsEnabled(false);
                     if(player_inventory.get(i).isEquipped)
                     {

@@ -2,11 +2,15 @@ package com.example.zech.simplerpg;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -14,16 +18,23 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import static android.graphics.Color.BLACK;
+import static android.graphics.Color.WHITE;
 import static android.graphics.Color.YELLOW;
 
 public class shopNewBuy extends AppCompatActivity {
-
+    public ViewGroup layout;
+    MediaPlayer buttonSound;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_new_buy);
 
         final User_Character user = (User_Character) getIntent().getSerializableExtra("user");
+        layout = (ViewGroup) findViewById(R.id.shopBuyLayout);
+        buttonSound  = MediaPlayer.create(this, R.raw.button_press);
+
+        Button bufferButton = (Button) findViewById(R.id.makeInvs);
+        bufferButton.setVisibility(View.INVISIBLE);
 
         final ArrayList<Item> newInv= user.inventory;
         int listSize = newInv.size();
@@ -51,33 +62,108 @@ public class shopNewBuy extends AppCompatActivity {
 
 
 
-        Button buyWater = (Button) findViewById(R.id.button);
+        final Button buyWater = new Button(this);
+        int[] item_stat_change = {10, 0, 0, 0, 0, 0};
+        final Consumable water = new Consumable("Water", null, "A bottle of water (+10 HP).", item_stat_change, 3);
+        buyWater.setText(water.name+"\n-"+water.description+"\n Value: "+water.value+"g");
+        buyWater.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
         buyWater.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-
-                if(user.current_gold >= 5)
+                buttonSound.start();
+                if(user.current_gold >= water.value)
                 {
 
-                    int[] item_stat_change = {10, 0, 0, 0, 0, 0};
-                    Consumable water = new Consumable("Water", null, "A bottle of water (+10 HP).", item_stat_change, 0);
                     user.inventory.add(water);
-                    user.current_gold -= 5;
+                    user.current_gold -= water.value;
                     //}
                     Intent intent4 = new Intent(getApplicationContext(), shopNewBuy.class);
                     intent4.putExtra("user", user);
                     startActivity(intent4);
-                    finish();
-                }
-                else
-                {
-
+                    finishAfterSound(buttonSound);
                 }
             }
         });
+        layout.addView(buyWater);
 
+
+        final Button buyRusteySword = new Button(this);
+        int[] item_stat_change2 = {0, 2, 0, 0, 0, 0};
+        final Weapon rusted_Sword = new Weapon("Rusted Sword", null, "A old rusted sword, but hey its better than wood (+2 STR).", item_stat_change2, 8);
+        buyRusteySword.setText(rusted_Sword.name+"\n-"+rusted_Sword.description+"\n Value: "+rusted_Sword.value+"g");
+        buyRusteySword.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
+        buyRusteySword.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                buttonSound.start();
+                if(user.current_gold >= rusted_Sword.value)
+                {
+
+                    user.inventory.add(rusted_Sword);
+                    user.current_gold -= rusted_Sword.value;
+                    //}
+                    Intent intent4 = new Intent(getApplicationContext(), shopNewBuy.class);
+                    intent4.putExtra("user", user);
+                    startActivity(intent4);
+                    finishAfterSound(buttonSound);
+                }
+            }
+        });
+        layout.addView(buyRusteySword);
+
+
+        final Button buyLeatherArmor = new Button(this);
+        int[] item_stat_change3 = {0, 0, 2, 0, 0, 0};
+        final Armor leatherArmor = new Armor("Leather Armor", null, "A proper set of armor for a beginner. (+2 DEF).", item_stat_change3, 8);
+        buyLeatherArmor.setText(leatherArmor.name+"\n-"+leatherArmor.description+"\n Value: "+leatherArmor.value+"g");
+        buyLeatherArmor.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
+        buyLeatherArmor.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                buttonSound.start();
+                if(user.current_gold >= leatherArmor.value)
+                {
+
+                    user.inventory.add(leatherArmor);
+                    user.current_gold -= leatherArmor.value;
+                    //}
+                    Intent intent4 = new Intent(getApplicationContext(), shopNewBuy.class);
+                    intent4.putExtra("user", user);
+                    startActivity(intent4);
+                    finishAfterSound(buttonSound);
+                }
+            }
+        });
+        layout.addView(buyLeatherArmor);
+
+        final Button buyIronArmor = new Button(this);
+        int[] item_stat_change4 = {0, 0, 5, 0, 0, 0};
+        final Armor ironArmor = new Armor("Iron Armor", null, "A proper set of armor for a proven warrior. (+5 DEF).", item_stat_change4, 20);
+        buyIronArmor.setText(ironArmor.name+"\n-"+ironArmor.description+"\n Value: "+ironArmor.value+"g");
+        buyIronArmor.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
+        buyIronArmor.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                buttonSound.start();
+                if(user.current_gold >= ironArmor.value)
+                {
+
+                    user.inventory.add(ironArmor);
+                    user.current_gold -= ironArmor.value;
+                    //}
+                    Intent intent4 = new Intent(getApplicationContext(), shopNewBuy.class);
+                    intent4.putExtra("user", user);
+                    startActivity(intent4);
+                    finishAfterSound(buttonSound);
+                }
+            }
+        });
+        layout.addView(buyIronArmor);
 
         Button backButton = (Button) findViewById(R.id.backButton);
+        backButton.setBackgroundResource(R.drawable.woodbutton);
+        backButton.setTextColor(WHITE);
+        backButton.setSoundEffectsEnabled(false);
         backButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -89,8 +175,28 @@ public class shopNewBuy extends AppCompatActivity {
 
             }
         });
-
-
-
     }
+
+    public void finishAfterSound(final MediaPlayer mp){
+        final Handler handler = new Handler();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(mp.getDuration());
+                } catch (Exception e) {
+                    System.out.println("finishAfterSound sleep ERROR");
+                }
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mp.release();
+                        finish();
+                    }
+                });
+
+            }
+        }).start();
+    }
+
 }

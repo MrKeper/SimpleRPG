@@ -41,9 +41,9 @@ public class town1QuestBoard extends AppCompatActivity {
 
         ////////////////////////////////////////////////////////////////////////////// Quest: ClearDungone1
         int[] bronzeStats = {0,3,0,0,0,0};
-        Weapon bronzeSword = new Weapon("Bronze Sword",null,"A solid sword forged by the locals of Ironforge (+3 STR)",bronzeStats,15);
+        Weapon bronzeSword = new Weapon("Bronze Sword",null,"A solid sword forged by the locals of Myrefall (+3 STR)",bronzeStats,8);
         final Quest clearDungeon1 = new Quest(100,"Town in Need I",
-                "Recently Ironforge has been having issues with monsters wondering out of the dungeon. This could be due to overpopulation. Clear the dungeon out to give them a hand.",
+                "Recently Myrefall has been having issues with monsters wondering out of the dungeon. This could be due to overpopulation. Clear the dungeon out to give them a hand.",
                 "Boss' Heart", 50,bronzeSword);
 
 
@@ -114,10 +114,10 @@ public class town1QuestBoard extends AppCompatActivity {
         if(clearDungeon1Complete && user.completedQuests.contains(clearDungeon1.quest_id))
         {
             int[] ironStats = {0,5,0,0,0,0};
-            Weapon ironForged = new Weapon("Ironforged Sword",null,"A weapon that the Ironforge Militia uses. (+5 STR)",ironStats,15);
+            Weapon ironSword = new Weapon("Iron Sword",null,"A proper sword for a proven warrior. (+5 STR).",ironStats,20);
             final Quest townInNeedII = new Quest(200,"Town in Need II",
                     "Th overpopulation continues to cause issues. Clear the dungeon 3 additional times to help the town out.",
-                    "Boss' Heart", 50,ironForged);
+                    "Boss' Heart", 50,ironSword);
 
 
             TextView quest_info2 = new TextView(this);

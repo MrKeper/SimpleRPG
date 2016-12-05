@@ -2,6 +2,8 @@ package com.example.zech.simplerpg;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,11 +17,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import static android.graphics.Color.BLACK;
+import static android.graphics.Color.WHITE;
 import static android.graphics.Color.YELLOW;
 
 
 public class ShopSell extends AppCompatActivity {
-
+    MediaPlayer buttonSound;
 
 
     @Override
@@ -29,6 +32,7 @@ public class ShopSell extends AppCompatActivity {
 
 
         final User_Character user = (User_Character) getIntent().getSerializableExtra("user");
+        buttonSound  = MediaPlayer.create(this, R.raw.button_press);
 
         final ArrayList<Item> newInv= user.inventory;
         int listSize = newInv.size();
@@ -61,7 +65,7 @@ public class ShopSell extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         //String choice = String.valueOf(parent.getItemAtPosition(position));
                         String selectedFromList =(list.getItemAtPosition(position).toString());
-
+                        buttonSound.start();
                         int itemValue = user.inventory.get(position).value;
 
                         String tempItemName = user.inventory.get(position).name;
@@ -92,32 +96,51 @@ public class ShopSell extends AppCompatActivity {
                         Intent intent7 = new Intent(getApplicationContext(), ShopSell.class);
                         intent7.putExtra("user", user);
                         startActivity(intent7);
-                        finish();
+                        finishAfterSound(buttonSound);
 
                     }
                 }
 
         );
 
-
-
-
-
-
-
         Button backButton = (Button) findViewById(R.id.backButton);
+        backButton.setBackgroundResource(R.drawable.woodbutton);
+        backButton.setTextColor(WHITE);
+        backButton.setSoundEffectsEnabled(false);
         backButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-
+                buttonSound.start();
                 Intent intent4 = new Intent(getApplicationContext(), Shop.class);
                 intent4.putExtra("user",user);
                 startActivity(intent4);
-                finish();
+                finishAfterSound(buttonSound);
 
             }
         });
-
-
     }
+
+
+    public void finishAfterSound(final MediaPlayer mp){
+        final Handler handler = new Handler();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(mp.getDuration());
+                } catch (Exception e) {
+                    System.out.println("finishAfterSound sleep ERROR");
+                }
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mp.release();
+                        finish();
+                    }
+                });
+
+            }
+        }).start();
+    }
+
 }
