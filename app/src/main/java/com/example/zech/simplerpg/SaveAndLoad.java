@@ -100,7 +100,7 @@ public class SaveAndLoad extends AppCompatActivity {
         Button toggleAutoSave = (Button) findViewById(R.id.toggleAutoSave);
         toggleAutoSave.setBackgroundResource(R.drawable.woodbutton);
         toggleAutoSave.setTextColor(WHITE);
-        if(user.autoSave == true)
+        if(user.autoSave)
         {
             toggleAutoSave.setText("Toggle Auto-Save: ON");
             toggleAutoSave.setOnClickListener(new View.OnClickListener() {

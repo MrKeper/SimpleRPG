@@ -44,7 +44,7 @@ public class RegionMenu extends Activity {
         {
             if(save(user,"savefile.txt"))
             {
-                Toast autoSave = Toast.makeText(getApplicationContext(),"Autosaving...Complete",Toast.LENGTH_SHORT);
+                Toast autoSave = Toast.makeText(getApplicationContext(),"Autosaving...",Toast.LENGTH_SHORT);
                 autoSave.show();
             }
         }
