@@ -50,7 +50,7 @@ public class ShopSell extends AppCompatActivity {
 
         int gold = user.current_gold;
         TextView t = (TextView)findViewById(R.id.goldText);
-        t.setText(String.valueOf(gold));
+        t.setText("Gold: "+String.valueOf(gold));
         t.setTextColor(YELLOW);
         t.setBackgroundColor(BLACK);
 
