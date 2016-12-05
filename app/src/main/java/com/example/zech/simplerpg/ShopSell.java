@@ -69,7 +69,6 @@ public class ShopSell extends AppCompatActivity {
                         int itemValue = user.inventory.get(position).value;
 
                         String tempItemName = user.inventory.get(position).name;
-
                         //(user.equiped_weapon.name.equals(tempItemName))
                         if (user.equiped_weapon != null)
                         {
@@ -77,22 +76,16 @@ public class ShopSell extends AppCompatActivity {
                             {
                                 user.unequipWeapon();
                             }
-
-                            else if (user.equiped_armor.name.equals(tempItemName))
+                        }
+                        if(user.equiped_armor != null)
+                        {
+                            if(user.equiped_armor.name.equals(tempItemName))
                             {
                                 user.unequipArmor();
                             }
                         }
-
-                        else
-                        {
-
-                        }
-
-
                         user.inventory.remove(position);
                         user.current_gold += itemValue;
-                        //}
                         Intent intent7 = new Intent(getApplicationContext(), ShopSell.class);
                         intent7.putExtra("user", user);
                         startActivity(intent7);

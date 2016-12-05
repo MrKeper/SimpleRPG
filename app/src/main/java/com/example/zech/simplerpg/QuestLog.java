@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -36,6 +37,7 @@ public class QuestLog extends AppCompatActivity
         ArrayList<Quest> quest_log = user.quest_list;
         TextView questText = new TextView(this);
         questText.setText("\nActive Quests: \n");
+        questText.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
         questText.setTextColor(YELLOW);
         questText.setTextSize(25);
         questText.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
@@ -43,7 +45,8 @@ public class QuestLog extends AppCompatActivity
         if(quest_log.size()  == 0)
         {
             TextView quest_info = new TextView(this);
-            quest_info.setText("No Quests Currently");
+            quest_info.setText("\n\nNo Quests Currently");
+            quest_info.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
             quest_info.setTextColor(WHITE);
             quest_info.setTextSize(17);
             quest_info.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
@@ -73,11 +76,13 @@ public class QuestLog extends AppCompatActivity
                 }
                 quest_info.setTextColor(WHITE);
                 quest_info.setTextSize(23);
+                quest_info.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
                 quest_info.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
                 layout.addView(quest_info);
             }
             TextView questReadyText = new TextView(this);
             questReadyText.setText("Ready to Turn In: \n");
+            questReadyText.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
             questReadyText.setTextColor(GREEN);
             questReadyText.setTextSize(25);
             questReadyText.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
@@ -103,13 +108,13 @@ public class QuestLog extends AppCompatActivity
 
                 }
                 quest_info.setTextColor(WHITE);
+                quest_info.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
                 quest_info.setTextSize(23);
                 quest_info.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
                 layout.addView(quest_info);
             }
         }
         Button backButton = (Button) findViewById(R.id.questLogBack);
-        backButton.setTextSize(20);
         backButton.setSoundEffectsEnabled(false);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override

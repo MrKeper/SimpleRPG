@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -34,6 +35,7 @@ public class town1QuestBoard extends AppCompatActivity {
         ArrayList<Integer> currentQuests = new ArrayList<>();
         TextView questBoardText = new TextView(this);
         questBoardText.setText("\nAvaliable Quests: \n");
+        questBoardText.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
         questBoardText.setTextColor(WHITE);
         questBoardText.setTextSize(25);
         questBoardText.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
@@ -48,6 +50,7 @@ public class town1QuestBoard extends AppCompatActivity {
 
 
         TextView quest_info = new TextView(this);
+        quest_info.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
         quest_info.setText("Quest: "+clearDungeon1.quest_name+"\n"+clearDungeon1.quest_description
                 +"\n-Rewards-\nExperince: "+clearDungeon1.experince_reward+"  \nItem: "+clearDungeon1.item_reward.name+"\n");
         quest_info.setTextColor(WHITE);
@@ -99,7 +102,7 @@ public class town1QuestBoard extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     buttonSound.start();
-                    clearDungeon1.isComplete = true;
+                    //FOR TESTING: clearDungeon1.isComplete = true;
                     user.quest_list.add(clearDungeon1);
                     Intent intent = new Intent(v.getContext(), town1QuestBoard.class);
                     intent.putExtra("user",user);
@@ -121,6 +124,7 @@ public class town1QuestBoard extends AppCompatActivity {
 
 
             TextView quest_info2 = new TextView(this);
+            quest_info2.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
             quest_info2.setText("Quest: "+townInNeedII.quest_name+"\n"+townInNeedII.quest_description
                     +"\n-Rewards-\nExperince: "+townInNeedII.experince_reward+"  \nItem: "+townInNeedII.item_reward.name+"\n");
             quest_info2.setTextColor(WHITE);

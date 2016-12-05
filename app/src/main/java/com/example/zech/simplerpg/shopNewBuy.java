@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -76,15 +77,105 @@ public class shopNewBuy extends AppCompatActivity {
 
                     user.inventory.add(water);
                     user.current_gold -= water.value;
-                    //}
                     Intent intent4 = new Intent(getApplicationContext(), shopNewBuy.class);
                     intent4.putExtra("user", user);
                     startActivity(intent4);
                     finishAfterSound(buttonSound);
                 }
+                else
+                {
+                    Toast nofunds = Toast.makeText(getApplicationContext(),"Insufficient funds.",Toast.LENGTH_SHORT);
+                    nofunds.show();
+                }
             }
         });
         layout.addView(buyWater);
+
+
+        final Button buyBasicHealthPotion = new Button(this);
+        int[] item_stat_changePotion1 = {30, 0, 0, 0, 0, 0};
+        final Consumable basicHeathPotion = new Consumable("Small Health Potion", null, "A basic Health Potion (+30 HP).", item_stat_changePotion1, 8);
+        buyBasicHealthPotion.setText(basicHeathPotion.name+"\n-"+basicHeathPotion.description+"\n Value: "+basicHeathPotion.value+"g");
+        buyBasicHealthPotion.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
+        buyBasicHealthPotion.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                buttonSound.start();
+                if(user.current_gold >= basicHeathPotion.value)
+                {
+
+                    user.inventory.add(basicHeathPotion);
+                    user.current_gold -= basicHeathPotion.value;
+                    Intent intent4 = new Intent(getApplicationContext(), shopNewBuy.class);
+                    intent4.putExtra("user", user);
+                    startActivity(intent4);
+                    finishAfterSound(buttonSound);
+                }
+                else
+                {
+                    Toast nofunds = Toast.makeText(getApplicationContext(),"Insufficient funds.",Toast.LENGTH_SHORT);
+                    nofunds.show();
+                }
+            }
+        });
+        layout.addView(buyBasicHealthPotion);
+
+
+        final Button buyInterHealthPotion = new Button(this);
+        int[] item_stat_changePotion2 = {60, 0, 0, 0, 0, 0};
+        final Consumable interHeathPotion = new Consumable("Medium Health Potion", null, "An intermediate Health Potion (+60 HP).", item_stat_changePotion2, 16);
+        buyInterHealthPotion.setText(interHeathPotion.name+"\n-"+interHeathPotion.description+"\n Value: "+interHeathPotion.value+"g");
+        buyInterHealthPotion.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
+        buyInterHealthPotion.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                buttonSound.start();
+                if(user.current_gold >= interHeathPotion.value)
+                {
+
+                    user.inventory.add(interHeathPotion);
+                    user.current_gold -= interHeathPotion.value;
+                    Intent intent4 = new Intent(getApplicationContext(), shopNewBuy.class);
+                    intent4.putExtra("user", user);
+                    startActivity(intent4);
+                    finishAfterSound(buttonSound);
+                }
+                else
+                {
+                    Toast nofunds = Toast.makeText(getApplicationContext(),"Insufficient funds.",Toast.LENGTH_SHORT);
+                    nofunds.show();
+                }
+            }
+        });
+        layout.addView(buyInterHealthPotion);
+
+        final Button buyAdvancedHealthPotion = new Button(this);
+        int[] item_stat_changePotion3 = {120, 0, 0, 0, 0, 0};
+        final Consumable advancHealthPotion = new Consumable("Large Health Potion", null, "An advance Health Potion (+120 HP).", item_stat_changePotion3, 32);
+        buyAdvancedHealthPotion.setText(advancHealthPotion.name+"\n-"+advancHealthPotion.description+"\n Value: "+advancHealthPotion.value+"g");
+        buyAdvancedHealthPotion.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
+        buyAdvancedHealthPotion.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                buttonSound.start();
+                if(user.current_gold >= advancHealthPotion.value)
+                {
+
+                    user.inventory.add(advancHealthPotion);
+                    user.current_gold -= advancHealthPotion.value;
+                    Intent intent4 = new Intent(getApplicationContext(), shopNewBuy.class);
+                    intent4.putExtra("user", user);
+                    startActivity(intent4);
+                    finishAfterSound(buttonSound);
+                }
+                else
+                {
+                    Toast nofunds = Toast.makeText(getApplicationContext(),"Insufficient funds.",Toast.LENGTH_SHORT);
+                    nofunds.show();
+                }
+            }
+        });
+        layout.addView(buyAdvancedHealthPotion);
 
 
         final Button buyRusteySword = new Button(this);
@@ -101,11 +192,15 @@ public class shopNewBuy extends AppCompatActivity {
 
                     user.inventory.add(rusted_Sword);
                     user.current_gold -= rusted_Sword.value;
-                    //}
                     Intent intent4 = new Intent(getApplicationContext(), shopNewBuy.class);
                     intent4.putExtra("user", user);
                     startActivity(intent4);
                     finishAfterSound(buttonSound);
+                }
+                else
+                {
+                    Toast nofunds = Toast.makeText(getApplicationContext(),"Insufficient funds.",Toast.LENGTH_SHORT);
+                    nofunds.show();
                 }
             }
         });
@@ -126,11 +221,15 @@ public class shopNewBuy extends AppCompatActivity {
 
                     user.inventory.add(leatherArmor);
                     user.current_gold -= leatherArmor.value;
-                    //}
                     Intent intent4 = new Intent(getApplicationContext(), shopNewBuy.class);
                     intent4.putExtra("user", user);
                     startActivity(intent4);
                     finishAfterSound(buttonSound);
+                }
+                else
+                {
+                    Toast nofunds = Toast.makeText(getApplicationContext(),"Insufficient funds.",Toast.LENGTH_SHORT);
+                    nofunds.show();
                 }
             }
         });
@@ -150,11 +249,15 @@ public class shopNewBuy extends AppCompatActivity {
 
                     user.inventory.add(ironArmor);
                     user.current_gold -= ironArmor.value;
-                    //}
                     Intent intent4 = new Intent(getApplicationContext(), shopNewBuy.class);
                     intent4.putExtra("user", user);
                     startActivity(intent4);
                     finishAfterSound(buttonSound);
+                }
+                else
+                {
+                    Toast nofunds = Toast.makeText(getApplicationContext(),"Insufficient funds.",Toast.LENGTH_SHORT);
+                    nofunds.show();
                 }
             }
         });
