@@ -27,25 +27,14 @@
         android:id="@+id/theList" />
 
     <Button
-        android:text="BUY WATER"
-        android:layout_width="wrap_content"
+        android:text="G5 Water"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:id="@+id/enterBattle1"
+        android:id="@+id/button"
         android:layout_below="@+id/theList"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:text="COST = 5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView3"
-        android:textColor="@color/healthRed"
-        android:layout_alignBottom="@+id/enterBattle1"
-        android:layout_toEndOf="@+id/enterBattle1"
-        android:layout_marginStart="19dp"
-        android:textSize="30sp"
-        android:textStyle="normal|bold" />
+        android:layout_alignParentStart="true"
+        android:layout_width="200dp"
+        android:textAlignment="viewStart" />
 
     <TextView
         android:text="Gold ="

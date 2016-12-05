@@ -1,6 +1,7 @@
 package com.example.zech.simplerpg;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -30,14 +31,18 @@ public class shopNewBuy extends AppCompatActivity {
         final ArrayList<Item> newInv= user.inventory;
 
         String[] foods = {"empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"};
+        //int InventorySize = newInv.size();
+        //String[newInv.size()] foods =
         for (int i = 0; i < newInv.size(); i++)
         {
             foods[i] = newInv.get(i).name;
         }
 
         ListAdapter adap = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, foods);
+        //adap.setBackgroundColor(Color.parseColor("#9fe7ff"));
         ListView list = (ListView) findViewById(R.id.theList);
         list.setAdapter(adap);
+        list.setBackgroundColor(Color.parseColor("#ffffffff"));
 
 
 

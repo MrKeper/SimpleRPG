@@ -1,6 +1,7 @@
 package com.example.zech.simplerpg;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -30,15 +31,21 @@ public class ShopSell extends AppCompatActivity {
 
 
         final ArrayList<Item> newInv= user.inventory;
-        String[] foods = {"empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"};
+        int listSize = newInv.size();
+        String[] foods = new String[listSize];
+        //String[] foods = {"empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"};
         for (int i = 0; i < newInv.size(); i++)
         {
-            foods[i] = newInv.get(i).name;
+            String tempName = newInv.get(i).name;
+            int tempPrice = newInv.get(i).value;
+            foods[i] = "G" + tempPrice + " " + tempName;
         }
 
         ListAdapter adap = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, foods);
-        ListView list = (ListView) findViewById(R.id.inventoryList);
+        final ListView list = (ListView) findViewById(R.id.inventoryList);
         list.setAdapter(adap);
+        list.setBackgroundColor(Color.parseColor("#ffffffff"));
+
 
 
         int gold = user.current_gold;
@@ -51,16 +58,23 @@ public class ShopSell extends AppCompatActivity {
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String choice = String.valueOf(parent.getItemAtPosition(position));
-                        //if(choice == "Water")
-                        //{
+                        //String choice = String.valueOf(parent.getItemAtPosition(position));
+                        String selectedFromList =(list.getItemAtPosition(position).toString());
+
+                        int itemValue = user.inventory.get(position).value;
                         user.inventory.remove(position);
-                        user.current_gold += 10;
+                        user.current_gold += itemValue;
                         //}
-                        Intent intent6 = new Intent(getApplicationContext(), ShopSell.class);
-                        intent6.putExtra("user",user);
-                        startActivity(intent6);
+                        Intent intent7 = new Intent(getApplicationContext(), ShopSell.class);
+                        intent7.putExtra("user", user);
+                        startActivity(intent7);
                         finish();
+                        //if(selectedFromList.equals)
+
+
+
+                        //TextView t = (TextView)findViewById(R.id.goldText);
+                        //t.setText(selectedFromList);
 
                     }
                 }
