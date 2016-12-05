@@ -47,7 +47,7 @@ public class shopNewBuy extends AppCompatActivity {
         TextView t = (TextView)findViewById(R.id.goldText);
         t.setTextColor(YELLOW);
         t.setBackgroundColor(BLACK);
-        t.setText(String.valueOf(gold));
+        t.setText("Gold: "+String.valueOf(gold));
 
 
 
