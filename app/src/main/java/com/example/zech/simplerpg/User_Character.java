@@ -49,6 +49,7 @@ public class User_Character extends Actor implements Serializable
         inventory = new ArrayList<>();
         quest_list = new ArrayList<>();
         completedDungeons = new ArrayList<>();
+        completedDungeons.add(0);
         completedQuests = new ArrayList<>();
         lastTownAt = null;
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

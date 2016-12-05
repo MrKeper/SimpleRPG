@@ -34,7 +34,7 @@ public class SaveAndLoad extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                buttonSound.start();
                 if(save(user,"savefile.txt"))
                 {
                     Toast save = Toast.makeText(getApplicationContext(),"Save Successful.",Toast.LENGTH_SHORT);

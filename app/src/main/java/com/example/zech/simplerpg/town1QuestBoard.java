@@ -21,6 +21,7 @@ public class town1QuestBoard extends AppCompatActivity {
     public MediaPlayer buttonSound;
     public MediaPlayer questComplete;
     public Boolean clearDungeon1Complete = false;
+    public Boolean townInNeedIIComplete = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,11 +49,10 @@ public class town1QuestBoard extends AppCompatActivity {
 
         TextView quest_info = new TextView(this);
         quest_info.setText("Quest: "+clearDungeon1.quest_name+"\n"+clearDungeon1.quest_description
-                    +"\n-Rewards-\nExperince: "+clearDungeon1.experince_reward+"  \nItem: "+clearDungeon1.item_reward.name+"\n");
+                +"\n-Rewards-\nExperince: "+clearDungeon1.experince_reward+"  \nItem: "+clearDungeon1.item_reward.name+"\n");
         quest_info.setTextColor(WHITE);
         quest_info.setTextSize(23);
         quest_info.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
-        layout.addView(quest_info);
         for(int i = 0; i < user.quest_list.size(); i++)
         {
             if(user.quest_list.get(i).quest_id == clearDungeon1.quest_id && user.quest_list.get(i).isComplete)
@@ -60,6 +60,11 @@ public class town1QuestBoard extends AppCompatActivity {
                 clearDungeon1Complete = true;
             }
             currentQuests.add(user.quest_list.get(i).quest_id);
+        }
+        if(!user.completedQuests.contains(clearDungeon1.quest_id))
+        {
+            layout.addView(quest_info);
+
         }
         Button acceptQuestClearDungeon1 = new Button(this);
         acceptQuestClearDungeon1.setSoundEffectsEnabled(false);
@@ -69,7 +74,7 @@ public class town1QuestBoard extends AppCompatActivity {
         }
         else if(user.completedQuests.contains(clearDungeon1.quest_id))
         {
-            acceptQuestClearDungeon1.setText("Quest Completed");
+            acceptQuestClearDungeon1.setText("Quest: "+clearDungeon1.quest_name+" Completed");
         }
         else if(clearDungeon1Complete && !user.completedQuests.contains(clearDungeon1.quest_id))
         {
@@ -105,7 +110,79 @@ public class town1QuestBoard extends AppCompatActivity {
 
         }
         layout.addView(acceptQuestClearDungeon1);
-        ////////////////////////////////////////////////////////////////////////////// Quest: insert quest here
+        ////////////////////////////////////////////////////////////////////////////// Quest: TownInNeedII
+        if(clearDungeon1Complete && user.completedQuests.contains(clearDungeon1.quest_id))
+        {
+            int[] ironStats = {0,5,0,0,0,0};
+            Weapon ironForged = new Weapon("Ironforged Sword",null,"A weapon that the Ironforge Militia uses. (+5 STR)",ironStats,15);
+            final Quest townInNeedII = new Quest(200,"Town in Need II",
+                    "Th overpopulation continues to cause issues. Clear the dungeon 3 additional times to help the town out.",
+                    "Boss' Heart", 50,ironForged);
+
+
+            TextView quest_info2 = new TextView(this);
+            quest_info2.setText("Quest: "+townInNeedII.quest_name+"\n"+townInNeedII.quest_description
+                    +"\n-Rewards-\nExperince: "+townInNeedII.experince_reward+"  \nItem: "+townInNeedII.item_reward.name+"\n");
+            quest_info2.setTextColor(WHITE);
+            quest_info2.setTextSize(23);
+            quest_info2.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
+            for(int i = 0; i < user.quest_list.size(); i++)
+            {
+                if(user.quest_list.get(i).quest_id == townInNeedII.quest_id && user.quest_list.get(i).isComplete)
+                {
+                    townInNeedIIComplete = true;
+                }
+            }
+            if(!user.completedQuests.contains(townInNeedII.quest_id))
+            {
+                layout.addView(quest_info2);
+
+            }
+
+            Button accepttownInNeed2 = new Button(this);
+            accepttownInNeed2.setSoundEffectsEnabled(false);
+            if(currentQuests.contains(townInNeedII.quest_id) && !townInNeedIIComplete)
+            {
+                accepttownInNeed2.setText("Quest Taken");
+            }
+            else if(user.completedQuests.contains(townInNeedII.quest_id))
+            {
+                accepttownInNeed2.setText("Quest: "+townInNeedII.quest_name+" Completed");
+            }
+            else if(townInNeedIIComplete && !user.completedQuests.contains(townInNeedII.quest_id))
+            {
+                accepttownInNeed2.setText("Turn in Quest");
+                accepttownInNeed2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        questComplete.start();
+                        user.turnInQuest(townInNeedII);
+                        Intent intent = new Intent(v.getContext(), town1QuestBoard.class);
+                        intent.putExtra("user",user);
+                        startActivity(intent);
+                        buttonSound.release();
+                        finishAfterSound(questComplete);
+                    }
+                });
+            }
+            else
+            {
+                accepttownInNeed2.setText("Accept Quest");
+                accepttownInNeed2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        buttonSound.start();
+                        user.quest_list.add(townInNeedII);
+                        Intent intent = new Intent(v.getContext(), town1QuestBoard.class);
+                        intent.putExtra("user",user);
+                        startActivity(intent);
+                        finishAfterSound(buttonSound);
+                    }
+                });
+
+            }
+            layout.addView(accepttownInNeed2);
+        }
 
 
 

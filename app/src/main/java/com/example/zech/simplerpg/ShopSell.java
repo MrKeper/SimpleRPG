@@ -38,7 +38,7 @@ public class ShopSell extends AppCompatActivity {
         {
             String tempName = newInv.get(i).name;
             int tempPrice = newInv.get(i).value;
-            foods[i] = "G" + tempPrice + " " + tempName;
+            foods[i] =  tempPrice + "g" + " " + tempName;
         }
 
         ListAdapter adap = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, foods);
