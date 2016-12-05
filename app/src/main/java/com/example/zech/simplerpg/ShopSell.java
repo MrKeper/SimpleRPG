@@ -27,9 +27,6 @@ public class ShopSell extends AppCompatActivity {
 
         final User_Character user = (User_Character) getIntent().getSerializableExtra("user");
 
-
-
-
         final ArrayList<Item> newInv= user.inventory;
         int listSize = newInv.size();
         String[] foods = new String[listSize];
@@ -62,6 +59,29 @@ public class ShopSell extends AppCompatActivity {
                         String selectedFromList =(list.getItemAtPosition(position).toString());
 
                         int itemValue = user.inventory.get(position).value;
+
+                        String tempItemName = user.inventory.get(position).name;
+
+                        //(user.equiped_weapon.name.equals(tempItemName))
+                        if (user.equiped_weapon != null)
+                        {
+                            if(user.equiped_weapon.name.equals(tempItemName))
+                            {
+                                user.unequipWeapon();
+                            }
+
+                            else if (user.equiped_armor.name.equals(tempItemName))
+                            {
+                                user.unequipArmor();
+                            }
+                        }
+
+                        else
+                        {
+
+                        }
+
+
                         user.inventory.remove(position);
                         user.current_gold += itemValue;
                         //}
@@ -69,12 +89,6 @@ public class ShopSell extends AppCompatActivity {
                         intent7.putExtra("user", user);
                         startActivity(intent7);
                         finish();
-                        //if(selectedFromList.equals)
-
-
-
-                        //TextView t = (TextView)findViewById(R.id.goldText);
-                        //t.setText(selectedFromList);
 
                     }
                 }

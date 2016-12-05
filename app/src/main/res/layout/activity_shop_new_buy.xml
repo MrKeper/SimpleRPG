@@ -23,7 +23,6 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/textView3"
         android:id="@+id/theList" />
 
     <Button
@@ -52,11 +51,12 @@
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView9"
-        android:layout_toEndOf="@+id/textView9"
-        android:id="@+id/textView10"
+        android:id="@+id/goldText"
         android:textSize="24sp"
         android:textStyle="normal|bold"
-        android:textColor="@android:color/background_light" />
+        android:textColor="@android:color/background_light"
+        android:layout_alignBaseline="@+id/textView9"
+        android:layout_alignBottom="@+id/textView9"
+        android:layout_toEndOf="@+id/textView9" />
 
 </RelativeLayout>

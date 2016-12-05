@@ -22,31 +22,31 @@ public class shopNewBuy extends AppCompatActivity {
 
         final User_Character user = (User_Character) getIntent().getSerializableExtra("user");
 
-        int gold = user.current_gold;
-
-
-
-        TextView t = (TextView)findViewById(R.id.textView10);
-        t.setText(String.valueOf(gold));
         final ArrayList<Item> newInv= user.inventory;
-
-        String[] foods = {"empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"};
-        //int InventorySize = newInv.size();
-        //String[newInv.size()] foods =
+        int listSize = newInv.size();
+        String[] foods = new String[listSize];
+        //String[] foods = {"empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"};
         for (int i = 0; i < newInv.size(); i++)
         {
-            foods[i] = newInv.get(i).name;
+            String tempName = newInv.get(i).name;
+            //int tempPrice = newInv.get(i).value;
+            foods[i] = tempName;
         }
 
         ListAdapter adap = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, foods);
-        //adap.setBackgroundColor(Color.parseColor("#9fe7ff"));
-        ListView list = (ListView) findViewById(R.id.theList);
+        final ListView list = (ListView) findViewById(R.id.theList);
         list.setAdapter(adap);
         list.setBackgroundColor(Color.parseColor("#ffffffff"));
 
 
 
-        Button buyWater = (Button) findViewById(R.id.enterBattle1);
+        int gold = user.current_gold;
+        TextView t = (TextView)findViewById(R.id.goldText);
+        t.setText(String.valueOf(gold));
+
+
+
+        Button buyWater = (Button) findViewById(R.id.button);
         buyWater.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -77,9 +77,9 @@ public class shopNewBuy extends AppCompatActivity {
 
             public void onClick(View v) {
 
-                Intent intent4 = new Intent(getApplicationContext(), Shop.class);
-                intent4.putExtra("user",user);
-                startActivity(intent4);
+                Intent intent5 = new Intent(getApplicationContext(), Shop.class);
+                intent5.putExtra("user",user);
+                startActivity(intent5);
                 finish();
 
             }
