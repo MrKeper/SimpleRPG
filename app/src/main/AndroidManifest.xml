@@ -33,7 +33,8 @@
         <activity android:name=".Travel" />
         <activity android:name=".AllocateStatsUserInfo" />
         <activity android:name=".credits" />
-        <activity android:name=".shopNewBuy"></activity>
+        <activity android:name=".shopNewBuy" />
+        <activity android:name=".Dungeon"></activity>
     </application>
 
 </manifest>

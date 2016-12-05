@@ -114,7 +114,7 @@ public class Battle extends AppCompatActivity {
                         @Override
                         public void run() {
                             userHealthProgress.setProgress(user.current_health);
-                            String hpText = user.current_health + " / " + user.base_health;
+                            String hpText = user.current_health + " / " + user.max_health;
                             while(hpText.length() < 9) hpText = " "+hpText;
                             userHPtext.setText(hpText);
                         }
@@ -217,8 +217,8 @@ public class Battle extends AppCompatActivity {
 
 
         // Initialize stuff
-        userHPtext.setText(user.current_health + " / " + user.base_health);
-        userHealthProgress.setMax(user.base_health);
+        userHPtext.setText(user.current_health + " / " + user.max_health);
+        userHealthProgress.setMax(user.max_health);
         userHealthProgress.setProgress(user.current_health);
         userHealthProgress.getProgressDrawable().setColorFilter(Color.rgb(0,200,0), PorterDuff.Mode.SRC_IN);
         if(user.sex.equalsIgnoreCase("female")){
@@ -281,7 +281,7 @@ public class Battle extends AppCompatActivity {
                         handler.post(new Runnable() {
                             @Override
                             public void run() {
-                                Intent intent = new Intent(v.getContext(), Testing.class);
+                                Intent intent = new Intent(v.getContext(), Dungeon.class);
                                 intent.putExtra("user",user);
                                 startActivity(intent);
                                 finish();

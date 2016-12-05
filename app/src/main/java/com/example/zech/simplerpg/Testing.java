@@ -56,9 +56,14 @@ public class Testing extends AppCompatActivity {
                 // MOB test
                 //Mob(String name,String image_name,int id,int hp, int str, int def ,int wil, int dex)
                 Mob snake = new Mob("snake","bigsnake",111,80,4,4,4,4);
-                Intent intent = new Intent(v.getContext(), Battle.class);
+                /*Intent intent = new Intent(v.getContext(), Battle.class);
                 intent.putExtra("user",user);
                 intent.putExtra("enemy",snake);
+                startActivity(intent);
+                finish();
+                */
+                Intent intent = new Intent(v.getContext(), Dungeon.class);
+                intent.putExtra("user",user);
                 startActivity(intent);
                 finish();
             }

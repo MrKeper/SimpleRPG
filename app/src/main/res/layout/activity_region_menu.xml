@@ -55,13 +55,13 @@
         android:textAlignment="center" />
 
     <Button
-        android:text="STATS"
+        android:text="Player Information"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/dungeonButton"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="64dp"
-        android:id="@+id/statsButton" />
+        android:id="@+id/playerInfoButton" />
 
     <TextView
         android:text="TextView"
