@@ -14,6 +14,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import static android.graphics.Color.BLACK;
+import static android.graphics.Color.YELLOW;
+
 
 public class ShopSell extends AppCompatActivity {
 
@@ -48,7 +51,8 @@ public class ShopSell extends AppCompatActivity {
         int gold = user.current_gold;
         TextView t = (TextView)findViewById(R.id.goldText);
         t.setText(String.valueOf(gold));
-
+        t.setTextColor(YELLOW);
+        t.setBackgroundColor(BLACK);
 
         list.setOnItemClickListener(
 
