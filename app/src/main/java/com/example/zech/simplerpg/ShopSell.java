@@ -61,7 +61,6 @@ public class ShopSell extends AppCompatActivity {
                         //String choice = String.valueOf(parent.getItemAtPosition(position));
                         String selectedFromList =(list.getItemAtPosition(position).toString());
 
-
                         int itemValue = user.inventory.get(position).value;
                         user.inventory.remove(position);
                         user.current_gold += itemValue;
