@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_dungeon"
     android:layout_width="match_parent"
@@ -10,19 +11,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.zech.simplerpg.Dungeon"
     android:background="@drawable/dungeon3">
-
-    <TextView
-        android:text="Dungeon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/dLabel"
-        android:textColor="@android:color/white"
-        android:textAllCaps="false"
-        android:fontFamily="monospace"
-        android:textSize="36sp"
-        android:textStyle="normal|bold" />
 
     <Button
         android:text="Enter Battle"
@@ -42,4 +30,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="39dp"
         android:id="@+id/dungeonBack" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        app:srcCompat="@drawable/dtext3"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
