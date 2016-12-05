@@ -59,7 +59,8 @@
         android:translationY="3dp"
         android:layout_marginStart="23dp"
         android:layout_above="@+id/monsterView"
-        android:layout_toEndOf="@+id/userHealthText" />
+        android:layout_toEndOf="@+id/userHealthText"
+        android:translationX="30dp" />
 
     <Button
         android:text="Attack"
@@ -145,8 +146,10 @@
         android:textSize="12sp"
         android:textAlignment="center"
         android:layout_height="wrap_content"
+        android:translationY="3dp"
         android:layout_alignBottom="@+id/userHealthBar"
-        android:layout_alignStart="@+id/monsterView"
-        android:translationY="3dp" />
+        android:layout_alignStart="@+id/userHealthBar"
+        android:layout_marginStart="10dp"
+        android:translationX="40dp" />
 
 </RelativeLayout>

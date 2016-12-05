@@ -12,31 +12,55 @@
     tools:context="com.example.zech.simplerpg.Dungeon"
     android:background="@drawable/dungeon3">
 
-    <Button
-        android:text="Enter Battle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/dLabel"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="161dp"
-        android:id="@+id/enterBattle1"
-        android:fontFamily="sans-serif-medium" />
-
-    <Button
-        android:text="Back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/enterBattle1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp"
-        android:id="@+id/dungeonBack" />
-
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView2"
         app:srcCompat="@drawable/dtext3"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/completed_stamp"
+        android:id="@+id/completedImage"
+        android:layout_above="@+id/dungeonBack"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Boss Battle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/enterBattle3"
+        android:layout_above="@+id/completedImage"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Battle#1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/enterBattle1"
+        android:fontFamily="sans-serif-medium"
+        android:layout_above="@+id/enterBattle2"
+        android:layout_alignStart="@+id/enterBattle2"
+        android:layout_marginBottom="14dp" />
+
+    <Button
+        android:text="Back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dungeonBack"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/imageView2" />
+
+    <Button
+        android:text="Battle#2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/enterBattle2"
+        android:layout_marginBottom="16dp"
+        android:layout_above="@+id/enterBattle3"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

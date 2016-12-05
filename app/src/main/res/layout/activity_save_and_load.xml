@@ -11,41 +11,6 @@
     android:background="@drawable/background_char_outershade"
     tools:context="com.example.zech.simplerpg.SaveAndLoad">
 
-    <Button
-        android:text="Back to Town"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/backButton"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/toMain" />
-
-    <Button
-        android:text="Exit to Main Menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/toMain"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        android:text="SAVE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="175dp"
-        android:id="@+id/saveButton"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:text="LOAD"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="93dp"
-        android:id="@+id/loadButton"
-        android:layout_below="@+id/saveButton"
-        android:layout_alignStart="@+id/saveButton" />
-
     <TextView
         android:text="Save and Load"
         android:layout_width="wrap_content"
@@ -57,6 +22,41 @@
         android:fontFamily="monospace"
         android:layout_marginTop="38dp"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="SAVE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="47dp"
+        android:id="@+id/saveButton"
+        android:layout_below="@+id/slatv1"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="LOAD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:id="@+id/loadButton"
+        android:layout_below="@+id/saveButton"
+        android:layout_alignStart="@+id/saveButton" />
+
+    <Button
+        android:text="Back to Town"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/backButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Exit to Main Menu"
+        android:layout_width="185dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/toMain"
+        android:layout_marginTop="55dp"
+        android:layout_below="@+id/loadButton"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

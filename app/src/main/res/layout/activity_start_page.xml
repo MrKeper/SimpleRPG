@@ -14,35 +14,38 @@
     >
 
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/loadGame"
         android:text="Load Game"
         android:layout_below="@+id/newGame"
-        android:layout_alignStart="@+id/newGame" />
+        android:layout_alignStart="@+id/newGame"
+        android:layout_alignEnd="@+id/newGame" />
+
+    <Button
+        android:text="Credits"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loadGame"
+        android:id="@+id/creditsButton"
+        android:layout_alignStart="@+id/loadGame"
+        android:layout_alignEnd="@+id/loadGame" />
+
+    <Button
+        android:text="Exit"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/exitGame"
+        android:layout_below="@+id/creditsButton"
+        android:layout_alignStart="@+id/creditsButton"
+        android:layout_alignEnd="@+id/creditsButton" />
 
     <Button
         android:text="New Game"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:id="@+id/newGame"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
-
-    <Button
-        android:text="Credits"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/loadGame"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/creditsButton" />
-
-    <Button
-        android:text="Exit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/exitGame"
-        android:layout_below="@+id/creditsButton"
-        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

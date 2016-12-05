@@ -89,7 +89,7 @@ public class StartPage extends AppCompatActivity {
                 }
                 else
                 {
-                    Intent intent = new Intent(l.getContext(), Testing.class);
+                    Intent intent = new Intent(l.getContext(), RegionMenu.class);
                     mp.release();
                     intent.putExtra("user",u);
                     startActivity(intent);

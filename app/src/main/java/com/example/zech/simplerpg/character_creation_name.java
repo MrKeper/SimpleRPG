@@ -81,7 +81,7 @@ public class character_creation_name extends AppCompatActivity {
                 }
 
                 u = new User_Character(player_name);
-                save(u,"savefile.txt");
+                save (u,"savefile.txt");
                 Intent intent = new Intent(v.getContext(), character_creation_sex.class);
                 intent.putExtra("user",u);
                 buttonSound.start();

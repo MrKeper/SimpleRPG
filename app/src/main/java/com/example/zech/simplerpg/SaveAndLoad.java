@@ -70,7 +70,8 @@ public class SaveAndLoad extends AppCompatActivity {
 
 
         Button backButton = (Button) findViewById(R.id.backButton);
-
+        backButton.setBackgroundResource(R.drawable.woodbutton);
+        backButton.setTextColor(WHITE);
         backButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -83,6 +84,8 @@ public class SaveAndLoad extends AppCompatActivity {
         });
 
         Button toMain = (Button) findViewById(R.id.toMain);
+        toMain.setBackgroundResource(R.drawable.woodbutton);
+        toMain.setTextColor(WHITE);
         toMain.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {

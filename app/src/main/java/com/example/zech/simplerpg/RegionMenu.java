@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import static android.graphics.Color.GRAY;
@@ -35,6 +36,11 @@ public class RegionMenu extends Activity {
         townMusic.setLooping(true);
         townMusic.start();
         Button dungeonButton = (Button) findViewById(R.id.dungeonButton);
+        ImageView titleView = (ImageView) findViewById(R.id.regionTitleView);
+        titleView.setImageResource(R.drawable.mfall2);
+        titleView.setVisibility(View.VISIBLE);
+        dungeonButton.setBackgroundResource(R.drawable.woodbutton);
+        dungeonButton.setTextColor(WHITE);
         dungeonButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -49,6 +55,8 @@ public class RegionMenu extends Activity {
 
 
         Button shopButton = (Button) findViewById(R.id.shopButton);
+        shopButton.setBackgroundResource(R.drawable.woodbutton);
+        shopButton.setTextColor(WHITE);
         shopButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -64,6 +72,8 @@ public class RegionMenu extends Activity {
 
 
         Button saveLoadButton = (Button) findViewById(R.id.saveloadButton);
+        saveLoadButton.setBackgroundResource(R.drawable.woodbutton);
+        saveLoadButton.setTextColor(WHITE);
         saveLoadButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -79,10 +89,13 @@ public class RegionMenu extends Activity {
 
 
         Button travelButton = (Button) findViewById(R.id.travelButton);
+        travelButton.setBackgroundResource(R.drawable.woodbutton);
+        travelButton.setTextColor(WHITE);
         travelButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 buttonSound.start();
+                townMusic.release();
                 Intent intent4 = new Intent(getApplicationContext(), Travel.class);
                 intent4.putExtra("user",user);
                 startActivity(intent4);
@@ -93,6 +106,8 @@ public class RegionMenu extends Activity {
 
 
         Button playerInfoButton = (Button) findViewById(R.id.playerInfoButton);
+        playerInfoButton.setBackgroundResource(R.drawable.woodbutton);
+        playerInfoButton.setTextColor(WHITE);
         playerInfoButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -106,6 +121,8 @@ public class RegionMenu extends Activity {
         });
 
         Button questBoard = (Button) findViewById(R.id.questBoard);
+        questBoard.setBackgroundResource(R.drawable.woodbutton);
+        questBoard.setTextColor(WHITE);
         questBoard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,11 +135,11 @@ public class RegionMenu extends Activity {
             }
         });
 
-        TextView regionName = (TextView) findViewById(R.id.regionName);
+        /*TextView regionName = (TextView) findViewById(R.id.regionName);
         regionName.setText("Ironforge");
         regionName.setTextColor(GRAY);
         regionName.setTextSize(35);
-        regionName.setBackgroundColor(WHITE);
+        regionName.setBackgroundColor(WHITE);*/
 
     }
 

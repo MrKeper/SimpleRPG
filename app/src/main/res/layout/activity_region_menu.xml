@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_region_menu"
     android:layout_width="match_parent"
@@ -12,64 +13,72 @@
     android:background="@drawable/townimg">
 
     <Button
-        android:text="TRAVEL"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/saveloadButton"
-        android:id="@+id/travelButton" />
-
-    <Button
-        android:text="SAVE_LOAD"
+        android:text="SAVE / LOAD"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/saveloadButton"
-        android:layout_above="@+id/travelButton"
-        android:layout_alignStart="@+id/shopButton" />
+        android:textSize="18sp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/travelButton"
+        android:layout_alignEnd="@+id/dungeonButton" />
+
+    <Button
+        android:text="Player Info"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/playerInfoButton"
+        android:textSize="18sp"
+        android:layout_alignBaseline="@+id/questBoard"
+        android:layout_alignBottom="@+id/questBoard"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="TRAVEL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/travelButton"
+        android:textSize="18sp"
+        android:layout_above="@+id/saveloadButton"
+        android:layout_alignStart="@+id/shopButton"
+        android:layout_alignEnd="@+id/dungeonButton" />
 
     <Button
         android:text="SHOP"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/shopButton"
-        android:layout_above="@+id/saveloadButton"
-        android:layout_alignStart="@+id/dungeonButton" />
+        android:textSize="18sp"
+        android:layout_above="@+id/travelButton"
+        android:layout_alignStart="@+id/dungeonButton"
+        android:layout_alignEnd="@+id/dungeonButton" />
 
     <Button
         android:text="DUNGEON"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:id="@+id/dungeonButton"
+        android:textSize="18sp"
         android:layout_above="@+id/shopButton"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:text="Player Information"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/dungeonButton"
+        app:srcCompat="@drawable/mfall2"
+        android:id="@+id/regionTitleView"
+        android:adjustViewBounds="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="64dp"
-        android:id="@+id/playerInfoButton" />
+        android:layout_marginTop="84dp" />
 
     <Button
         android:text="Quest Board"
-        android:layout_width="wrap_content"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/dungeonButton"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="14dp"
         android:id="@+id/questBoard"
-        android:layout_alignEnd="@+id/playerInfoButton" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/regionName"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        android:layout_marginEnd="83dp"
-        android:layout_alignParentTop="true"
+        android:textSize="18sp"
+        android:layout_marginBottom="37dp"
+        android:layout_above="@+id/dungeonButton"
         android:layout_alignParentEnd="true" />
+
 </RelativeLayout>

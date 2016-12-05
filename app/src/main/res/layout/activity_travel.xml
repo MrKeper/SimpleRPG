@@ -13,43 +13,7 @@
     >
 
     <TextView
-        android:text="REGION_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="155dp"
-        android:id="@+id/region1TextView"
-        android:textSize="30sp"
-        android:textColor="@android:color/background_light"
-        android:textStyle="normal|bold" />
-
-    <Button
-        android:text="Travel to Region 1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/region1TextView"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/region1Button" />
-
-    <Button
-        android:text="Travel to Region 2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/region3TextView"
-        android:layout_alignStart="@+id/region1Button"
-        android:id="@+id/region2Button" />
-
-    <Button
-        android:text="Travel to Region 3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/region3TextView"
-        android:layout_alignStart="@+id/region2Button"
-        android:id="@+id/region3Button" />
-
-    <TextView
-        android:text="REGION_3"
+        android:text="REGION3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="74dp"
@@ -61,7 +25,7 @@
         android:textStyle="normal|bold" />
 
     <TextView
-        android:text="REGION_2"
+        android:text="REGION2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/region2TextView"
@@ -81,7 +45,8 @@
         android:layout_below="@+id/region1TextView"
         android:layout_alignParentStart="true"
         android:textColor="@android:color/background_light"
-        android:textStyle="normal|bold" />
+        android:textStyle="normal|bold"
+        android:checked="true" />
 
     <CheckBox
         android:text="Unlocked"
@@ -112,4 +77,42 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:id="@+id/backButton" />
+
+    <Button
+        android:text="Travel to Region 2"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/region2Button"
+        android:layout_alignBaseline="@+id/region2TextView"
+        android:layout_alignBottom="@+id/region2TextView"
+        android:layout_alignStart="@+id/region1Button" />
+
+    <Button
+        android:text="Travel to Region 3"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/region3Button"
+        android:layout_alignBaseline="@+id/region3TextView"
+        android:layout_alignBottom="@+id/region3TextView"
+        android:layout_alignStart="@+id/region2Button" />
+
+    <Button
+        android:text="Travel to Myrefall"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/region1Button"
+        android:layout_alignTop="@+id/region1TextView"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="Myrefall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:id="@+id/region1TextView"
+        android:textSize="30sp"
+        android:textColor="@android:color/background_light"
+        android:textStyle="normal|bold"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
