@@ -22,6 +22,7 @@ public class User_Character extends Actor implements Serializable
      String sex;
      int max_health;
      ArrayList<Integer> completedDungeons;
+     ArrayList<Integer> completedQuests;
      int superAttackCharge;
      String lastTownAt;
 
@@ -48,6 +49,7 @@ public class User_Character extends Actor implements Serializable
         inventory = new ArrayList<>();
         quest_list = new ArrayList<>();
         completedDungeons = new ArrayList<>();
+        completedQuests = new ArrayList<>();
         lastTownAt = null;
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -62,11 +64,11 @@ public class User_Character extends Actor implements Serializable
         int[] item_stat_change   = {10,0,0,0,0,0};
         Weapon start_weapon = new Weapon("Wooden Sword",null,"Its something.(+1 STR)",weapon_stat_change,0);
         Consumable water = new Consumable("Water",null,"A bottle of water (+10 HP).",item_stat_change,0);
-        Quest test_quest1 = new Quest(1,"All your base are belong to us","Complete the game","God's Heart",25000,start_weapon);
-        Quest test_quest2 = new Quest(2,"Welcome to Papa's House","Start the game","Wooden Sword",0,start_weapon);
+       //Quest test_quest1 = new Quest(1,"All your base are belong to us","Complete the game","God's Heart",25000,start_weapon);
+        Quest test_quest2 = new Quest(2,"Welcome to Simple RPG","Start the game","Wooden Sword",0,start_weapon);
         inventory.add(start_weapon);
         inventory.add(water);
-        quest_list.add(test_quest1);
+        //quest_list.add(test_quest1);
         quest_list.add(test_quest2);
     }
 
@@ -102,6 +104,7 @@ public class User_Character extends Actor implements Serializable
                     }
                 }*/ //deltes quest item from inventory, not completely neccesary
                 experince_bar = experince_bar + quest.experince_reward;
+                completedQuests.add(quest.quest_id);
                 if(quest.item_reward != null)
                 {
                     inventory.add(quest.item_reward);

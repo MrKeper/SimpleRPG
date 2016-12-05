@@ -74,7 +74,7 @@ public class prologue_one extends AppCompatActivity {
             public void onClick(View v) {
                 buttonSound.start();
                 intro.release();
-                Intent intent = new Intent(v.getContext(), Testing.class);
+                Intent intent = new Intent(v.getContext(), RegionMenu.class);
                 intent.putExtra("user",user);
                 startActivity(intent);
                 finishAfterSound(buttonSound);
