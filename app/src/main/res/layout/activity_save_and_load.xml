@@ -8,16 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/background_char_outershade"
     tools:context="com.example.zech.simplerpg.SaveAndLoad">
-
-    <Button
-        android:text="SAVE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="133dp"
-        android:id="@+id/saveButton"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
 
     <Button
         android:text="LOAD"
@@ -28,21 +20,29 @@
         android:layout_below="@+id/saveButton"
         android:layout_alignStart="@+id/saveButton" />
 
-    <TextView
-        android:text="TextView"
+    <Button
+        android:text="SAVE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/saveButton"
-        android:layout_toStartOf="@+id/loadButton"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="62dp"
-        android:id="@+id/textView7" />
+        android:layout_marginTop="134dp"
+        android:id="@+id/saveButton"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
-        android:text="Back"
+        android:text="Back to Town"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/backButton"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/toMain" />
+
+    <Button
+        android:text="Exit to Main Menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/toMain"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
