@@ -17,6 +17,8 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import static android.graphics.Color.WHITE;
+
 public class SaveAndLoad extends AppCompatActivity {
     User_Character user;
     MediaPlayer buttonSound;
@@ -31,10 +33,12 @@ public class SaveAndLoad extends AppCompatActivity {
         buttonSound  = MediaPlayer.create(this, R.raw.button_press);
 
         Button saveButton = (Button) findViewById(R.id.saveButton);
+        saveButton.setBackgroundResource(R.drawable.woodbutton);
+        saveButton.setTextColor(WHITE);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                buttonSound.start();
                 if(save(user,"savefile.txt"))
                 {
                     Toast save = Toast.makeText(getApplicationContext(),"Save Successful.",Toast.LENGTH_SHORT);
@@ -45,6 +49,9 @@ public class SaveAndLoad extends AppCompatActivity {
 
 
         Button loadButton = (Button) findViewById(R.id.loadButton);
+        loadButton.setBackgroundResource(R.drawable.woodbutton);
+        loadButton.setTextColor(WHITE);
+
         loadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,6 +70,7 @@ public class SaveAndLoad extends AppCompatActivity {
 
 
         Button backButton = (Button) findViewById(R.id.backButton);
+
         backButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {

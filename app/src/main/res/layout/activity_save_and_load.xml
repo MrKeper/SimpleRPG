@@ -12,24 +12,6 @@
     tools:context="com.example.zech.simplerpg.SaveAndLoad">
 
     <Button
-        android:text="LOAD"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="118dp"
-        android:id="@+id/loadButton"
-        android:layout_below="@+id/saveButton"
-        android:layout_alignStart="@+id/saveButton" />
-
-    <Button
-        android:text="SAVE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="134dp"
-        android:id="@+id/saveButton"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <Button
         android:text="Back to Town"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,4 +27,36 @@
         android:id="@+id/toMain"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="SAVE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="175dp"
+        android:id="@+id/saveButton"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="LOAD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="93dp"
+        android:id="@+id/loadButton"
+        android:layout_below="@+id/saveButton"
+        android:layout_alignStart="@+id/saveButton" />
+
+    <TextView
+        android:text="Save and Load"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/slatv1"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/white"
+        android:textSize="36sp"
+        android:fontFamily="monospace"
+        android:layout_marginTop="38dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
