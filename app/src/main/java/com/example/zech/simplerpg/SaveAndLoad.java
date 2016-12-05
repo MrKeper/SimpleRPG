@@ -97,7 +97,40 @@ public class SaveAndLoad extends AppCompatActivity {
             }
         });
 
+        Button toggleAutoSave = (Button) findViewById(R.id.toggleAutoSave);
+        toggleAutoSave.setBackgroundResource(R.drawable.woodbutton);
+        toggleAutoSave.setTextColor(WHITE);
+        if(user.autoSave == true)
+        {
+            toggleAutoSave.setText("Toggle Auto-Save: ON");
+            toggleAutoSave.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    user.autoSave = false;
+                    buttonSound.start();
+                    Intent intent4 = new Intent(getApplicationContext(), SaveAndLoad.class);
+                    intent4.putExtra("user",user);
+                    startActivity(intent4);
+                    finishAfterSound(buttonSound);
+                }
+            });
         }
+        else
+        {
+            toggleAutoSave.setText("Toggle Auto-Save: OFF");
+            toggleAutoSave.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    user.autoSave = true;
+                    buttonSound.start();
+                    Intent intent4 = new Intent(getApplicationContext(), SaveAndLoad.class);
+                    startActivity(intent4);
+                    finishAfterSound(buttonSound);
+                }
+            });
+        }
+
+    }
 
 
     public void finishAfterSound(final MediaPlayer mp){

@@ -25,6 +25,7 @@ public class User_Character extends Actor implements Serializable
      ArrayList<Integer> completedQuests;
      int superAttackCharge;
      String lastTownAt;
+    Boolean autoSave = true;
 
     public User_Character(String name)
     {

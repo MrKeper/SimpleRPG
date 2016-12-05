@@ -11,6 +11,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 
 import static android.graphics.Color.GRAY;
 import static android.graphics.Color.WHITE;
@@ -35,6 +39,16 @@ public class RegionMenu extends Activity {
         townMusic = MediaPlayer.create(this, R.raw.town_soundtrack_1);
         townMusic.setLooping(true);
         townMusic.start();
+
+        if(user.autoSave)
+        {
+            if(save(user,"savefile.txt"))
+            {
+                Toast autoSave = Toast.makeText(getApplicationContext(),"Autosaving...Complete",Toast.LENGTH_SHORT);
+                autoSave.show();
+            }
+        }
+
         Button dungeonButton = (Button) findViewById(R.id.dungeonButton);
         ImageView titleView = (ImageView) findViewById(R.id.regionTitleView);
         titleView.setImageResource(R.drawable.mfall2);
@@ -164,5 +178,19 @@ public class RegionMenu extends Activity {
             }
         }).start();
     }
-
+    public Boolean save (User_Character user, String filename)
+    {
+        FileOutputStream fos = null;
+        try {
+            fos = getApplicationContext().openFileOutput(filename, Context.MODE_PRIVATE);
+            ObjectOutputStream os = new ObjectOutputStream(fos);
+            os.writeObject(user);
+            os.close();
+            fos.close();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
