@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static android.graphics.Color.WHITE;
 
@@ -31,7 +32,7 @@ public class Battle extends AppCompatActivity {
     ImageView monsterImage;
     ImageView userImage;
     Boolean isFleeing = false;
-
+    Boolean userAttacksFirst = false;
     /* This was suppose to shake the character - BROKEN
     ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) monsterImage.getLayoutParams();
                             if(temp % 6 == 0)
@@ -215,7 +216,6 @@ public class Battle extends AppCompatActivity {
         userImage = (ImageView)  findViewById(R.id.userView);
         monsterImage = (ImageView)  findViewById(R.id.monsterView);
 
-
         // Initialize stuff
         userHPtext.setText(user.current_health + " / " + user.max_health);
         userHealthProgress.setMax(user.max_health);
@@ -233,6 +233,18 @@ public class Battle extends AppCompatActivity {
         int id = getResources().getIdentifier(enemy.imagename, "drawable", getPackageName());
         monsterImage.setImageResource(id);
 
+        //Roll the Dice
+        int dice = (int) (Math.random()*10)+1;
+        Toast showDice;
+
+        if(dice > 5)
+            showDice = Toast.makeText(getApplicationContext(),"Dice Rolled("+dice+"): Enemy attacks first",Toast.LENGTH_LONG);
+        else {
+            showDice = Toast.makeText(getApplicationContext(), "Dice Rolled("+dice+"): "+user.actor_name+" attacks first", Toast.LENGTH_LONG);
+            userAttacksFirst = true;
+        }
+        showDice.
+        showDice.show();
 
         final MediaPlayer mp  = MediaPlayer.create(this, R.raw.battle_music1);
         final MediaPlayer attackSound = MediaPlayer.create(this, R.raw.sword_attack_short);
