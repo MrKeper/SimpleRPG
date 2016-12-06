@@ -75,7 +75,7 @@ public class Battle extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(1000);
                 } catch (Exception e) {
                     System.out.println("Sleep not working:" + userHealthProgress.getProgress());
                 }
@@ -91,6 +91,11 @@ public class Battle extends AppCompatActivity {
                     return;
                 }
                 if(playerFirst) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (Exception e) {
+                        System.out.println("Sleep not working:" + userHealthProgress.getProgress());
+                    }
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
@@ -135,47 +140,54 @@ public class Battle extends AppCompatActivity {
         final int userRed = user.max_health / 5;
         final int enemyOrange = enemy.base_health / 2;
         final int enemyRed = enemy.base_health / 5;
-        final MediaPlayer lowHPsound = MediaPlayer.create(this, R.raw.low_health_sound);
+        //final MediaPlayer lowHPsound = MediaPlayer.create(this, R.raw.low_health_sound);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    //boolean started = false;
+                    while (user.current_health > 0 && enemy.current_health > 0) {
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (enemy.current_health < enemyOrange) {
+                                    enemyHealthProgress.getProgressDrawable().setColorFilter(Color.rgb(255, 165, 0), PorterDuff.Mode.SRC_IN);
+                                }
+                                if (enemy.current_health < enemyRed) {
+                                    enemyHealthProgress.getProgressDrawable().setColorFilter(Color.rgb(200, 0, 0), PorterDuff.Mode.SRC_IN);
+                                }
+                                if (user.current_health < userOrange) {
+                                    userHealthProgress.getProgressDrawable().setColorFilter(Color.rgb(255, 165, 0), PorterDuff.Mode.SRC_IN);
+                                }
+                                if (user.current_health < userRed) {
+                                    userHealthProgress.getProgressDrawable().setColorFilter(Color.rgb(200, 0, 0), PorterDuff.Mode.SRC_IN);
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while(user.current_health > 0  && enemy.current_health > 0) {
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            if(enemy.current_health < enemyOrange){
-                                enemyHealthProgress.getProgressDrawable().setColorFilter(Color.rgb(255,165,0), PorterDuff.Mode.SRC_IN);
-                            }
-                            if(enemy.current_health < enemyRed) {
-                                enemyHealthProgress.getProgressDrawable().setColorFilter(Color.rgb(200, 0, 0), PorterDuff.Mode.SRC_IN);
-                            }
-                            if(user.current_health < userOrange){
-                                userHealthProgress.getProgressDrawable().setColorFilter(Color.rgb(255,165,0), PorterDuff.Mode.SRC_IN);
-                            }
-                            if(user.current_health < userRed){
-                                userHealthProgress.getProgressDrawable().setColorFilter(Color.rgb(200,0,0), PorterDuff.Mode.SRC_IN);
-                                if(!lowHPsound.isPlaying() && !isFleeing){
-                                    lowHPsound.start();
-                                    lowHPsound.setLooping(true);
-                                }else if(isFleeing){
-                                    lowHPsound.stop();
-                                    lowHPsound.release();
+                                    if (!isFleeing) {
+                                        //lowHPsound.start();
+                                        //lowHPsound.setLooping(true);
+                                        //started = true;
+                                    } else if (isFleeing) {
+                                        //lowHPsound.stop();
+                                        //lowHPsound.release();
+                                        return;
+                                    }
+                                }
+                                if (userWin || userLose) {
+                                    //lowHPsound.stop();
+                                    //lowHPsound.release();
                                     return;
                                 }
                             }
+                        });
+                        try {
+                            Thread.sleep(300);
+                        } catch (Exception e) {
+                            System.out.println("ColorMonitor Sleep ERROR");
                         }
-                    });
-                    try {
-                        Thread.sleep(300);
-                    } catch (Exception e) {
-                        System.out.println("ColorMonitor Sleep ERROR");
                     }
+                    //lowHPsound.stop();
+                    //lowHPsound.release();
                 }
-                lowHPsound.stop();
-                lowHPsound.release();
-            }
-        }).start();
+            }).start();
     }
 
     public void changeUserHealthBar(final int n){
@@ -371,7 +383,7 @@ public class Battle extends AppCompatActivity {
         final MediaPlayer fleeSound = MediaPlayer.create(this, R.raw.flee_sound);
         mp.start();
         mp.setLooping(true);
-
+        //final MediaPlayer lowHPsound = MediaPlayer.create(this, R.raw.low_health_sound);
         healthBarColorMonitor();
 
         attackButton = (Button) findViewById(R.id.attackButton);
@@ -395,17 +407,25 @@ public class Battle extends AppCompatActivity {
                 mp.stop();
                 actionChosen();
                 mp.release();
+                //lowHPsound.stop();
+                //lowHPsound.release();
 
                 //MediaPlayer enemySound =
-                if(!userAttacksFirst){
+                /*if(!userAttacksFirst){
                     changeUserHealthBar(user.current_health - enemy.strength*3);
                     enemyAttackAnimation();
-                }
+                }*/
 
                 fleeSound.start();
 
                 final Handler handler = new Handler();
-                isFleeing = true;
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        isFleeing = true;
+                    }
+                });
+
 
                 new Thread(new Runnable() {
                     @Override
@@ -415,10 +435,12 @@ public class Battle extends AppCompatActivity {
                         }catch (Exception e){
                             System.out.println("FLEE Sleep not working:");
                         }
+                        fleeSound.release();
                         handler.post(new Runnable() {
                             @Override
                             public void run() {
                                 Intent intent = new Intent(v.getContext(), Dungeon.class);
+                                intent.putExtra("battleData", "flee");
                                 intent.putExtra("user",user);
                                 startActivity(intent);
                                 finish();
@@ -432,29 +454,65 @@ public class Battle extends AppCompatActivity {
 
         //Make thread for catching lose/win
         final Handler handler = new Handler();
-        isFleeing = true;
-
-        /*new Thread(new Runnable() {
+        //isFleeing = true;
+        final MediaPlayer dSound = MediaPlayer.create(this, R.raw.deathsound1);
+        new Thread(new Runnable() {
             @Override
             public void run() {
-            while(true) {
+
+                while(!userLose && !userWin) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (Exception e) {
+                        System.out.println("FLEE Sleep not working:");
+                    }
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(isFleeing) return;
+                        }
+                    });
+
+
+                }
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mp.stop();
+                        mp.release();
+                        //lowHPsound.stop();
+                        //lowHPsound.release();
+                        actionChosen();
+
+                        fleeSound.release();
+                    }
+                });
+                dSound.start();
                 try {
                     Thread.sleep(1000);
                 } catch (Exception e) {
                     System.out.println("FLEE Sleep not working:");
                 }
-                handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                      Intent intent = new Intent(v.getContext(), Dungeon.class);
-                      intent.putExtra("user", user);
-                      startActivity(intent);
-                      finish();
-                        }
-                    });
+                dSound.stop();
+                dSound.release();
+
+
+                if(userWin) {
+                    Intent intent = new Intent(Battle.this, Dungeon.class);
+                    intent.putExtra("battleData", "win1");
+                    intent.putExtra("user", user);
+                    startActivity(intent);
+                    finish();
+                }
+                if(userLose) {
+                    Intent intent = new Intent(Battle.this, Dungeon.class);
+                    intent.putExtra("battleData", "lose");
+                    intent.putExtra("user", user);
+                    startActivity(intent);
+                    finish();
+                }
             }
-            }
-        }).start();*/
+        }).start();
 
     }
 }

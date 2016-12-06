@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import static android.graphics.Color.WHITE;
 
@@ -19,6 +20,7 @@ public class Dungeon extends AppCompatActivity {
     Button back;
     ImageView completedImage;
     User_Character user;
+    String battleData;
 
     public void finishAfterSound(final MediaPlayer mp){
         final Handler handler = new Handler();
@@ -53,6 +55,7 @@ public class Dungeon extends AppCompatActivity {
         back = (Button) findViewById(R.id.dungeonBack);
         completedImage = (ImageView) findViewById(R.id.completedImage);
         user = (User_Character) getIntent().getSerializableExtra("user");
+        battleData = (String) getIntent().getSerializableExtra("battleData");
 
         enterBattle.setBackgroundResource(R.drawable.woodbutton);
         enterBattle.setTextColor(WHITE);
@@ -60,6 +63,17 @@ public class Dungeon extends AppCompatActivity {
         enterBattle2.setTextColor(WHITE);
         enterBattle3.setBackgroundResource(R.drawable.woodbutton);
         enterBattle3.setTextColor(WHITE);
+
+        //Toast
+        Toast showData = Toast.makeText(getApplicationContext(),"default message",Toast.LENGTH_LONG);;
+        if(battleData.equals("lose"))
+            showData = Toast.makeText(getApplicationContext(),"You lost the battle.",Toast.LENGTH_LONG);
+        if(battleData.equals("flee"))
+            showData = Toast.makeText(getApplicationContext(),"You successfully ran away from the battle",Toast.LENGTH_LONG);
+        if(battleData.equals("win1"))
+            showData = Toast.makeText(getApplicationContext(),"You won battle#1.",Toast.LENGTH_LONG);
+        if(!battleData.equals("na"))
+            showData.show();
 
         //Initialize Dungeon Progress
         int dProgress = 0;
