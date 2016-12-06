@@ -122,6 +122,7 @@ public class User_Character extends Actor implements Serializable
         if(equiped_weapon != null)
             unequipWeapon();
         equiped_weapon = w;
+        equiped_weapon.isEquipped=  true;
         strength = strength + w.getStatBuffs()[1];
         defense = defense + w.getStatBuffs()[2];
         willpower = willpower + w.getStatBuffs()[3];
@@ -135,6 +136,7 @@ public class User_Character extends Actor implements Serializable
         if(equiped_weapon == null)
             return;
         Weapon w = equiped_weapon;
+        equiped_weapon.isEquipped = false;
         equiped_weapon = null;
         strength = strength - w.getStatBuffs()[1];
         defense = defense - w.getStatBuffs()[2];
@@ -151,6 +153,7 @@ public class User_Character extends Actor implements Serializable
         if(equiped_armor != null)
             unequipArmor();
         equiped_armor = a;
+        equiped_armor.isEquipped = true;
         strength = strength + a.getStatBuffs()[1];
         defense = defense + a.getStatBuffs()[2];
         willpower = willpower + a.getStatBuffs()[3];
@@ -164,6 +167,7 @@ public class User_Character extends Actor implements Serializable
         if(equiped_armor == null)
             return;
         Armor a = equiped_armor;
+        equiped_armor.isEquipped = false;
         equiped_armor = null;
         max_health = max_health - a.getStatBuffs()[0];
         strength = strength - a.getStatBuffs()[1];

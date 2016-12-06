@@ -236,7 +236,7 @@ public class Inventory extends AppCompatActivity {
                     if(player_inventory.get(i).getClass() == Weapon.class)
                     {
                         menu.setHeaderTitle("Weapon Options");
-                        if(equippedWeapon) {menu.add(Menu.NONE, CONTEXT_MENU_UNEQUIP, Menu.NONE, "Unequip");}
+                        if(player_inventory.get(i).isEquipped) {menu.add(Menu.NONE, CONTEXT_MENU_UNEQUIP, Menu.NONE, "Unequip");}
                         else  {menu.add(Menu.NONE, CONTEXT_MENU_EQUIP, Menu.NONE, "Equip");}
                         menu.add(Menu.NONE, CONTEXT_MENU_DESTORY, Menu.NONE, "Destory");
                         menu.add(Menu.NONE, CONTEXT_MENU_CANCEL, Menu.NONE, "Cancel");
@@ -244,7 +244,7 @@ public class Inventory extends AppCompatActivity {
                     if(player_inventory.get(i).getClass() == Armor.class)
                     {
                         menu.setHeaderTitle("Armor Options");
-                        if(equippedArmor) {menu.add(Menu.NONE, CONTEXT_MENU_UNEQUIP, Menu.NONE, "Unequip");}
+                        if(player_inventory.get(i).isEquipped) {menu.add(Menu.NONE, CONTEXT_MENU_UNEQUIP, Menu.NONE, "Unequip");}
                         else  {menu.add(Menu.NONE, CONTEXT_MENU_EQUIP, Menu.NONE, "Equip");}
                         menu.add(Menu.NONE, CONTEXT_MENU_DESTORY, Menu.NONE, "Destory");
                         menu.add(Menu.NONE, CONTEXT_MENU_CANCEL, Menu.NONE, "Cancel");
@@ -332,7 +332,10 @@ public class Inventory extends AppCompatActivity {
                         if(player_inventory.get(i).name.equals(selected_item))
                         {
                             if(player_inventory.get(i).getClass() == Weapon.class)
-                            { w =  (Weapon) player_inventory.get(i); user.equipWeapon(w); }
+                            { w =  (Weapon) player_inventory.get(i);
+
+                                user.equipWeapon(w);
+                            }
                             if(player_inventory.get(i).getClass() == Armor.class)
                             { a = (Armor)  player_inventory.get(i);  user.equipArmor(a);  }
                             player_inventory.get(i).isEquipped = true;

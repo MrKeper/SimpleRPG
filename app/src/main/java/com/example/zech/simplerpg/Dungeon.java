@@ -77,6 +77,8 @@ public class Dungeon extends AppCompatActivity {
             user.current_gold += 10;
             user.experince_bar += 10;
             try{if(user.completedDungeons.get(0) == 0) user.completedDungeons.set(0,1);}catch(Exception e){}
+            try{if(user.completedDungeons.get(0) == 3) user.completedDungeons.set(0,4);}catch(Exception e){}
+            try{if(user.completedDungeons.get(0) == 6) user.completedDungeons.set(0,7);}catch(Exception e){}
             user.current_health += (user.max_health - user.current_health)/2;
 
         }
@@ -85,6 +87,8 @@ public class Dungeon extends AppCompatActivity {
             user.current_gold += 20;
             user.experince_bar += 20;
             try{if(user.completedDungeons.get(0) == 1) user.completedDungeons.set(0,2);}catch(Exception e){}
+            try{if(user.completedDungeons.get(0) == 4) user.completedDungeons.set(0,5);}catch(Exception e){}
+            try{if(user.completedDungeons.get(0) == 7) user.completedDungeons.set(0,8);}catch(Exception e){}
             user.current_health += (user.max_health - user.current_health)/2;
 
         }
@@ -93,11 +97,23 @@ public class Dungeon extends AppCompatActivity {
             user.current_gold += 50;
             user.experince_bar += 50;
             try{if(user.completedDungeons.get(0) == 2) user.completedDungeons.set(0,3);}catch(Exception e){}
+            try{if(user.completedDungeons.get(0) == 6) user.completedDungeons.set(0,7);}catch(Exception e){}
+            try{if(user.completedDungeons.get(0) == 8) user.completedDungeons.set(0,9);}catch(Exception e){}
             user.current_health += (user.max_health - user.current_health)/2;
 
         }
         if(!battleData.equals("na"))
             showData.show();
+        try{
+            if(user.completedDungeons.get(0) == 9)
+            {
+                //quest 2 set complete
+            }
+            else if(user.completedDungeons.get(0) == 3)
+            {
+                //quest 1 set complete
+            }
+        }catch(Exception e){}
 
         //Initialize Dungeon Progress
         int dProgress = 0;
