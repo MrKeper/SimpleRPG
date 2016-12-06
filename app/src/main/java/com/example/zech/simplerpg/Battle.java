@@ -36,6 +36,8 @@ public class Battle extends AppCompatActivity {
     Boolean userAttacksFirst = false;
     Boolean userWin = false;
     Boolean userLose = false;
+
+
     /* This was suppose to shake the character - BROKEN
     ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) monsterImage.getLayoutParams();
                             if(temp % 6 == 0)
@@ -56,20 +58,18 @@ public class Battle extends AppCompatActivity {
     }
 
     public void turnSequence(final boolean playerFirst){
+        final MediaPlayer attackSound = MediaPlayer.create(this, R.raw.sword_attack_short);
+        final MediaPlayer enemySound = MediaPlayer.create(this, R.raw.punch1);
         if(playerFirst){
+            attackSound.start();
             changeEnemyHealthBar(enemy.current_health - user.strength*3);
             userAttackAnimation();
         }else{
+            enemySound.start();
             changeUserHealthBar(user.current_health - enemy.strength*3);
             enemyAttackAnimation();
         }
-        if(user.current_health == 0){
-           userLose = true;
-            return;
-        }else if(enemy.current_health == 0){
-            userWin = true;
-            return;
-        }
+
         final Handler handler = new Handler();
         new Thread(new Runnable() {
             @Override
@@ -79,10 +79,22 @@ public class Battle extends AppCompatActivity {
                 } catch (Exception e) {
                     System.out.println("Sleep not working:" + userHealthProgress.getProgress());
                 }
+                if(user.current_health == 0){
+                    userLose = true;
+                    attackSound.release();
+                    enemySound.release();
+                    return;
+                }else if(enemy.current_health == 0){
+                    userWin = true;
+                    attackSound.release();
+                    enemySound.release();
+                    return;
+                }
                 if(playerFirst) {
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
+                            enemySound.start();
                             changeUserHealthBar(user.current_health - enemy.strength*3);
                             enemyAttackAnimation();
                         }
@@ -92,12 +104,20 @@ public class Battle extends AppCompatActivity {
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
+                            attackSound.start();
                             changeEnemyHealthBar(enemy.current_health - user.strength*3);
                             userAttackAnimation();
                         }
                     });
 
                 }
+                try {
+                    Thread.sleep(2000);
+                } catch (Exception e) {
+                    System.out.println("Sleep not working:" + userHealthProgress.getProgress());
+                }
+                attackSound.release();
+                enemySound.release();
                 if(user.current_health == 0){
                     userLose = true;
                     return;
@@ -347,7 +367,7 @@ public class Battle extends AppCompatActivity {
         showDice.show();
 
         final MediaPlayer mp  = MediaPlayer.create(this, R.raw.battle_music1);
-        final MediaPlayer attackSound = MediaPlayer.create(this, R.raw.sword_attack_short);
+        //final MediaPlayer attackSound = MediaPlayer.create(this, R.raw.sword_attack_short);
         final MediaPlayer fleeSound = MediaPlayer.create(this, R.raw.flee_sound);
         mp.start();
         mp.setLooping(true);
@@ -360,7 +380,7 @@ public class Battle extends AppCompatActivity {
         attackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                attackSound.start();
+                //attackSound.start();
                 actionChosen();
                 turnSequence(userAttacksFirst);
             }
@@ -373,10 +393,8 @@ public class Battle extends AppCompatActivity {
             @Override
             public void onClick(final View v) {
                 mp.stop();
-                attackSound.stop();
                 actionChosen();
                 mp.release();
-                attackSound.release();
 
                 //MediaPlayer enemySound =
                 if(!userAttacksFirst){
@@ -411,6 +429,32 @@ public class Battle extends AppCompatActivity {
                 //finish();
             }
         });
+
+        //Make thread for catching lose/win
+        final Handler handler = new Handler();
+        isFleeing = true;
+
+        /*new Thread(new Runnable() {
+            @Override
+            public void run() {
+            while(true) {
+                try {
+                    Thread.sleep(1000);
+                } catch (Exception e) {
+                    System.out.println("FLEE Sleep not working:");
+                }
+                handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                      Intent intent = new Intent(v.getContext(), Dungeon.class);
+                      intent.putExtra("user", user);
+                      startActivity(intent);
+                      finish();
+                        }
+                    });
+            }
+            }
+        }).start();*/
 
     }
 }
