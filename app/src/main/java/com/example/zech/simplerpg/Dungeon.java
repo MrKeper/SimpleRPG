@@ -70,10 +70,13 @@ public class Dungeon extends AppCompatActivity {
         Toast showData = Toast.makeText(getApplicationContext(),"default message",Toast.LENGTH_LONG);;
         if(battleData.equals("lose")) {
             showData = Toast.makeText(getApplicationContext(), "You lost the battle.", Toast.LENGTH_LONG);
+            user.respawn();
             user.current_health = user.max_health/2;
         }
-        if(battleData.equals("flee"))
-            showData = Toast.makeText(getApplicationContext(),"You successfully ran away from the battle",Toast.LENGTH_LONG);
+        if(battleData.equals("flee")) {
+            showData = Toast.makeText(getApplicationContext(), "You successfully ran away from the battle", Toast.LENGTH_LONG);
+            user.current_gold =  (int) (user.current_gold * .95);
+        }
         if(battleData.equals("win1")) {
             showData = Toast.makeText(getApplicationContext(), "You won battle#1\n+10g +10xp", Toast.LENGTH_LONG);
             user.current_gold += 10;
@@ -85,9 +88,9 @@ public class Dungeon extends AppCompatActivity {
 
         }
         if(battleData.equals("win2")) {
-            showData = Toast.makeText(getApplicationContext(), "You won battle#2\n+20g +20xp", Toast.LENGTH_LONG);
-            user.current_gold += 20;
-            user.experince_bar += 15;
+            showData = Toast.makeText(getApplicationContext(), "You won battle#2\n+15g +20xp", Toast.LENGTH_LONG);
+            user.current_gold += 15;
+            user.experince_bar += 20;
             try{if(user.completedDungeons.get(0) == 1) user.completedDungeons.set(0,2);}catch(Exception e){}
             try{if(user.completedDungeons.get(0) == 4) user.completedDungeons.set(0,5);}catch(Exception e){}
             try{if(user.completedDungeons.get(0) == 7) user.completedDungeons.set(0,8);}catch(Exception e){}
@@ -95,9 +98,9 @@ public class Dungeon extends AppCompatActivity {
 
         }
         if(battleData.equals("win3")) {
-            showData = Toast.makeText(getApplicationContext(), "You beat the boss!\n+50g +50xp", Toast.LENGTH_LONG);
-            user.current_gold += 50;
-            user.experince_bar += 25;
+            showData = Toast.makeText(getApplicationContext(), "You beat the boss!\n+25g +50xp", Toast.LENGTH_LONG);
+            user.current_gold += 25;
+            user.experince_bar += 50;
             try{if(user.completedDungeons.get(0) == 2) user.completedDungeons.set(0,3);}catch(Exception e){}
             try{if(user.completedDungeons.get(0) == 5) user.completedDungeons.set(0,6);}catch(Exception e){}
             try{if(user.completedDungeons.get(0) == 8) user.completedDungeons.set(0,9);}catch(Exception e){}

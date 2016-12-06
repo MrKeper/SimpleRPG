@@ -60,6 +60,7 @@ public class RegionMenu extends Activity {
             public void onClick(View v) {
                 buttonSound.start();
                 townMusic.release();
+                if(user.current_health > user.max_health) user.current_health = user.max_health;
                 Intent intent = new Intent(getApplicationContext(), Dungeon.class);
                 intent.putExtra("battleData", "na");
                 intent.putExtra("user", user);

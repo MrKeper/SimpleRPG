@@ -63,11 +63,11 @@ public class Battle extends AppCompatActivity {
         final MediaPlayer enemySound = MediaPlayer.create(this, R.raw.punch1);
         if(playerFirst){
             attackSound.start();
-            changeEnemyHealthBar(enemy.current_health - user.strength*3);
+            changeEnemyHealthBar(enemy.current_health - (int)Math.max(user.strength*3-enemy.defense/2,1));
             userAttackAnimation();
         }else{
             enemySound.start();
-            changeUserHealthBar(user.current_health - enemy.strength*3);
+            changeUserHealthBar(user.current_health - (int)Math.max(enemy.strength*3-user.defense/2,1));
             enemyAttackAnimation();
         }
 
@@ -101,7 +101,7 @@ public class Battle extends AppCompatActivity {
                         @Override
                         public void run() {
                             enemySound.start();
-                            changeUserHealthBar(user.current_health - enemy.strength*3);
+                            changeUserHealthBar(user.current_health - (int)Math.max(enemy.strength*3-user.defense/2,1));
                             enemyAttackAnimation();
                         }
                     });
@@ -111,7 +111,7 @@ public class Battle extends AppCompatActivity {
                         @Override
                         public void run() {
                             attackSound.start();
-                            changeEnemyHealthBar(enemy.current_health - user.strength*3);
+                            changeEnemyHealthBar(enemy.current_health - (int)Math.max(user.strength*3-enemy.defense/2,1));
                             userAttackAnimation();
                         }
                     });
