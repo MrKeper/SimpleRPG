@@ -156,6 +156,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/claw_attack0"
-        android:id="@+id/imageView" />
+        android:id="@+id/userHitImage"
+        android:visibility="invisible"
+        android:layout_above="@+id/textchooseaction"
+        android:layout_toStartOf="@+id/runButton" />
 
 </RelativeLayout>

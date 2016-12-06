@@ -63,17 +63,25 @@ public class Battle extends AppCompatActivity {
 
     public void healthBarColorMonitor(){
         final Handler handler = new Handler();
-        final int userOrange = user.base_health / 2;
-        final int userRed = user.base_health / 5;
+        final int userOrange = user.max_health / 2;
+        final int userRed = user.max_health / 5;
+        final int enemyOrange = enemy.base_health / 2;
+        final int enemyRed = enemy.base_health / 5;
         final MediaPlayer lowHPsound = MediaPlayer.create(this, R.raw.low_health_sound);
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while(user.current_health > 0 ) {
+                while(user.current_health > 0  && enemy.current_health > 0) {
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
+                            if(enemy.current_health < enemyOrange){
+                                enemyHealthProgress.getProgressDrawable().setColorFilter(Color.rgb(255,165,0), PorterDuff.Mode.SRC_IN);
+                            }
+                            if(enemy.current_health < enemyRed) {
+                                enemyHealthProgress.getProgressDrawable().setColorFilter(Color.rgb(200, 0, 0), PorterDuff.Mode.SRC_IN);
+                            }
                             if(user.current_health < userOrange){
                                 userHealthProgress.getProgressDrawable().setColorFilter(Color.rgb(255,165,0), PorterDuff.Mode.SRC_IN);
                             }
@@ -243,7 +251,6 @@ public class Battle extends AppCompatActivity {
             showDice = Toast.makeText(getApplicationContext(), "Dice Rolled("+dice+"): "+user.actor_name+" attacks first", Toast.LENGTH_LONG);
             userAttacksFirst = true;
         }
-        showDice.
         showDice.show();
 
         final MediaPlayer mp  = MediaPlayer.create(this, R.raw.battle_music1);
