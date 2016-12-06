@@ -21,6 +21,7 @@ public class Battle extends AppCompatActivity {
 
     User_Character user;
     Mob enemy;
+    int bNum;
     Button attackButton;
     Button runButton;
     TextView userHPtext;
@@ -339,6 +340,7 @@ public class Battle extends AppCompatActivity {
         setContentView(R.layout.activity_battle);
         user = (User_Character) getIntent().getSerializableExtra("user");
         enemy = (Mob) getIntent().getSerializableExtra("enemy");
+        bNum = (int) getIntent().getSerializableExtra("bNum");
         userHPtext = (TextView)  findViewById(R.id.userHealthText);
         enemyHPtext = (TextView)  findViewById(R.id.enemyHealthText);
         chooseActiontext = (TextView)  findViewById(R.id.textchooseaction);
@@ -499,7 +501,7 @@ public class Battle extends AppCompatActivity {
 
                 if(userWin) {
                     Intent intent = new Intent(Battle.this, Dungeon.class);
-                    intent.putExtra("battleData", "win1");
+                    intent.putExtra("battleData", "win"+bNum);
                     intent.putExtra("user", user);
                     startActivity(intent);
                     finish();

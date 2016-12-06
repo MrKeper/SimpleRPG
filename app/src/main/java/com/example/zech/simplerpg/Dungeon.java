@@ -66,12 +66,36 @@ public class Dungeon extends AppCompatActivity {
 
         //Toast
         Toast showData = Toast.makeText(getApplicationContext(),"default message",Toast.LENGTH_LONG);;
-        if(battleData.equals("lose"))
-            showData = Toast.makeText(getApplicationContext(),"You lost the battle.",Toast.LENGTH_LONG);
+        if(battleData.equals("lose")) {
+            showData = Toast.makeText(getApplicationContext(), "You lost the battle.", Toast.LENGTH_LONG);
+            user.current_health = user.max_health/2;
+        }
         if(battleData.equals("flee"))
             showData = Toast.makeText(getApplicationContext(),"You successfully ran away from the battle",Toast.LENGTH_LONG);
-        if(battleData.equals("win1"))
-            showData = Toast.makeText(getApplicationContext(),"You won battle#1.",Toast.LENGTH_LONG);
+        if(battleData.equals("win1")) {
+            showData = Toast.makeText(getApplicationContext(), "You won battle#1\n+10g +10xp", Toast.LENGTH_LONG);
+            user.current_gold += 10;
+            user.experince_bar += 10;
+            try{if(user.completedDungeons.get(0) == 0) user.completedDungeons.set(0,1);}catch(Exception e){}
+            user.current_health += (user.max_health - user.current_health)/2;
+
+        }
+        if(battleData.equals("win2")) {
+            showData = Toast.makeText(getApplicationContext(), "You won battle#2\n+20g +20xp", Toast.LENGTH_LONG);
+            user.current_gold += 20;
+            user.experince_bar += 20;
+            try{if(user.completedDungeons.get(0) == 1) user.completedDungeons.set(0,2);}catch(Exception e){}
+            user.current_health += (user.max_health - user.current_health)/2;
+
+        }
+        if(battleData.equals("win3")) {
+            showData = Toast.makeText(getApplicationContext(), "You beat the boss!\n+50g +50xp", Toast.LENGTH_LONG);
+            user.current_gold += 50;
+            user.experince_bar += 50;
+            try{if(user.completedDungeons.get(0) == 2) user.completedDungeons.set(0,3);}catch(Exception e){}
+            user.current_health += (user.max_health - user.current_health)/2;
+
+        }
         if(!battleData.equals("na"))
             showData.show();
 
@@ -126,6 +150,7 @@ public class Dungeon extends AppCompatActivity {
                 //Mob(String name,String image_name,int id,int hp, int str, int def ,int wil, int dex)
                 Mob snake = new Mob("snake","bigsnake",111,80,4,4,4,4);
                 Intent intent = new Intent(v.getContext(), Battle.class);
+                intent.putExtra("bNum",1);
                 intent.putExtra("user",user);
                 intent.putExtra("enemy",snake);
 
@@ -141,9 +166,15 @@ public class Dungeon extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Testing dProgress
-                user.completedDungeons.set(0,0);
-                Intent intent = new Intent(v.getContext(), Dungeon.class);
+                //user.completedDungeons.set(0,0);
+                //Intent intent = new Intent(v.getContext(), Dungeon.class);
+                //intent.putExtra("user",user);
+                Mob wildbeast = new Mob("wildbeast","wildbeast",222,120,5,5,5,5);
+                Intent intent = new Intent(v.getContext(), Battle.class);
+                intent.putExtra("bNum",2);
                 intent.putExtra("user",user);
+                intent.putExtra("enemy",wildbeast);
+
                 mp.stop();
                 mp.release();
                 startActivity(intent);
@@ -157,9 +188,15 @@ public class Dungeon extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Testing dProgress
-                user.completedDungeons.set(0,user.completedDungeons.get(0)+1);
-                Intent intent = new Intent(v.getContext(), Dungeon.class);
+                //user.completedDungeons.set(0,user.completedDungeons.get(0)+1);
+                //Intent intent = new Intent(v.getContext(), Dungeon.class);
+                //intent.putExtra("user",user);
+                Mob boss = new Mob("deusex","deusex",333,200,5,5,5,5);
+                Intent intent = new Intent(v.getContext(), Battle.class);
+                intent.putExtra("bNum",3);
                 intent.putExtra("user",user);
+                intent.putExtra("enemy",boss);
+
                 mp.stop();
                 mp.release();
                 startActivity(intent);
