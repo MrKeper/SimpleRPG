@@ -61,6 +61,7 @@ public class RegionMenu extends Activity {
                 buttonSound.start();
                 townMusic.release();
                 Intent intent = new Intent(getApplicationContext(), Dungeon.class);
+                intent.putExtra("battleData", "na");
                 intent.putExtra("user", user);
                 startActivity(intent);
                 finishAfterSound(buttonSound);

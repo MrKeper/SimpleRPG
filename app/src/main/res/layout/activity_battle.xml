@@ -152,4 +152,13 @@
         android:layout_marginStart="10dp"
         android:translationX="40dp" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/claw_attack0"
+        android:id="@+id/userHitImage"
+        android:visibility="invisible"
+        android:layout_above="@+id/textchooseaction"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>
