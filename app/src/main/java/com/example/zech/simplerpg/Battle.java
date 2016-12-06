@@ -350,7 +350,10 @@ public class Battle extends AppCompatActivity {
         userHitImage = (ImageView) findViewById(R.id.userHitImage);
         userImage = (ImageView)  findViewById(R.id.userView);
         monsterImage = (ImageView)  findViewById(R.id.monsterView);
-
+        TextView hpLabel = (TextView) findViewById(R.id.HPLabel);
+        hpLabel.setText(user.actor_name+"'s HP:");
+        TextView enemeyHpLabel = (TextView) findViewById(R.id.enemyHPLabel);
+        enemeyHpLabel.setText(enemy.actor_name+"'s HP:");
         // Initialize stuff
         userHPtext.setText(user.current_health + " / " + user.max_health);
         userHealthProgress.setMax(user.max_health);

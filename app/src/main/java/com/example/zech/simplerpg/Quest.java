@@ -8,18 +8,19 @@ import java.io.Serializable;
 
 public class Quest implements Serializable
 {
-    public int quest_id;
+     int quest_id;
     //public String quest_type;
-    public String quest_name;
-    public String quest_description;
-    public String item_name;
+     String quest_name;
+     String quest_description;
+     String item_name;
     //public String mob_name;
     //public int amountWanted;
-    public int count;
-    public Boolean isActive;
-    public Boolean isComplete;
-    public int experince_reward;
-    public Item item_reward;
+     int count;
+     Boolean isActive;
+     Boolean isComplete;
+     int experince_reward;
+     Item item_reward;
+
 
     public Quest (int id,String qname, String description,String iname, int er, Item ir)
     {

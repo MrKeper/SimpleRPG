@@ -120,7 +120,7 @@ public class town1QuestBoard extends AppCompatActivity {
             Weapon ironSword = new Weapon("Iron Sword",null,"A proper sword for a proven warrior. (+5 STR).",ironStats,20);
             final Quest townInNeedII = new Quest(200,"Town in Need II",
                     "Th overpopulation continues to cause issues. Clear the dungeon 3 additional times to help the town out.",
-                    "Boss' Heart", 50,ironSword);
+                    "Boss' Hearts", 50,ironSword);
 
 
             TextView quest_info2 = new TextView(this);

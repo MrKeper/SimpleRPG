@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import static android.graphics.Color.WHITE;
 
 public class Dungeon extends AppCompatActivity {
@@ -85,7 +87,7 @@ public class Dungeon extends AppCompatActivity {
         if(battleData.equals("win2")) {
             showData = Toast.makeText(getApplicationContext(), "You won battle#2\n+20g +20xp", Toast.LENGTH_LONG);
             user.current_gold += 20;
-            user.experince_bar += 20;
+            user.experince_bar += 15;
             try{if(user.completedDungeons.get(0) == 1) user.completedDungeons.set(0,2);}catch(Exception e){}
             try{if(user.completedDungeons.get(0) == 4) user.completedDungeons.set(0,5);}catch(Exception e){}
             try{if(user.completedDungeons.get(0) == 7) user.completedDungeons.set(0,8);}catch(Exception e){}
@@ -95,9 +97,9 @@ public class Dungeon extends AppCompatActivity {
         if(battleData.equals("win3")) {
             showData = Toast.makeText(getApplicationContext(), "You beat the boss!\n+50g +50xp", Toast.LENGTH_LONG);
             user.current_gold += 50;
-            user.experince_bar += 50;
+            user.experince_bar += 25;
             try{if(user.completedDungeons.get(0) == 2) user.completedDungeons.set(0,3);}catch(Exception e){}
-            try{if(user.completedDungeons.get(0) == 6) user.completedDungeons.set(0,7);}catch(Exception e){}
+            try{if(user.completedDungeons.get(0) == 5) user.completedDungeons.set(0,6);}catch(Exception e){}
             try{if(user.completedDungeons.get(0) == 8) user.completedDungeons.set(0,9);}catch(Exception e){}
             user.current_health += (user.max_health - user.current_health)/2;
 
@@ -105,13 +107,18 @@ public class Dungeon extends AppCompatActivity {
         if(!battleData.equals("na"))
             showData.show();
         try{
-            if(user.completedDungeons.get(0) == 9)
+           // Item questItem1 = new Item("Boss' Heart");
+            //Item questItem2 = new Item ("Boss' Hearts");
+            for(int q = 0; q < user.quest_list.size(); q++)
             {
-                //quest 2 set complete
-            }
-            else if(user.completedDungeons.get(0) == 3)
-            {
-                //quest 1 set complete
+                if(user.quest_list.get(q).quest_id == 100 &&user.completedDungeons.get(0) == 3)
+                {
+                    user.quest_list.get(q).isComplete = true;
+                }
+                if(user.quest_list.get(q).quest_id == 200 &&user.completedDungeons.get(0) == 9)
+                {
+                    user.quest_list.get(q).isComplete = true;
+                }
             }
         }catch(Exception e){}
 
@@ -164,7 +171,7 @@ public class Dungeon extends AppCompatActivity {
                 //user.base_health = 200;
                 // MOB test
                 //Mob(String name,String image_name,int id,int hp, int str, int def ,int wil, int dex)
-                Mob snake = new Mob("snake","bigsnake",111,80,4,4,4,4);
+                Mob snake = new Mob("King Snake","bigsnake",111,80,4,4,4,4);
                 Intent intent = new Intent(v.getContext(), Battle.class);
                 intent.putExtra("bNum",1);
                 intent.putExtra("user",user);
@@ -185,7 +192,7 @@ public class Dungeon extends AppCompatActivity {
                 //user.completedDungeons.set(0,0);
                 //Intent intent = new Intent(v.getContext(), Dungeon.class);
                 //intent.putExtra("user",user);
-                Mob wildbeast = new Mob("wildbeast","wildbeast",222,120,5,5,5,5);
+                Mob wildbeast = new Mob("Wild Beast","wildbeast",222,120,5,5,5,5);
                 Intent intent = new Intent(v.getContext(), Battle.class);
                 intent.putExtra("bNum",2);
                 intent.putExtra("user",user);
@@ -207,7 +214,7 @@ public class Dungeon extends AppCompatActivity {
                 //user.completedDungeons.set(0,user.completedDungeons.get(0)+1);
                 //Intent intent = new Intent(v.getContext(), Dungeon.class);
                 //intent.putExtra("user",user);
-                Mob boss = new Mob("deusex","deusex",333,200,5,5,5,5);
+                Mob boss = new Mob("DeusX","deusex",333,200,5,5,5,5);
                 Intent intent = new Intent(v.getContext(), Battle.class);
                 intent.putExtra("bNum",3);
                 intent.putExtra("user",user);

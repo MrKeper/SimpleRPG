@@ -81,7 +81,7 @@ public class QuestLog extends AppCompatActivity
                 layout.addView(quest_info);
             }
             TextView questReadyText = new TextView(this);
-            questReadyText.setText("Ready to Turn In: \n");
+            questReadyText.setText("Ready to Turn In/Complete: \n");
             questReadyText.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
             questReadyText.setTextColor(GREEN);
             questReadyText.setTextSize(25);

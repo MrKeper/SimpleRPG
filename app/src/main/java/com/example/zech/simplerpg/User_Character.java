@@ -97,14 +97,6 @@ public class User_Character extends Actor implements Serializable
         {
             if(quest.quest_id == quest_list.get(i).quest_id && quest_list.get(i).isComplete)
             {
-               /* for(int k = 0; k < inventory.size(); k++)
-                {
-                    if(quest_list.get(i).item_name.equals(inventory.get(k).name))
-                    {
-                        inventory.remove(k);
-                        break;
-                    }
-                }*/ //deltes quest item from inventory, not completely neccesary
                 experince_bar = experince_bar + quest.experince_reward;
                 completedQuests.add(quest.quest_id);
                 if(quest.item_reward != null)
