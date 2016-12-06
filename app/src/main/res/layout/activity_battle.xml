@@ -159,6 +159,6 @@
         android:id="@+id/userHitImage"
         android:visibility="invisible"
         android:layout_above="@+id/textchooseaction"
-        android:layout_toStartOf="@+id/runButton" />
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

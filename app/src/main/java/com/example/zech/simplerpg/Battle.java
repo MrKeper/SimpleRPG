@@ -27,12 +27,15 @@ public class Battle extends AppCompatActivity {
     TextView enemyHPtext;
     TextView chooseActiontext;
     ImageView enemyHitImage;
+    ImageView userHitImage;
     ProgressBar userHealthProgress;
     ProgressBar enemyHealthProgress;
     ImageView monsterImage;
     ImageView userImage;
     Boolean isFleeing = false;
     Boolean userAttacksFirst = false;
+    Boolean userWin = false;
+    Boolean userLose = false;
     /* This was suppose to shake the character - BROKEN
     ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) monsterImage.getLayoutParams();
                             if(temp % 6 == 0)
@@ -52,13 +55,58 @@ public class Battle extends AppCompatActivity {
         chooseActiontext.setVisibility(View.VISIBLE);
     }
 
-    public void turnSequence(boolean playerFirst){
+    public void turnSequence(final boolean playerFirst){
         if(playerFirst){
             changeEnemyHealthBar(enemy.current_health - user.strength*3);
             userAttackAnimation();
         }else{
-
+            changeUserHealthBar(user.current_health - enemy.strength*3);
+            enemyAttackAnimation();
         }
+        if(user.current_health == 0){
+           userLose = true;
+            return;
+        }else if(enemy.current_health == 0){
+            userWin = true;
+            return;
+        }
+        final Handler handler = new Handler();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(2000);
+                } catch (Exception e) {
+                    System.out.println("Sleep not working:" + userHealthProgress.getProgress());
+                }
+                if(playerFirst) {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            changeUserHealthBar(user.current_health - enemy.strength*3);
+                            enemyAttackAnimation();
+                        }
+                    });
+
+                }else{
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            changeEnemyHealthBar(enemy.current_health - user.strength*3);
+                            userAttackAnimation();
+                        }
+                    });
+
+                }
+                if(user.current_health == 0){
+                    userLose = true;
+                    return;
+                }else if(enemy.current_health == 0){
+                    userWin = true;
+                    return;
+                }
+            }
+        }).start();
     }
 
     public void healthBarColorMonitor(){
@@ -209,6 +257,50 @@ public class Battle extends AppCompatActivity {
         }).start();
     }
 
+    public void enemyAttackAnimation(){
+        final Handler handler = new Handler();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                int i = 0;
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        userHitImage.setVisibility(View.VISIBLE);
+                        //turnFinish();
+                    }
+                });
+                while(i <= 10){
+                    final int temp = i;
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            String name = "claw_attack"+temp;
+                            int id = getResources().getIdentifier(name, "drawable", getPackageName());
+                            userHitImage.setImageResource(id);
+
+                        }
+                    });
+                    try{
+                        Thread.sleep(100);
+                    }catch (Exception e){
+                        System.out.println("Sleep not working:"+userHealthProgress.getProgress());
+                    }
+                    i++;
+                }
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        userHitImage.setVisibility(View.INVISIBLE);
+                        //turnFinish();
+                    }
+                });
+            }
+        }).start();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -221,6 +313,7 @@ public class Battle extends AppCompatActivity {
         userHealthProgress = (ProgressBar) findViewById(R.id.userHealthBar);
         enemyHealthProgress = (ProgressBar) findViewById(R.id.enemyHealthBar);
         enemyHitImage = (ImageView) findViewById(R.id.enemyHitImage);
+        userHitImage = (ImageView) findViewById(R.id.userHitImage);
         userImage = (ImageView)  findViewById(R.id.userView);
         monsterImage = (ImageView)  findViewById(R.id.monsterView);
 
@@ -269,7 +362,7 @@ public class Battle extends AppCompatActivity {
             public void onClick(View v) {
                 attackSound.start();
                 actionChosen();
-                turnSequence(true);
+                turnSequence(userAttacksFirst);
             }
         });
 
@@ -284,6 +377,13 @@ public class Battle extends AppCompatActivity {
                 actionChosen();
                 mp.release();
                 attackSound.release();
+
+                //MediaPlayer enemySound =
+                if(!userAttacksFirst){
+                    changeUserHealthBar(user.current_health - enemy.strength*3);
+                    enemyAttackAnimation();
+                }
+
                 fleeSound.start();
 
                 final Handler handler = new Handler();
